@@ -3,19 +3,17 @@
 #'
 #' @param x magpie object
 #' @param interpolatedYears years to be interpolated
-#' @param backwardExtrapolation backward extrapolation method
-#' @param extrapolationType extrapolation method
-#' @param integrateInterpolatedYears integrate interpolated years
 #' @return Returns the combined magpie object
 #' @author Renato Rodrigues
 #'
-#' @importFrom magclass mbind setNames add_dimension getYears time_interpolate
+#' @importFrom magclass mbind setNames add_dimension getYears time_interpolate getItems new.magpie
+#' @importFrom stats approx
 #' @importFrom madrat calcOutput toolGetMapping
 #' @export
 #'
 toolTimeInterpolation <- function(x, interpolatedYears) {
-  regs <- getRegions(x)
-  vars <- getItems(x, dim = 3)
+  regs <- magclass::getItems(x, dim = 1)
+  vars <- magclass::getItems(x, dim = 3)
   out <- new.magpie(
     cells_and_regions = regs,
     years = interpolatedYears,

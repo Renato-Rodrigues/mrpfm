@@ -9,7 +9,7 @@
 #'   \item `"Support policies climate"` — Vlasceanu et al., 2024, *Science*
 #'   \item `"Support political climate action"` — Andre et al., 2024, *Nature Climate Change*
 #' }
-#' Values are fractions in [0, 1] (converted from percent in the read/convert step).
+#' Values are fractions in `[0, 1]` (converted from percent in the read/convert step).
 #'
 #' @return A list with elements:
 #'   \describe{
@@ -22,7 +22,7 @@
 #' @author Renato Rodrigues
 #'
 #' @importFrom madrat readSource toolFillYears
-#' @importFrom magclass mbind getYears
+#' @importFrom magclass mbind getYears ndata
 #'
 calcClimatePolicySupport <- function() {
   vlasceanu <- readSource("ClimatePolicySupport", subtype = "Vlasceanu2024", convert = TRUE)

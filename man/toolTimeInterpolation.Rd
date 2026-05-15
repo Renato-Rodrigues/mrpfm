@@ -10,12 +10,6 @@ toolTimeInterpolation(x, interpolatedYears)
 \item{x}{magpie object}
 
 \item{interpolatedYears}{years to be interpolated}
-
-\item{backwardExtrapolation}{backward extrapolation method}
-
-\item{extrapolationType}{extrapolation method}
-
-\item{integrateInterpolatedYears}{integrate interpolated years}
 }
 \value{
 Returns the combined magpie object

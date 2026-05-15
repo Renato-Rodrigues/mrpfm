@@ -29,10 +29,10 @@ a named vector/list by variable name, or NULL (calculated from data).}
 a named vector/list by variable name, or NULL (calculated from data).}
 
 \item{symmetric}{Boolean. If TRUE, the range is made symmetric around zero
-by using the maximum absolute value of the bounds. Defaults to targetRange \link{-1, 1}.}
+by using the maximum absolute value of the bounds. Defaults to targetRange \verb{[-1, 1]}.}
 
 \item{targetRange}{Optional target range for normalization (e.g., c(0, 1) or c(-1, 1)).
-If NULL, it defaults to \link{0, 1} if all values are non-negative, and \link{-1, 1} otherwise.}
+If NULL, it defaults to \verb{[0, 1]} if all values are non-negative, and \verb{[-1, 1]} otherwise.}
 }
 \value{
 A normalized magpie object.

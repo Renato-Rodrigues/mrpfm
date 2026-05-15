@@ -21,7 +21,7 @@ Returns two variables:
 \item \code{"Support policies climate"} — Vlasceanu et al., 2024, \emph{Science}
 \item \code{"Support political climate action"} — Andre et al., 2024, \emph{Nature Climate Change}
 }
-Values are fractions in \link{0, 1} (converted from percent in the read/convert step).
+Values are fractions in \verb{[0, 1]} (converted from percent in the read/convert step).
 }
 \details{
 Combines both climate policy support survey datasets

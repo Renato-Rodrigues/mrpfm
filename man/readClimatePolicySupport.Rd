@@ -11,10 +11,10 @@ readClimatePolicySupport(subtype)
 }
 \value{
 A \code{\link[magclass:magclass-package]{magpie}} object with dimensions
-\verb{[iso3c, year, variable]}, values in percent \link{0, 100}.
+\verb{[iso3c, year, variable]}, values in percent \verb{[0, 100]}.
 }
 \description{
-Values in the raw data are in percent (0–100). Conversion to the \link{0, 1}
+Values in the raw data are in percent (0–100). Conversion to the \verb{[0, 1]}
 range is performed by \code{\link[=convertClimatePolicySupport]{convertClimatePolicySupport()}}.
 }
 \details{

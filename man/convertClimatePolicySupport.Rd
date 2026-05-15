@@ -8,16 +8,16 @@ convertClimatePolicySupport(x, subtype)
 }
 \arguments{
 \item{x}{A \code{\link[magclass:magclass-package]{magpie}} object returned from
-\code{\link[=readClimatePolicySupport]{readClimatePolicySupport()}} with values in percent \link{0, 100}.}
+\code{\link[=readClimatePolicySupport]{readClimatePolicySupport()}} with values in percent \verb{[0, 100]}.}
 
 \item{subtype}{character; passed through (\code{"Vlasceanu2024"} or \code{"Andre2024"}).}
 }
 \value{
 A \code{\link[magclass:magclass-package]{magpie}} object with all ISO3c countries,
-values in the range \link{0, 1}. Missing countries are set to \code{NA}.
+values in the range \verb{[0, 1]}. Missing countries are set to \code{NA}.
 }
 \description{
-Converts raw percent values to fractions \link{0, 1} and fills the complete
+Converts raw percent values to fractions \verb{[0, 1]} and fills the complete
 ISO country list (missing countries set to \code{NA}).
 }
 \author{

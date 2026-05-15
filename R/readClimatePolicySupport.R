@@ -9,13 +9,13 @@
 #' }
 #'
 #' @description
-#' Values in the raw data are in percent (0–100). Conversion to the [0, 1]
+#' Values in the raw data are in percent (0–100). Conversion to the `[0, 1]`
 #' range is performed by [`convertClimatePolicySupport()`].
 #'
 #' @param subtype character; `"Vlasceanu2024"` or `"Andre2024"`.
 #'
 #' @return A [`magpie`][magclass::magclass] object with dimensions
-#'   `[iso3c, year, variable]`, values in percent [0, 100].
+#'   `[iso3c, year, variable]`, values in percent `[0, 100]`.
 #'
 #' @author Renato Rodrigues
 #'
@@ -50,18 +50,18 @@ readClimatePolicySupport <- function(subtype) {
     yearCol <- grep("^Year$|^period$", names(raw), ignore.case = TRUE, value = TRUE)[[1]]
     valueCol <- setdiff(names(raw), c("Entity", codeCol, yearCol))[[1]]
 
-    df <- raw %>%
-      dplyr::rename(iso3c = !!codeCol, year = !!yearCol, value = !!valueCol) %>%
+    df <- raw |>
+      dplyr::rename(iso3c = !!codeCol, year = !!yearCol, value = !!valueCol) |>
       dplyr::filter(
         !is.na(.data$iso3c),
         nchar(as.character(.data$iso3c)) == 3,
         !grepl("^OWID_", .data$iso3c) # remove OWID aggregates (e.g. World)
-      ) %>%
+      ) |>
       dplyr::mutate(
         year     = as.integer(.data$year),
         value    = suppressWarnings(as.numeric(.data$value)),
         variable = "Support policies climate"
-      ) %>%
+      ) |>
       dplyr::select("iso3c", "year", "variable", "value")
   } else { # Andre2024
     # File: support-political-climate-action.csv
@@ -77,22 +77,22 @@ readClimatePolicySupport <- function(subtype) {
     yearCol <- grep("^Year$|^period$", names(raw), ignore.case = TRUE, value = TRUE)[[1]]
     valueCol <- setdiff(names(raw), c("Entity", codeCol, yearCol))[[1]]
 
-    df <- raw %>%
-      dplyr::rename(iso3c = !!codeCol, year = !!yearCol, value = !!valueCol) %>%
+    df <- raw |>
+      dplyr::rename(iso3c = !!codeCol, year = !!yearCol, value = !!valueCol) |>
       dplyr::filter(
         !is.na(.data$iso3c),
         nchar(as.character(.data$iso3c)) == 3,
         !grepl("^OWID_", .data$iso3c) # remove OWID aggregates (e.g. World)
-      ) %>%
+      ) |>
       dplyr::mutate(
         year     = as.integer(.data$year),
         value    = suppressWarnings(as.numeric(.data$value)),
         variable = "Support political climate action"
-      ) %>%
+      ) |>
       dplyr::select("iso3c", "year", "variable", "value")
   }
 
-  out <- df %>%
+  out <- df |>
     magclass::as.magpie(spatial = "iso3c", temporal = "year", datacol = "value")
 
   magclass::getSets(out) <- c("iso3c", "year", "variable")
