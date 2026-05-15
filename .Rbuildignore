@@ -10,3 +10,7 @@
 ^Makefile$
 ^.*CITATION\.cff$
 ^\.git$
+^workflow$
+^\.claude$
+^.lintr$
+^tests/.lintr$

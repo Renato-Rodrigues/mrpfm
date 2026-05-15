@@ -22,6 +22,9 @@ Imports:
     dplyr,
     quitte,
     readxl,
+    countrycode,
+    stringr,
+    tidyr,
     zoo,
     stats,
     utils

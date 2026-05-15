@@ -1,2 +1,0 @@
-linters: lucode2::lintrRules(allowUndesirable = TRUE)
-encoding: "UTF-8"
