@@ -1,0 +1,132 @@
+unique_id;sector_group;Status;instrument
+Tax_AL;all;Implemented;carbonTax
+ETS_AL;;Under consideration;
+Tax_AN;all;Implemented;carbonTax
+Tax_AR;all;Implemented;carbonTax
+ETS_AR;;Under consideration;
+ETS_AU1;;Abolished;
+ETS_AU2;bulk;Implemented;ets
+ETS_AT;diffuse;Implemented;ets
+Tax_BH;;Under consideration;
+ETS_BR;;Under consideration;
+UND_BN;;Under consideration;
+Tax_BW;;Under consideration;
+Tax_CA_Alberta;;Abolished;
+ETS_CA_Alberta;bulk;Implemented;ets
+Tax_CA_BC;;Abolished;
+ETS_CA_BC;bulk;Implemented;ets
+ETS_CA2;;Under consideration;
+Tax_CA;;Abolished;
+ETS_CA;bulk;Implemented;ets
+Tax_CA_Manitoba;;Abolished;
+ETS_CA_Manitoba;;Under consideration;
+Tax_CA_NB;;Abolished;
+ETS_CA_NB;bulk;Implemented;ets
+Tax_CA_NL;;Abolished;
+ETS_CA_NL;bulk;Implemented;ets
+Tax_CA_NT;;Abolished;
+ETS_CA_NS;bulk;Implemented;ets
+ETS_CA_Ontario;;Abolished;
+ETS_CA_Ontario2;bulk;Implemented;ets
+Tax_CA_PE;;Abolished;
+ETS_CA_Quebec;all;Implemented;ets
+ETS_CA_SK;;Abolished;
+Tax_CH;diffuse;Implemented;carbonTax
+ETS_CH;bulk;Implemented;ets
+Tax_CL;bulk;Implemented;carbonTax
+ETS_CL;;Under consideration;
+ETS_CN_Beijing;bulk;Implemented;ets
+ETS_CN;bulk;Implemented;ets
+ETS_CN_Chongqing;bulk;Implemented;ets
+ETS_CN_Fujian;bulk;Implemented;ets
+ETS_CN_Guangdong;bulk;Implemented;ets
+ETS_CN_Hubei;bulk;Implemented;ets
+ETS_CN_Shandong;;Abolished;
+ETS_CN_Shanghai;all;Implemented;ets
+ETS_CN_Shenzhen;bulk;Implemented;ets
+ETS_CN_Tianjin;bulk;Implemented;ets
+Tax_CD;;Under consideration;
+Tax_CO;bulk;Implemented;carbonTax
+ETS_CO;;Under consideration;
+ETS_DE;diffuse;Implemented;ets
+Tax_DK;diffuse;Implemented;carbonTax
+Tax_CAT;;Under consideration;
+Tax_ES;other;Implemented;carbonTax
+Tax_EE;diffuse;Implemented;carbonTax
+ETS_EU;bulk;Implemented;ets
+ETS_EU2;diffuse;Under consideration;
+Tax_FI;diffuse;Implemented;carbonTax
+Tax_FR;diffuse;Implemented;carbonTax
+Tax_UK;other;Implemented;carbonTax
+ETS_UK;bulk;Implemented;ets
+Tax_HU;bulk;Implemented;carbonTax
+Tax_ID;;Under consideration;
+ETS_ID;bulk;Implemented;ets
+ETS_IN;;Under development;
+Tax_IE;diffuse;Implemented;carbonTax
+Tax_IS;diffuse;Implemented;carbonTax
+Tax_IL;all;Implemented;carbonTax
+Tax_JP;all;Implemented;carbonTax
+ETS_JP;;Under consideration;
+ETS_JP_Saitama;bulk;Implemented;ets
+ETS_JP_Tokyo;bulk;Implemented;ets
+ETS_KZ;bulk;Implemented;ets
+Tax_KE;;Under consideration;
+ETS_KR;all;Implemented;ets
+Tax_LI;diffuse;Implemented;carbonTax
+Tax_LU;diffuse;Implemented;carbonTax
+Tax_LT;diffuse;Implemented;carbonTax
+Tax_MA;;Under consideration;
+Tax_MX_BC;;Abolished;
+Tax_MX_Colima;all;Implemented;carbonTax
+Tax_MX_Durango;all;Implemented;carbonTax
+Tax_MX_Guanajuato;all;Implemented;carbonTax
+Tax_MX_JA;;Under consideration;
+Tax_MX;diffuse;Implemented;carbonTax
+ETS_MX;bulk;Implemented;ets
+Tax_MX_MC;all;Implemented;carbonTax
+Tax_MX_MO;all;Implemented;carbonTax
+Tax_MX_Queretaro;all;Implemented;carbonTax
+Tax_MX_SLP;all;Implemented;carbonTax
+Tax_MX_SoMexico;all;Implemented;carbonTax
+Tax_MX_TA;all;Implemented;carbonTax
+Tax_MX_Yucatan;all;Implemented;carbonTax
+Tax_MX_ZA;all;Implemented;carbonTax
+ETS_MO;bulk;Implemented;ets
+Tax_MR;;Under consideration;
+ETS_MY;;Under consideration;
+Tax_NL;bulk;Implemented;carbonTax
+Tax_NO;diffuse;Implemented;carbonTax
+Tax_NZ;;Under consideration;
+ETS_NZ;all;Implemented;ets
+ETS_PK;;Under consideration;
+ETS_PH;;Under development;
+Tax_PL;diffuse;Implemented;carbonTax
+Tax_PT;diffuse;Implemented;carbonTax
+Tax_PY;;Under consideration;
+ETS_RU_Sakhalin;;Under consideration;
+Tax_SN;;Under consideration;
+Tax_SG;bulk;Implemented;carbonTax
+Tax_SL;diffuse;Implemented;carbonTax
+Tax_SE;diffuse;Implemented;carbonTax
+Tax_TH;;Under consideration;
+ETS_TH;;Under consideration;
+ETS_TR;;Under consideration;
+Tax_CN_Taiwan;bulk;Implemented;carbonTax
+ETS_CN_Taiwan;;Under consideration;
+Tax_UA;bulk;Implemented;carbonTax
+ETS_UA;;Under consideration;
+Tax_UY;diffuse;Implemented;carbonTax
+ETS_US_California;all;Implemented;ets
+ETS_US_CO;bulk;Implemented;ets
+Tax_US_HI;;Under consideration;
+ETS_US_Maryland;;Under consideration;
+ETS_US_MA;bulk;Implemented;ets
+ETS_US_TCIP;;Under development;
+ETS_US_NY;;Under consideration;
+ETS_US_Oregon;bulk;Implemented;ets
+ETS_US_PE;;Under consideration;
+ETS_RGGI;bulk;Implemented;ets
+ETS_US_Washington;bulk;Implemented;ets
+ETS_VN;;Under development;
+Tax_ZA;all;Implemented;carbonTax
