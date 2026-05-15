@@ -1,0 +1,30 @@
+Type: Package
+Package: mrpfm
+Title: Data for the Political Feasibility Module (PFM) for IAMs
+Version: 0.1.0
+Date: 2026-05-15
+Authors@R: c(
+    person("Renato", "Rodrigues", , "renato.rodrigues@pik-potsdam.de", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-5863-5514")),
+    person("Elmar", "Kriegler", , "kriegler@pik-potsdam.de", role = "aut",
+           comment = c(ORCID = "0000-0002-3307-2647"))
+  )
+Description: Data ingestion and preprocessing for the Political Feasibility Module (PFM),
+    following the madrat framework (read*, calc*, convert*, tool* conventions).
+    Provides magpie objects consumed by the pfm package.
+License: MIT + file LICENSE
+URL: https://github.com/pik-piam/mrpfm
+Depends:
+    madrat,
+    magclass,
+    mrremind
+Imports:
+    dplyr,
+    quitte,
+    readxl,
+    zoo,
+    stats,
+    utils
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
