@@ -1,0 +1,408 @@
+type;driver;driver_name;unit;weight;duplicated;na_is_zero;source
+Agriculture sector;Agricultural_land_sq__km_;Agricultural land;sq km;arableLand;TRUE;;The World Bank
+Agriculture sector;Percent_agricultural_land;Agricultural land;%;arableLand;;;The World Bank
+Agriculture sector;Agriculture_value_added_billion_USD;Agriculture value added;billion USD;GDPperCapita;;;The World Bank
+Agriculture sector;Arable_land_percent_of_total_land_area;Arable land;% (land area);arableLand;;;The World Bank
+Agriculture sector;Cereal_yield_kg_per_hectar;Cereal yield;kg per hectar;arableLand;;;FAO
+Agriculture sector;Crop_production_index__2004_2006___100_;Crop production index;index (2004-2006 = 100);GDPperCapita;;;FAO
+Agriculture sector;Employment_in_agriculture___of_total_employment;Employment in agriculture;% (total employment);GDPperCapita;;;The World Bank
+Agriculture sector;Fertilizer_use_kg_per_hectare_of_arable_land;Fertilizer use;kg per hectar (of arable land);GDPperCapita;;;FAO
+Agriculture sector;Food_production_index__2004_2006___100_;Food production index;index (2004-2006 = 100);GDPperCapita;;;FAO
+Agriculture sector;Forest_area_percent_of_total_land_area;Forest area;% (land area);landArea;;;FAO
+Agriculture sector;Forest_area_sq__km;Forest area;sq km;landArea;TRUE;;FAO
+Agriculture sector;Livestock_production_index__2004_2006___100_;Livestock production index;index (2004-2006 = 100);GDPperCapita;;;FAO
+Agriculture sector;Precipitation_mm_per_year;Precipitation;mm per year;landArea;;;FAO
+Agriculture sector;Value_added_in_the_agricultural_sector_as_percent_of_GDP;Value added in the agricultural sector;% (GDP);GDPperCapita;;;The World Bank
+Banking system access and depth;ATMs_per_100000_adults;ATMs;# per 100000 adults;GDPperCapita;;;The World Bank
+Banking system access and depth;Bank_accounts_per_1000_adults;Bank accounts;# per 100 adults;GDPperCapita;;;The International Monetary Fund
+Banking system access and depth;Bank_assets_percent_of_GDP;Bank assets;% (GDP);GDPperCapita;;;The International Monetary Fund
+Banking system access and depth;Bank_branches_per_100000_people;Bank branches;# per 100000 people;GDPperCapita;;;The International Monetary Fund
+Banking system access and depth;Bank_concentration__percent_of_bank_assets_held_by_top_three_banks;Bank concentration;% (bank assets held by top three banks);GDPperCapita;;;Bankscope
+Banking system access and depth;Bank_credit_to_government_and_public_enterprises_percent_of_GDP;Bank credit to government and public enterprises;% (GDP);GDPperCapita;;;The International Monetary Fund
+Banking system access and depth;Bank_credit_to_the_private_sector_as_percent_of_GDP;Bank credit to the private sector;% (GDP);GDPperCapita;;;The World Bank
+Banking system access and depth;Domestic_credit_to_the_private_sector_percent_of_GDP;Domestic credit to the private sector;% (GDP);GDPperCapita;;;The World Bank
+Banking system access and depth;Financial_system_deposits_percent_of_GDP;Financial system deposits;% (GDP);GDPperCapita;;;The International Monetary Fund
+Banking system access and depth;Firms_using_bank_credit_to_finance_investment_percent_of_all_firms;Firms using bank credit to finance investment;% (all firms);GDPperCapita;;;The World Bank
+Banking system access and depth;Foreign_bank_assets_as_percent_of_the_total_bank_assets;Foreign bank assets;% (total bank assets);GDPperCapita;;;Global Financial Development Database
+Banking system access and depth;Percent_of_people_aged_15__who_have_a_credit_card;Have a credit card;% (people aged 15);GDPperCapita;;;The World Bank
+Banking system access and depth;Percent_of_people_aged_15__who_have_a_debit_card;Have a debit card;% (people aged 15);GDPperCapita;;;The World Bank
+Banking system access and depth;Liquid_liabilities_percent_of_GDP;Liquid liabilities;% (GDP);GDPperCapita;;;The International Monetary Fund
+Banking system access and depth;People_with_bank_accounts_percent_of_the_population_over_14_years_of_age;People with bank accounts;% (population over 14 years of age);GDPperCapita;;;The World Bank
+Banking system access and depth;Small_firms_with_bank_credit_percent_of_all_small_firms;Small firms with bank credit;% (all firms);GDPperCapita;;;The World Bank
+Banking system efficiency and stability;Bank_cost_to_income_ratio_in_percent;Bank cost to income ratio;%;GDPperCapita;;;Bankscope
+Banking system efficiency and stability;Bank_credit_as_percent_of_bank_deposits;Bank credit;% (bank deposits);GDPperCapita;;;The International Monetary Fund
+Banking system efficiency and stability;Bank_interest_revenue_percent_of_interest_bearing_assets;Bank interest revenue;% (interest bearing assets);GDPperCapita;;;Bankscope
+Banking system efficiency and stability;Bank_lending_deposit_interest_rate_spread;Bank lending deposit interest rate spread;%;GDPperCapita;;;The International Monetary Fund
+Banking system efficiency and stability;Bank_liquid_assets_to_deposits_and_short_term_funding;Bank liquid assets to deposits and short term funding;% (liquid assets);GDPperCapita;;;Bankscope
+Banking system efficiency and stability;Bank_non_interest_income_to_total_income_in_percent;Bank non interest income to total income;%;GDPperCapita;;;Bankscope
+Banking system efficiency and stability;Bank_overhead_costs_percent_of_total_assets;Bank overhead costs;% (total assets);GDPperCapita;;;Bankscope
+Banking system efficiency and stability;Bank_return_on_assets_in_percent;Bank return on assets;%;GDPperCapita;;;Bankscope
+Banking system efficiency and stability;Bank_return_on_equity_in_percent;Bank return on equity;%;GDPperCapita;;;Bankscope
+Banking system efficiency and stability;Banking_system_capital_percent_of_assets;Banking system capital;% (assets);GDPperCapita;;;The International Monetary Fund
+Banking system efficiency and stability;Banking_system_regulatory_capital_to_risk_weighted_assets;Banking system regulatory capital to risk weighted assets;% (total regulatory capital to its assets held);GDPperCapita;;;The International Monetary Fund
+Banking system efficiency and stability;Banking_system_z_scores;Banking system z scores index;index (probability of default of a country's banking system);GDPperCapita;;;Bankscope
+Banking system efficiency and stability;Credit_information_sharing_index_0__low____8__high_;Credit information sharing index;index (0 = low, 8 = high );GDPperCapita;;;The World Bank
+Banking system efficiency and stability;Index_of_legal_rights_for_creditors_and_borrowers__0___weak_to_12___strong_;Legal rights for creditors and borrowers index;index (0 = weak, 12 = strong);GDPperCapita;;;The World Bank
+Banking system efficiency and stability;Interest_rates_on_bank_credit_to_the_private_sector;Interest rates on bank credit to the private sector;%;GDPperCapita;;;The World Bank
+Banking system efficiency and stability;Non_performing_loans_as_percent_of_all_bank_loans;Non performing loans;% (all bank loans);GDPperCapita;;;The World Bank
+Banking system efficiency and stability;Real_interest_rate__Bank_lending_rate_minus_inflation;Real interest rate  Bank lending rate minus inflation;%;GDPperCapita;;;The International Monetary Fund
+Child and maternal mortality;Deaths_of_children_five_to_fourteen_years_of_age_per_1000_live_births;Deaths of children five to fourteen years of age;# per 1000 live births;GDPperCapita;;;UNICEF
+Child and maternal mortality;Deaths_of_children_under_five_years_of_age_per_1000_live_births;Deaths of children under five years of age;# per 1000 live births;GDPperCapita;;;UNICEF
+Child and maternal mortality;Deaths_of_female_children_under_five_years_of_age_per_1000_live_births;Deaths of female children under five years of age;# per 1000 live births;GDPperCapita;;;UNICEF
+Child and maternal mortality;Deaths_of_male_children_under_five_years_of_age_per_1000_live_births;Deaths of male children under five years of age;# per 1000 live births;GDPperCapita;;;UNICEF
+Child and maternal mortality;Infant_deaths_per_1000_live_births;Infant deaths;# per 1000 live births;GDPperCapita;;;UNICEF
+Child and maternal mortality;Maternal_mortality_per_100000_live_births;Maternal mortality;# per 100000 live births;GDPperCapita;;;UNICEF
+Child and maternal mortality;Neonates_dying_before_28_days_of_age_per_1000_births;Neonates dying before 28 days of age;# per 1000 births;GDPperCapita;;;UNICEF
+Consumption and investment;Capital_investment_as_percent_of_GDP;Capital investment;% (GDP);GDPperCapita;;;The World Bank
+Consumption and investment;Capital_investment_billion_USD;Capital investment;billion USD;GDPperCapita;TRUE;;The World Bank
+Consumption and investment;Household_consumption_as_percent_of_GDP;Household consumption;% (GDP);GDPperCapita;;;The World Bank
+Consumption and investment;Household_consumption_billion_USD;Household consumption;billion USD;GDPperCapita;TRUE;;The World Bank
+Crime statistics;Homicides_per_100000_people;Homicides;# per 100000 people;GDPperCapita;;;The UN office on drugs and crime
+Crime statistics;Kidnappings_per_100000_people;Kidnappings;#  per 100000 people;GDPperCapita;;;The UN office on drugs and crime
+Crime statistics;Number_of_prisoners_per_100000_people;Number of prisoners;# per 100000 people;GDPperCapita;;;The UN office on drugs and crime
+Crime statistics;Robberies_per_100000_people;Robberies;# per 100000 people;GDPperCapita;;;The UN office on drugs and crime
+Crime statistics;Thefts_per_100000_people;Thefts;# per 100000 people;GDPperCapita;;;The UN office on drugs and crime
+Demographics;Dependent_people_as_percent_of_the_working_age_population;Dependent people;% (working age population);GDPperCapita;;;The World Bank
+Demographics;Female_population_percent_of_total;Female population;% (total population);GDPperCapita;;;United Nations Population Division
+Demographics;Migrant_population_percent_of_total_population;Migrant population;% (total population);GDPperCapita;;;United Nations Population Division
+Demographics;Population_ages_0_14_percent_of_total;Population ages 0 14;% (total population);GDPperCapita;;;United Nations Population Division
+Demographics;Population_ages_65_and_above_percent_of_total;Population ages 65 and above;% (total population);GDPperCapita;;;United Nations Population Division
+Demographics;Population_density_people_per_square_km;Population density;people per square km;GDPperCapita;;;FAO
+Demographics;Population_growth_percent;Population growth;%;GDPperCapita;;;The United Nations Population Division
+Demographics;Population_size_in_millions;Population size;millions;GDPperCapita;;;The United Nations Population Division
+Demographics;Refugee_population;Refugee;population;GDPperCapita;;;United Nations High Commissioner for Refugees
+Demographics;Rural_population_percent_of_total_population;Rural population;% (total population);GDPperCapita;;;The World Bank
+Demographics;Percent_urban_population;urban population;% (total population);GDPperCapita;;;United Nations Population Division
+Economic freedom indexes;Business_freedom_index__0_100_;Business freedom index;index (0-100);GDPperCapita;;;The Heritage Foundation
+Economic freedom indexes;Economic_freedom_overall_index__0_100_;Economic freedom index;index (0-100);GDPperCapita;;;The Heritage Foundation
+Economic freedom indexes;Financial_freedom_index__0_100_;Financial freedom index;index (0-100);GDPperCapita;;; The Heritage Foundation
+Economic freedom indexes;Fiscal_freedom_index__0_100_;Fiscal freedom index;index (0-100);GDPperCapita;;;The Heritage Foundation
+Economic freedom indexes;Freedom_from_corruption_index__0_100_;Freedom from corruption index;index (0-100);GDPperCapita;;; The Heritage Foundation
+Economic freedom indexes;Investment_freedom_index__0_100_;Investment freedom index;index (0-100);GDPperCapita;;;The Heritage Foundation
+Economic freedom indexes;Labor_freedom_index__0_100_;Labor freedom index;index (0-100);GDPperCapita;;;The Heritage Foundation
+Economic freedom indexes;Monetary_freedom_index__0_100_;Monetary freedom index;index (0-100);GDPperCapita;;;The Heritage Foundation
+Economic freedom indexes;Property_rights_index__0_100_;Property rights index;index (0-100);GDPperCapita;;;The Heritage Foundation
+Economic freedom indexes;Trade_freedom_index__0_100_;Trade freedom index;index (0-100);GDPperCapita;;;The World Bank
+Economic structure;Industry_value_added_billion_USD;Industry value added;billion USD;GDPperCapita;;;The World Bank
+Economic structure;Manufacturing_value_added_billion_USD;Manufacturing value added;billion USD;GDPperCapita;;;The World Bank
+Economic structure;Savings_as_percent_of_GDP;Savings;% (GDP);GDPperCapita;;;The World Bank
+Economic structure;Savings_billion_USD;Savings;billion USD;GDPperCapita;TRUE;;The World Bank
+Economic structure;Services_value_added_billion_USD;Services value added;billion USD;GDPperCapita;;;The World Bank
+Economic structure;Value_added_by_industry_as_percent_of_GDP;Value added by industry;% (GDP);GDPperCapita;;;The World Bank
+Economic structure;Value_added_by_the_manufacturing_sector_as_percent_of_GDP;Value added by the manufacturing sector;% (GDP);GDPperCapita;;;The World Bank
+Economic structure;Value_added_in_the_services_sector_as_percent_of_GDP;Value added in the services sector;% (GDP);GDPperCapita;;;The World Bank
+Education spending and outcomes;Female_literacy_rate_ages_15_24;Female literacy rate ages 15 24;% (0-100);GDPperCapita;;;UNESCO
+Education spending and outcomes;Literacy_rate;Literacy rate;% (0-100);GDPperCapita;;;UNESCO
+Education spending and outcomes;Male_literacy_rate_ages_15_24;Male literacy rate ages 15 24;% (0-100);GDPperCapita;;;UNESCO
+Education spending and outcomes;PISA_math_scores;PISA math scores index;index (mean 500, sd 100);GDPperCapita;;;PISA/OECD
+Education spending and outcomes;PISA_reading_scores;PISA reading scores index;index (mean 500, sd 100);GDPperCapita;;;PISA/OECD
+Education spending and outcomes;PISA_science_scores;PISA science scores index;index (mean 500, sd 100);GDPperCapita;;;PISA/OECD
+Education spending and outcomes;Preprimary_school_enrollment_percent_of_all_eligible_children;Preprimary school enrollment;% (eligible children);GDPperCapita;;;UNESCO
+Education spending and outcomes;Primary_school_completion_rate;Primary school completion rate;%;GDPperCapita;;;UNESCO
+Education spending and outcomes;Primary_school_enrollment_percent_of_all_eligible_children;Primary school enrollment;% (eligible children);GDPperCapita;;;UNESCO
+Education spending and outcomes;Primary_school_starting_age;Primary school starting age;age;GDPperCapita;;;UNESCO
+Education spending and outcomes;Public_spending_on_education_percent_of_GDP;Public spending on education;% (GDP);GDPperCapita;;;UNESCO
+Education spending and outcomes;Public_spending_on_education_percent_of_public_spending;Public spending on education;% (public spending);GDPperCapita;TRUE;;UNESCO
+Education spending and outcomes;Ratio_of_female_to_male_pupils_in_primary_school;Ratio of female to male pupils in primary school;ratio (female to male);GDPperCapita;;;UNESCO
+Education spending and outcomes;Ratio_of_female_to_male_students_in_secondary_school;Ratio of female to male students in secondary school;ratio (female to male);GDPperCapita;;;UNESCO
+Education spending and outcomes;Ratio_of_female_to_male_students_in_tertiary_level_education;Ratio of female to male students in tertiary level education;ratio (female to male);GDPperCapita;;;UNESCO
+Education spending and outcomes;Secondary_school_enrollment_percent_of_all_eligible_children;Secondary school enrollment;% (eligible children);GDPperCapita;;;UNESCO
+Education spending and outcomes;Student_teacher_ratio_primary_school;Student teacher ratio primary school;ratio;GDPperCapita;;;UNESCO
+Education spending and outcomes;Tertiary_school_enrollment_percent_of_all_eligible_children;Tertiary school enrollment;% (eligible children);GDPperCapita;;;UNESCO
+Education spending and outcomes;Trained_teachers_in_primary_education_percent_of_total;Trained teachers in primary education;% (total teachers);GDPperCapita;;;UNESCO
+Education spending and outcomes;Youth_literacy_rate_ages_15_24;Youth literacy rate ages 15 24;% (0-100);GDPperCapita;;;UNESCO
+Energy and environment;Access_to_electricity_percent_of_the_population;Access to electricity;% (population);population;;;The World Bank
+Energy and environment;Alternative_and_nuclear_energy_percent_of_total_energy_use;Alternative and nuclear energy;% (total energy use);GDPperCapita;;;The World Bank
+Energy and environment;Carbon_dioxide_emissions_per_capita;Carbon dioxide emissions per capita;t CO2 eq per capita;GDPperCapita;;;The World Bank
+Energy and environment;Carbon_dioxide_emissions_thousands_of_tonnes;Carbon dioxide emissions;Mt CO2eq;GDPperCapita;;;The World Bank
+Energy and environment;Diesel_prices_at_the_pump_in_dollars_per_liter;Diesel prices at the pump;USD (liter);GDPperCapita;;;The German Agency for International Cooperation
+Energy and environment;Electricity_production_from_renewable_sources_million_kWh;Electricity production from renewable sources;GWh;GDPperCapita;;;The International Energy Agency
+Energy and environment;Energy_imports_as_percent_of_total_energy_use;Energy imports;% (total energy use);GDPperCapita;;;The World Bank
+Energy and environment;Energy_use_per__1000_of_GDP;Energy use;energy per 1000 USD GDP;GDPperCapita;TRUE;;The World Bank
+Energy and environment;Energy_use_per_capita;Energy use;energy per capita;GDPperCapita;;;The World Bank
+Energy and environment;Gasoline_prices_at_the_pump_in_dollars_per_liter;Gasoline prices at the pump;USD (liter);GDPperCapita;;;The German Agency for International Cooperation
+Energy and environment;GDP_per_unit_of_energy_used;GDP;# per energy used;GDPperCapita;TRUE;;The World Bank
+Energy and environment;Greenhouse_gas_emissions;Greenhouse gas emissions;kt CO2eq;GDPperCapita;;;The World Bank
+Energy and environment;Income_from_natural_resources_percent_of_GDP;Income from natural resources;% (GDP);GDPperCapita;;;The World Bank
+Energy and environment;Revenue_minus_production_cost_of_natural_gas_percent_of_GDP;Revenue minus production cost of natural gas;% (GDP);GDPperCapita;;;The World Bank
+Energy and environment;Revenue_minus_production_cost_of_oil_percent_of_GDP;Revenue minus production cost of oil;% (GDP);GDPperCapita;;;The World Bank
+Energy mix;Fossil_fuels_electricity_capacity_million_kilowatts;Fossil fuels electricity capacity;GW;GDPperCapita;;;The U.S. Energy Information Administration
+Energy mix;Fossil_fuels_electricity_generation_billion_kilowatthours;Fossil fuels electricity generation;TWh;GDPperCapita;;;The U.S. Energy Information Administration
+Energy mix;Geothermal_electricity_capacity_million_kilowatts;Geothermal electricity capacity;GW;GDPperCapita;;;The U.S. Energy Information Administration
+Energy mix;Geothermal_electricity_generation_billion_kilowatthours;Geothermal electricity generation;TWh;GDPperCapita;;;The U.S. Energy Information Administration
+Energy mix;Hydroelectricity_capacity_million_kilowatts;Hydroelectricity capacity;GW;GDPperCapita;;;The U.S. Energy Information Administration
+Energy mix;Hydroelectricity_generation_billion_kilowatthours;Hydroelectricity generation;TWh;GDPperCapita;;;The U.S. Energy Information Administration
+Energy mix;Nuclear_electricity_capacity_million_kilowatts;Nuclear electricity capacity;GW;GDPperCapita;;;The U.S. Energy Information Administration
+Energy mix;Nuclear_power_generation_billion_kilowatthours;Nuclear power generation;TWh;GDPperCapita;;;The U.S. Energy Information Administration
+Energy mix;Solar_electricity_capacity_million_kilowatts;Solar electricity capacity;GW;GDPperCapita;;;The U.S. Energy Information Administration
+Energy mix;Solar_electricity_generation_billion_kilowatthours;Solar electricity generation;TWh;GDPperCapita;;;The U.S. Energy Information Administration
+Energy mix;Wind_electricity_capacity_million_kilowatts;Wind electricity capacity;GW;GDPperCapita;;;The U.S. Energy Information Administration
+Energy mix;Wind_electricity_generation_billion_kilowatthours;Wind electricity generation;TWh;GDPperCapita;;;The U.S. Energy Information Administration
+Forecast from the IMF;Budget_balance_forecast_percent_of_GDP;Budget balance forecast;% (GDP);GDPperCapita;;;International Monetary Fund
+Forecast from the IMF;Current_account_balance_forecast_percent_of_GDP;Current account balance forecast;% (GDP);GDPperCapita;;;International Monetary Fund
+Forecast from the IMF;Economic_growth_forecast;Economic growth forecast;%;GDPperCapita;;;International Monetary Fund
+Forecast from the IMF;Inflation_forecast;Inflation forecast;%;GDPperCapita;;;International Monetary Fund
+Forecast from the IMF;Investment_forecast;Investment forecast;%;GDPperCapita;;;International Monetary Fund
+Forecast from the IMF;Unemployment_rate_forecast;Unemployment rate forecast;%;GDPperCapita;;;International Monetary Fund
+Fragile state index;Demographic_pressures_0__low____10__high_;Demographic pressures index;index (0 = low, 10 = high);GDPperCapita;;;Fund for Peace
+Fragile state index;Economic_decline_index_0__low____10__high_;Economic decline index;index (0 = low, 10 = high);GDPperCapita;;;Fund for Peace
+Fragile state index;External_interventions_index_0__low____10__high_;External interventions index;index (0 = low, 10 = high);GDPperCapita;;;Fund for Peace
+Fragile state index;Factionalized_elites_index_0__low____10__high_;Factionalized elites index;index (0 = low, 10 = high);GDPperCapita;;;Fund for Peace
+Fragile state index;Fragile_state_index_0__low____120__high_;Fragile state index;index (0 = low, 120 = high);GDPperCapita;;;Fund for Peace
+Fragile state index;Group_grievance_index_0__low____10__high_;Group grievance index;index (0 = low, 10 = high);GDPperCapita;;;Fund for Peace
+Fragile state index;Human_flight_and_brain_drain_index_0__low____10__high_;Human flight and brain drain index;index (0 = low, 10 = high);GDPperCapita;;;Fund for Peace
+Fragile state index;Human_rights_and_rule_of_law_index_0__high____10__low_;Human rights and rule of law index;index (0 = low, 10 = high);GDPperCapita;;;Fund for Peace
+Fragile state index;Public_services_index_0__high____10__low_;Public services index;index (0 = low, 10 = high);GDPperCapita;;;Fund for Peace
+Fragile state index;Refugees_and_displaced_persons_index_0__low____10__high_;Refugees and displaced persons index;index (0 = low, 10 = high);GDPperCapita;;;Fund for Peace
+Fragile state index;Security_threats_index_0__low____10__high_;Security threats index;index (0 = low, 10 = high);GDPperCapita;;;Fund for Peace
+Fragile state index;State_legitimacy_index_0__high____10__low_;State legitimacy index;index (0 = low, 10 = high);GDPperCapita;;;Fund for Peace
+Fragile state index;Uneven_economic_development_index_0__low____10__high_;Uneven economic development index;index (0 = low, 10 = high);GDPperCapita;;;Fund for Peace
+GDP and economic growth;Economic_growth__the_rate_of_change_of_real_GDP;Economic growth;% (real GDP);GDPperCapita;;;The World Bank
+GDP and economic growth;GDP_per_capita_constant_2010_dollars;GDP per capita;constant 2010 USD;GDPperCapita;;;The World Bank
+GDP and economic growth;GDP_per_capita_current_U_S__dollars;GDP per capita;current USD;GDPperCapita;TRUE;;The World Bank
+GDP and economic growth;GDP_per_capita_Purchasing_Power_Parity;GDP per capita;purchasing Power Parity;GDPperCapita;TRUE;;The World Bank
+GDP and economic growth;GDP_per_hour_worked_in_current_USD_PPP_adjusted;GDP per hour worked;current USD PPP adjusted;GDPperCapita;TRUE;;OECD
+GDP and economic growth;GDP_per_hour_worked_index_relative_to_the_U_S_;GDP per hour worked index index;index (relative to the U S);GDPperCapita;;;OECD
+GDP and economic growth;Gross_Domestic_Product_billions_of_2010_U_S__dollars;Gross Domestic Product billions of 2010 US dollars;billions of 2010 USD;GDPperCapita;;;The World Bank
+GDP and economic growth;Gross_Domestic_Product_billions_of_U_S__dollars;Gross Domestic Product billions of US  dollars;billions of USD;GDPperCapita;;;The World Bank
+Globalization indexes;Economic_globalization_index__0_100_;Economic globalization index;index (0-100);GDPperCapita;;;The Swiss Institute of Technology in Zurich
+Globalization indexes;Globalization_index__0_100_;Globalization index;index (0-100);GDPperCapita;;;The Swiss Institute of Technology in Zurich
+Globalization indexes;Political_globalization_index__0_100_;Political globalization index;index (0-100);GDPperCapita;;;The Swiss Institute of Technology in Zurich
+Globalization indexes;Social_globalization_index__0_100_;Social globalization index;index (0-100);GDPperCapita;;;The Swiss Institute of Technology in Zurich
+Governance and business environment;Civil_liberties_index_7__weak____1__strong_;Civil liberties index;index (7 = weak, 1 = strong);GDPperCapita;;;The Freedom House
+Governance and business environment;Competitiveness___World_Economic_Forum_index__0_100_;Competitiveness - World Economic Forum index;index (0-100);GDPperCapita;;;The World Economic Forum
+Governance and business environment;Control_of_corruption___2_5_weak__2_5_strong_;Control of corruption index;index (-2.5 = weak, 2.5 = strong);GDPperCapita;;;The World Bank
+Governance and business environment;Corruption_Perceptions_Index_100___no_corruption;Corruption Perceptions Index;index (0-100 no corruption);GDPperCapita;;;Transparency International
+Governance and business environment;Cost_of_starting_a_business___of_income_per_capita;Cost of starting a business;# of income per capita;GDPperCapita;;;The World Bank
+Governance and business environment;Government_effectiveness_index___2_5_weak__2_5_strong_;Government effectiveness index;index (-2.5 = weak, 2.5 = strong);GDPperCapita;;;The World Bank
+Governance and business environment;Political_rights_index_7__weak____1__strong_;Political rights index;index (7 = weak, 1 = strong);GDPperCapita;;;The Freedom House
+Governance and business environment;Political_stability_index___2_5_weak__2_5_strong_;Political stability index;index (-2.5 = weak, 2.5 = strong);GDPperCapita;;;The World Bank
+Governance and business environment;Regulatory_quality_index___2_5_weak__2_5_strong_;Regulatory quality index;index (-2.5 = weak, 2.5 = strong);GDPperCapita;;;The World Bank
+Governance and business environment;Rule_of_law_index___2_5_weak__2_5_strong_;Rule of law index;index (-2.5 = weak, 2.5 = strong);GDPperCapita;;;The World Bank
+Governance and business environment;Shadow_economy_percent_of_GDP;Shadow economy;% (GDP);GDPperCapita;;;IMF - Medina and Medina and Schneider (2018)
+Governance and business environment;Voice_and_accountability_index___2_5_weak__2_5_strong_;Voice and accountability index;index (-2.5 = weak, 2.5 = strong);GDPperCapita;;;The World Bank
+Government;Fiscal_balance_percent_of_GDP;Fiscal balance;% (GDP);GDPperCapita;;;The World Bank
+Government;Foreign_aid_and_official_development_assistance_received;Foreign aid and official development assistance received;million USD;GDPperCapita;;;The World Bank
+Government;Government_debt_as_percent_of_GDP;Government debt as percent of GDP;% (GDP);GDPperCapita;;;The World Bank
+Government;Government_spending_billion_USD;Government spending;billion USD;GDPperCapita;;;The World Bank
+Government;Government_spending_as_percent_of_GDP;Government spending percent;% (GDP);GDPperCapita;;;The World Bank
+Government;Income_profits_and_capital_gains_taxes__percent_of_revenue;Income profits and capital gains taxes;% (revenue);GDPperCapita;;;The World Bank
+Government;Number_of_taxes_paid_by_businesses;Number of taxes paid by businesses;# (taxes);GDPperCapita;;;The World Bank (doing business survey)
+Government;Tax_preparation_time_in_hours;Tax preparation time in hours;hours;GDPperCapita;;;The World Bank (doing business survey)
+Government;Tax_rate_percent_of_commercial_profits;Tax rate percent;% (commercial profits);GDPperCapita;;;The World Bank (doing business survey)
+Government;Tax_revenue_percent_of_GDP;Tax revenue;% (GDP);GDPperCapita;;;The World Bank
+Government;Taxes_on_goods_and_services_percent_of_total_revenue;Taxes on goods and services;% (total revenue);GDPperCapita;;;The World Bank
+Government;Taxes_on_international_trade_percent_of_total_revenue;Taxes on international trade;% (total revenue);GDPperCapita;;;The World Bank
+Health spending and outcomes;Cases_of_Tuberculosis_per_100000_people;Cases of Tuberculosis;per 100000 people;GDPperCapita;;;The World Bank
+Health spending and outcomes;Anemia_percent_of_children_ages_6_59_months;Children anemia;% (children ages 6-59 months);GDPperCapita;;;The World Health Organization
+Health spending and outcomes;Percent_of_one_year_old_children_with_Hepatitis_B_immunization;Children Hepatitis B immunization;% (one year old children);GDPperCapita;;;The World Health Organization
+Health spending and outcomes;Percent_of_children_ages_12_23_months_with_DPT_immunization;Children with DPT immunization;% (children ages 12-23 months);GDPperCapita;;;The World Health Organization
+Health spending and outcomes;Percent_of_children_ages_12_23_months_with_measles_immunization;Children with measles immunization;% (children ages 12-23 months);GDPperCapita;;;The World Health Organization
+Health spending and outcomes;Death_rate_per_1000_people;Death rate;per 1000 people;GDPperCapita;;;The World Bank
+Health spending and outcomes;Diabetes_prevalence_percent_of_population_ages_20_79;Diabetes prevalence;% (population ages 20-79);GDPperCapita;;;International Diabetes Federation
+Health spending and outcomes;Fertility_rate_births_per_woman;Fertility rate births;# per woman;GDPperCapita;;;The World Bank
+Health spending and outcomes;Health_spending_as_percent_of_GDP;Health spending;% (GDP);GDPperCapita;;;The World Bank
+Health spending and outcomes;Health_spending_per_capita;Health spending;per capita;GDPperCapita;TRUE;;The World Bank
+Health spending and outcomes;Life_expectancy_in_years;Life expectancy;years;GDPperCapita;;;The United Nations Population Division
+Health spending and outcomes;Life_expectancy_in_years_female;Life expectancy - female;years;GDPperCapita;;;The United Nations Population Division
+Health spending and outcomes;Life_expectancy_in_years_male;Life expectancy - male;years;GDPperCapita;;;The United Nations Population Division
+Health spending and outcomes;Prevalence_of_HIV_percent_of_the_population_ages_15_49;Prevalence of HIV;% (population ages 15-49);GDPperCapita;;;The World Bank
+Health spending and outcomes;Prevalence_of_undernourishment_percent_of_population;Prevalence of undernourishment;% (population);GDPperCapita;;;FAO
+Health spending and outcomes;Percent_rural_population_with_access_to_drinking_water;Rural population with access to drinking water;%;GDPperCapita;;;WHO/UNICEF
+Health spending and outcomes;Suicide_mortality_rate_per_100000_population;Suicide mortality rate;# per 100000 population;GDPperCapita;;;The World Health Organization
+Health spending and outcomes;The_number_of_crude_births_per_1000_people_per_year;The number of crude births;# per 1000 people per year;GDPperCapita;;;The World Bank
+Health spending and outcomes;Traffic_accident_deaths_per_100000_people;Traffic accident deaths;# per 100000 people;GDPperCapita;;;The World Health Organization
+Health spending and outcomes;Percent_urban_population_with_access_to_drinking_water;Urban population with access to drinking water;%;GDPperCapita;;;WHO/UNICEF
+Healthcare resources;Computed_tomography_scanners_per_million_people;Computed tomography scanners;# per million people;GDPperCapita;;;OECD
+Healthcare resources;Dentists_per_1000_people;Dentists;# per 1000 people;GDPperCapita;;;OECD
+Healthcare resources;Doctors_per_1000_people;Doctors;# per 1000 people;GDPperCapita;;;OECD
+Healthcare resources;Hospital_beds;Hospital beds;#;GDPperCapita;;;OECD
+Healthcare resources;Hospital_beds_per_1000_people;Hospital beds;# per 1000 people;GDPperCapita;TRUE;;OECD
+Healthcare resources;Magnetic_resonance_imaging_units_per_million_people;Magnetic resonance imaging units;# per million people;GDPperCapita;;;OECD
+Healthcare resources;Mammographs_per_million_people;Mammographs;# per million people;GDPperCapita;;;OECD
+Healthcare resources;Midwives_per_1000_live_births;Midwives per birth;# per 1000 live births;GDPperCapita;;;OECD
+Healthcare resources;Midwives_per_1000_people;Midwives;# per 1000 people;GDPperCapita;TRUE;;OECD
+Healthcare resources;Nurse_to_hospital_bed_ratio;Nurse to hospital bed ratio;ratio (nurse to hospital bed);GDPperCapita;;;OECD
+Healthcare resources;Nurses_per_1000_people;Nurses;# per 1000 people;GDPperCapita;;;OECD
+Healthcare resources;Pharmacists_per_1000_people;Pharmacists;# per 1000 people;GDPperCapita;;;OECD
+Healthcare resources;Physiotherapists_per_1000_people;Physiotherapists;# per 1000 people;GDPperCapita;;;OECD
+Industry Diamond production and trade;Diamond_exports_USD_per_carat;Diamond exports;USD (per carat);;TRUE;TRUE;The Kimberley Process
+Industry Diamond production and trade;Diamond_exports_million_USD;Diamond exports;million USD;;;TRUE;The Kimberley Process
+Industry Diamond production and trade;Diamond_exports_carats;Diamond exports carats;#;;TRUE;TRUE;The Kimberley Process
+Industry Diamond production and trade;Diamond_imports_USD_per_carat;Diamond imports;USD (per carat);GDPperCapita;TRUE;;The Kimberley Process
+Industry Diamond production and trade;Diamond_imports_million_USD;Diamond imports;million USD;GDPperCapita;;;The Kimberley Process
+Industry Diamond production and trade;Diamond_imports_carats;Diamond imports carats;#;GDPperCapita;TRUE;;The Kimberley Process
+Industry Diamond production and trade;Diamond_production_USD_per_carat;Diamond production;USD (per carat);;TRUE;TRUE;The Kimberley Process
+Industry Diamond production and trade;Diamond_production_million_USD;Diamond production;million USD;;;TRUE;The Kimberley Process
+Industry Diamond production and trade;Diamond_production_carats;Diamond production carats;#;;TRUE;TRUE;The Kimberley Process
+Industry Oil, coal, and electricity (1);Diesel_and_heating_oil_consumption_thousand_barrels_per_day;Diesel and heating oil consumption;thousand barrels per day;GDPperCapita;;;The U.S. Energy Information Administration
+Industry Oil, coal, and electricity (1);Gasoline_consumption_thousand_barrels_per_day;Gasoline consumption;thousand barrels per day;GDPperCapita;;;The U.S. Energy Information Administration
+Industry Oil, coal, and electricity (1);Gasoline_production_thousand_barrels_per_day;Gasoline production;thousand barrels per day;GDPperCapita;;;The U.S. Energy Information Administration
+Industry Oil, coal, and electricity (1);Jet_fuel_consumption_thousand_barrels_per_day;Jet fuel consumption;thousand barrels per day;;;TRUE;The U.S. Energy Information Administration
+Industry Oil, coal, and electricity (1);Jet_fuel_production_thousand_barrels_per_day;Jet fuel production;thousand barrels per day;;;TRUE;The U.S. Energy Information Administration
+Industry Oil, coal, and electricity (1);Liquefied_petroleum_gas_consumption_thousand_barrels_per_day;Liquefied petroleum gas consumption;thousand barrels per day;;;TRUE;The U.S. Energy Information Administration
+Industry Oil, coal, and electricity (1);Liquefied_petroleum_gas_production_thousand_barrels_per_day;Liquefied petroleum gas production;thousand barrels per day;;;TRUE;The U.S. Energy Information Administration
+Industry Oil, coal, and electricity (1);Oil_consumption_thousand_barrels_per_day;Oil consumption;thousand barrels per day;GDPperCapita;;;The U.S. Energy Information Administration
+Industry Oil, coal, and electricity (1);Oil_production_thousand_barrels_per_day;Oil production;thousand barrels per day;;;TRUE;The U.S. Energy Information Administration
+Industry Oil, coal, and electricity (1);Oil_reserves_billion_barrels;Oil reserves;billion barrels;;TRUE;TRUE;The U.S. Energy Information Administration
+Industry Oil, coal, and electricity (2);Coal_consumption_thousand_short_tons;Coal consumption;thousand short tons;GDPperCapita;;;The U.S. Energy Information Administration
+Industry Oil, coal, and electricity (2);Coal_exports_thousand_short_tons;Coal exports;thousand short tons;;;TRUE;The U.S. Energy Information Administration
+Industry Oil, coal, and electricity (2);Coal_imports_thousand_short_tons;Coal imports;thousand short tons;GDPperCapita;;;The U.S. Energy Information Administration
+Industry Oil, coal, and electricity (2);Coal_production_thousand_short_tons;Coal production;thousand short tons;;;TRUE;The U.S. Energy Information Administration
+Industry Oil, coal, and electricity (2);Coal_reserves_million_short_tons;Coal reserves;million short tons;;;TRUE;The U.S. Energy Information Administration
+Industry Oil, coal, and electricity (2);Electricity_consumption_billion_kilowatthours;Electricity consumption;TWh;GDPperCapita;;;The U.S. Energy Information Administration
+Industry Oil, coal, and electricity (2);Electricity_exports_billion_kilowatthours;Electricity exports;TWh;;;TRUE;The U.S. Energy Information Administration
+Industry Oil, coal, and electricity (2);Electricity_imports_billion_kilowatthours;Electricity imports;TWh;;;TRUE;The U.S. Energy Information Administration
+Industry Oil, coal, and electricity (2);Electricity_production_billion_kilowatthours;Electricity production;TWh;GDPperCapita;;;The U.S. Energy Information Administration
+Industry Oil, coal, and electricity (2);Electricity_production_capacity_million_kilowatts;Electricity production capacity;GW;GDPperCapita;;;The U.S. Energy Information Administration
+Industry Oil, coal, and electricity (2);Renewable_power_capacity_million_kilowatts;Renewable power capacity;GW;GDPperCapita;;;The U.S. Energy Information Administration
+Industry Oil, coal, and electricity (2);Renewable_power_generation_billion_kilowatthours;Renewable power generation;TWh;GDPperCapita;;;The U.S. Energy Information Administration
+Inequality and poverty;Gini_income_inequality_index;Gini income inequality index;index (0-100);GDPperCapita;;;The World Bank
+Inequality and poverty;Percent_income_earned_by_the_top_10_percent_of_earners;Income earned by the top 10 percent of earners;% (income);GDPperCapita;;;The World Bank
+Inequality and poverty;Poverty_percent_of_population;Poverty;% (population);GDPperCapita;;;The World Bank
+Inequality and poverty;Poverty_ratio_percent_living_on_less_than_1_90_USD_a_day;Poverty ratio percent living on less than 1 90 USD a day;% (population);GDPperCapita;;;The World Bank
+Inequality and poverty;Poverty_ratio_percent_living_on_less_than_5_50_USD_a_day;Poverty ratio percent living on less than 5 50 USD a day;% (population);GDPperCapita;;;The World Bank
+Infrastructure and transport characteristics;Airline_passengers_of_domestically_owned_airlines;Airline passengers of domestically owned airlines;#;;;TRUE;The International Civil Aviation Organization
+Infrastructure and transport characteristics;Broadband_internet_subscribers_in_thousands;Broadband internet subscribers;# per 1000;GDPperCapita;;;The International Telecommunication Union
+Infrastructure and transport characteristics;Fixed_broadband_internet_subscribers_per_100_people;Fixed broadband internet subscribers;# per 100;GDPperCapita;;;The International Telecommunication Union
+Infrastructure and transport characteristics;International_Internet_bandwidth_per_Internet_user_kb_s;International Internet bandwidth per Internet user;kb/s;GDPperCapita;;;The International Telecommunication Union
+Infrastructure and transport characteristics;Internet_users_percent_of_population;Internet users;% (population);GDPperCapita;;;The World Bank
+Infrastructure and transport characteristics;Mobile_network_coverage_percent_of_the_population;Mobile network coverage;% (population);GDPperCapita;;;International Telecommunication Union
+Infrastructure and transport characteristics;Mobile_phone_subscribers_in_millions;Mobile phone subscribers;# in millions;GDPperCapita;;;The International Telecommunication Union
+Infrastructure and transport characteristics;Mobile_phone_subscribers_per_100_people;Mobile phone subscribers;# per 100 people;GDPperCapita;TRUE;;The International Telecommunication Union
+Infrastructure and transport characteristics;New_commercial_vehicle_sales_numbers_per_year;New commercial vehicle sales;# per year;GDPperCapita;;;OICA
+Infrastructure and transport characteristics;New_passenger_car_sales_numbers_per_year;New passenger car sales;# per year;GDPperCapita;;;OICA
+Infrastructure and transport characteristics;Number_of_20_foot_containers_passing_through_the_ports;Number of 20 foot containers passing through the ports;#;GDPperCapita;;;Containerisation International
+Infrastructure and transport characteristics;Quality_of_air_transport_infrastructure_1_low____7_high_;Quality of air transport infrastructure index;index (1 = low, 7 = high);GDPperCapita;;;World Economic Forum
+Infrastructure and transport characteristics;Quality_of_port_infrastructure_1_low____7_high_;Quality of port infrastructure index;index (1 = low, 7 = high);GDPperCapita;;;World Economic Forum
+Infrastructure and transport characteristics;Quality_of_railroad_infrastructure_1_low____7_high_;Quality of railroad infrastructure index;index (1 = low, 7 = high);GDPperCapita;;;World Economic Forum
+Infrastructure and transport characteristics;Quality_of_roads_1_low____7_high_;Quality of roads index;index (1 = low, 7 = high);GDPperCapita;;;World Economic Forum
+Infrastructure and transport characteristics;Railroad_lines_total_length_in_km;Railroad lines total length;km;GDPperCapita;;;The World Bank
+Infrastructure and transport characteristics;Railway_passengers;Railway passengers;#;GDPperCapita;;;The World Bank
+Infrastructure and transport characteristics;Volume_of_goods_transported_by_railways;Volume of goods transported by railways;metric tons km;GDPperCapita;;;The World Bank
+Innovation measures;High_tech_exports_percent_of_manufactured_exports;High tech exports;% (manufactured exports);GDPperCapita;;;The United Nations
+Innovation measures;High_technology_exports;High technology exports;#;GDPperCapita;;;The United Nations
+Innovation measures;Information_technology_exports_percent_of_total_goods_exports;Information technology exports;% (total goods exports);GDPperCapita;;;The United Nations
+Innovation measures;Innovations_index__0_100_;Innovations index;index (0-100);GDPperCapita;;;Cornell University, INSEAD, and the WIPO
+Innovation measures;Patent_applications_by_residents;Patent applications by residents;# (patents);GDPperCapita;;;The World Intellectual Property Organization
+Innovation measures;Research_and_development_expenditure_percent_of_GDP;Research and development expenditure;% (GDP);GDPperCapita;;;The United Nations
+International trade and investment (1);Exports_of_goods_and_services_as_percent_of_GDP;Exports of goods and services;% (GDP);GDPperCapita;;;The World Bank
+International trade and investment (1);Exports_of_goods_and_services_billion_USD;Exports of goods and services;billion USD;GDPperCapita;TRUE;;The World Bank
+International trade and investment (1);Exports_of_goods_and_services_annual_growth;Exports of goods and services annual growth;%;GDPperCapita;;;The World Bank
+International trade and investment (1);Foreign_Direct_Investment_billion_USD;Foreign Direct Investment;billion USD;GDPperCapita;TRUE;;The World Bank
+International trade and investment (1);Foreign_Direct_Investment_percent_of_GDP;Foreign Direct Investment;% (GDP);GDPperCapita;;;The World Bank
+International trade and investment (1);Imports_of_goods_and_services_as_percent_of_GDP;Imports of goods and services;% (GDP);GDPperCapita;;;The World Bank
+International trade and investment (1);Imports_of_goods_and_services_billion_USD;Imports of goods and services;billion USD;GDPperCapita;TRUE;;The World Bank
+International trade and investment (1);Net_portfolio_equity_inflows;Net portfolio equity inflows;million USD (current);GDPperCapita;;;The International Monetary Fund
+International trade and investment (1);Terms_of_trade_base_year___2000;Terms of trade index;index (base year 2000);GDPperCapita;;;The United Nations
+International trade and investment (1);Trade_openness__exports_plus_imports_as_percent_of_GDP;Trade openness  exports plus imports;% (GDP);GDPperCapita;;;The World Bank
+International trade and investment (2);Balance_of_payments_net_errors_and_omissions;Balance of payments net errors and omissions;million USD;GDPperCapita;;;The World Bank
+International trade and investment (2);Current_account_balance_as_percent_of_GDP;Current account balance;% (GDP);GDPperCapita;;;The World Bank
+International trade and investment (2);Current_account_balance_billion_USD;Current account balance;billion USD;GDPperCapita;TRUE;;The World Bank
+International trade and investment (2);External_debt_percent_of_Gross_National_Income;External debt percent of Gross National Income;% (GDP);GDPperCapita;;;The World Bank
+International trade and investment (2);Foreign_exchange_reserves_including_gold_billion_USD;Foreign exchange reserves including gold;billion USD;GDPperCapita;;;The World Bank
+International trade and investment (2);Remittances_as_percent_of_GDP;Remittances;% (GDP);GDPperCapita;;;The World Bank
+International trade and investment (2);Remittances_million_USD;Remittances;million USD;GDPperCapita;TRUE;;The World Bank
+International trade and investment (2);Short_term_debt_percent_of_total_external_debt;Short term debt;% (total external debt);GDPperCapita;;;The World Bank
+International trade and investment (2);Short_term_external_debt_percent_of_international_reserves;Short term external debt;% (international reserves);GDPperCapita;;;The World Bank
+International trade and investment (2);Trade_balance_as_percent_of_GDP;Trade balance;% (GDP);GDPperCapita;;;The World Bank
+International trade and investment (2);Trade_balance_billion_USD;Trade balance;billion USD;GDPperCapita;TRUE;;The World Bank
+Labor market;Female_labor_force_participation_rate;Female labor force participation rate;%;GDPperCapita;;;The World Bank
+Labor market;Labor_force_million_people;Labor force;million people;population;;;The World Bank
+Labor market;Labor_force_percent_female;Labor force - female;%;GDPperCapita;;;The World Bank
+Labor market;Labor_force_participation_rate;Labor force participation rate;%;GDPperCapita;;;The World Bank
+Labor market;Male_labor_force_participation_rate;Male labor force participation rate;%;GDPperCapita;;;The World Bank
+Labor market;Unemployment_rate;Unemployment rate;%;GDPperCapita;;;The World Bank
+Labor market;Unemployment_rate_for_females;Unemployment rate for females;%;GDPperCapita;;;The World Bank
+Labor market;Unemployment_rate_for_males;Unemployment rate for males;%;GDPperCapita;;;The World Bank
+Labor market;Youth_unemployment_ages_15_24;Youth unemployment;% (ages 15-25);GDPperCapita;;;The World Bank
+Military;Armed_forces_personnel;Armed forces personnel;# (persons);GDPperCapita;TRUE;;International Institute for Strategic Studies
+Military;Armed_forces_personnel_percent_of_the_labor_force;Armed forces personnel;% (labor force);GDPperCapita;;;International Institute for Strategic Studies
+Military;Arms_exports_million_constant_U_S__dollars;Arms exports;million constant USD;GDPperCapita;;TRUE;Stockholm International Peace Research Institute
+Military;Arms_imports_million_constant_U_S__dollars;Arms imports;million constant USD;GDPperCapita;;TRUE;Stockholm International Peace Research Institute
+Military;Military_spending_in_billion_U_S__dollars;Military spending;billion USD;GDPperCapita;TRUE;;Stockholm International Peace Research Institute
+Military;Military_spending_percent_of_total_government_spending;Military spending;% (total government spending);GDPperCapita;;;Stockholm International Peace Research Institute
+Military;Military_spending_percent_of_GDP;Military spending percent of GDP;% (GDP);GDPperCapita;;;Stockholm International Peace Research Institute
+Minerals;Bauxite_production_in_thousand_metric_tons;Bauxite production;thousand metric tons;;;TRUE;USGS
+Minerals;Cobalt_production_in_metric_tons;Cobalt production;metric tons;;;TRUE;USGS
+Minerals;Copper_mine_production_in_metric_tons;Copper mine production;metric tons;;;TRUE;USGS
+Minerals;Gold_production_in_kilograms;Gold production;kilograms;;;TRUE;USGS
+Minerals;Iron_production_in_thousand_metric_tons;Iron production;thousand metric tons;;;TRUE;USGS
+Minerals;Lithium_production_in_metric_tons;Lithium production;metric tons;;;TRUE;USGS
+Minerals;Platinum_production_in_kilograms;Platinum production;kilograms;;;TRUE;USGS
+Minerals;Silver_production_in_metric_tones;Silver production;metric tones;;;TRUE;USGS
+Minerals;Zinc_production_in_metric_tons;Zinc production;metric tons;;;TRUE;USGS
+Money;Inflation__percent_change_in_the_Consumer_Price_Index;Inflation in the Consumer Price Index;%;GDPperCapita;;;The World Bank
+Other indicators;Happiness_Index_0__unhappy____10__happy_;Happiness Index;index (0 = unhappy, 10 = happy);GDPperCapita;;;The World Happiness Report
+Other indicators;Human_Development_Index__0___1_;Human Development Index;index (0-1);GDPperCapita;;;The United Nations
+Other indicators;Land_area_in_sq__km;Land area;sq  km;landArea;;;Food and Agriculture Organization
+Other indicators;Women_in_parliament_percent;Women in parliament;%;GDPperCapita;;;The World Bank
+Political system;Academic_freedom_index;Academic freedom index;index (0-1);GDPperCapita;;;Varieties of Democracy (V-Dem)
+Political system;Deliberative_democracy_index;Deliberative democracy index;index (0-1);GDPperCapita;;;Varieties of Democracy (V-Dem)
+Political system;Egalitarian_democracy_index;Egalitarian democracy index;index (0-1);GDPperCapita;;;Varieties of Democracy (V-Dem)
+Political system;Electoral_democracy_index;Electoral democracy index;index (0-1);GDPperCapita;;;Varieties of Democracy (V-Dem)
+Political system;Freedom_of_expression;Freedom of expression index;index (0-1);GDPperCapita;;;Varieties of Democracy (V-Dem)
+Political system;Government_accountability;Government accountability index;index;GDPperCapita;;;Varieties of Democracy (V-Dem)
+Political system;Liberal_democracy_index;Liberal democracy index;index (0-1);GDPperCapita;;;Varieties of Democracy (V-Dem)
+Political system;Participatory_democracy_index;Participatory democracy index;index (0-1);GDPperCapita;;;Varieties of Democracy (V-Dem)
+Political system;Political_corruption_index;Political corruption index;index (0-1);GDPperCapita;;;Varieties of Democracy (V-Dem)
+Political system;Women_political_empowerment_index;Women political empowerment index;index (0-1);GDPperCapita;;;Varieties of Democracy (V-Dem)
+Political system;Year_of_presidential_elections;Year of presidential elections;boolean (1 = true, 0 = false);population;;;Varieties of Democracy (V-Dem)
+Political system;Years_of_parliamentary_elections;Years of parliamentary elections;boolean (1 = true, 0 = false);population;;;Varieties of Democracy (V-Dem)
+Price level;Alcohol_beverage_price_index_world_average___100;Alcohol beverage price index;index (World average = 100);GDPperCapita;;;World Bank International Comparison Program
+Price level;Bread_and_cereal_prices_world_average___100;Bread and cereal prices index;index (World average = 100);GDPperCapita;;;World Bank International Comparison Program
+Price level;Clothing_and_footwear_prices_world_average___100;Clothing and footwear prices;index (World average = 100);GDPperCapita;;;World Bank International Comparison Program
+Price level;Communication_price_index_world_average___100;Communication price index;index (World average = 100);GDPperCapita;;;World Bank International Comparison Program
+Price level;Cost_of_living_index_world_average___100;Cost of living index;index (World average = 100);GDPperCapita;;;World Bank International Comparison Program
+Price level;Education_service_price_index_world_average___100;Education service price index;index (World average = 100);GDPperCapita;;;World Bank International Comparison Program
+Price level;Fish_and_seafood_prices_world_average___100;Fish and seafood prices index;index (World average = 100);GDPperCapita;;;World Bank International Comparison Program
+Price level;Food_price_index_world_average___100;Food price index;index (World average = 100);GDPperCapita;;;World Bank International Comparison Program
+Price level;Fruit_price_index_world_average___100;Fruit price index;index (World average = 100);GDPperCapita;;;World Bank International Comparison Program
+Price level;Furniture_and_household_maintenance_prices_world_average___100;Furniture and household maintenance prices index;index (World average = 100);GDPperCapita;;;World Bank International Comparison Program
+Price level;Healthcare_price_index_world_average___100;Healthcare price index;index (World average = 100);GDPperCapita;;;World Bank International Comparison Program
+Price level;Hotel_and_restaurant_price_index_world_average___100;Hotel and restaurant price index;index (World average = 100);GDPperCapita;;;World Bank International Comparison Program
+Price level;Housing_and_utilities_price_index_world_average____100;Housing and utilities price index;index (World average = 100);GDPperCapita;;;World Bank International Comparison Program
+Price level;Machinery_and_equipment_prices_world_average___100;Machinery and equipment prices index;index (World average = 100);GDPperCapita;;;World Bank International Comparison Program
+Price level;Meat_price_index_world_average___100;Meat price index;index (World average = 100);GDPperCapita;;;World Bank International Comparison Program
+Price level;Milk_cheese_and_eggs_price_index_world_average___100;Milk cheese and eggs price index;index (World average = 100);GDPperCapita;;;World Bank International Comparison Program
+Price level;Recreation_and_culture_price_index_world_average___100;Recreation and culture price index;index (World average = 100);GDPperCapita;;;World Bank International Comparison Program
+Price level;Transport_prices_world_average___100;Transport prices;index (World average = 100);GDPperCapita;;;World Bank International Comparison Program
+Price level;Vegetable_price_index_world_average___100;Vegetable price index;index (World average = 100);GDPperCapita;;;World Bank International Comparison Program
+Price level;Vehicle_prices_world_average___100;Vehicle prices index;index (World average = 100);GDPperCapita;;;World Bank International Comparison Program
+Religious composition of the population;Buddhists_as_percent_of_the_total_population;Buddhists;% (total population);;;TRUE;The Cline Center for Democracy
+Religious composition of the population;Catholic_Christians_as_percent_of_the_total_population;Catholic Christians;% (total population);;;TRUE;The Cline Center for Democracy
+Religious composition of the population;Christians_as_percent_of_the_total_population;Christians;% (total population);;;TRUE;The Cline Center for Democracy
+Religious composition of the population;Eastern_Orthodox_Christians_as_percent_of_the_total_population;Eastern Orthodox Christians;% (total population);;;TRUE;The Cline Center for Democracy
+Religious composition of the population;Muslims_as_percent_of_the_total_population;Muslims;% (total population);;;TRUE;The Cline Center for Democracy
+Religious composition of the population;Non_religious_people_as_percent_of_the_population;Non religious people;% (total population);;;TRUE;The Cline Center for Democracy
+Religious composition of the population;People_practicing_Hinduism_as_percent_of_the_population;People practicing Hinduism;% (total population);;;TRUE;The Cline Center for Democracy
+Religious composition of the population;People_practicing_Judaism_as_percent_of_the_population;People practicing Judaism;% (total population);;;TRUE;The Cline Center for Democracy
+Religious composition of the population;Protestant_Christians_as_percent_of_the_total_population;Protestant Christians;% (total population);;;TRUE;The Cline Center for Democracy
+Religious composition of the population;Shia_Muslims_as_percent_of_the_total_population;Shia Muslims;% (total population);;;TRUE;The Cline Center for Democracy
+Religious composition of the population;Sunni_Muslims_as_percent_of_the_total_population;Sunni Muslims;% (total population);;;TRUE;The Cline Center for Democracy
+Shares of world totals;Percent_of_world_exports;Exports;% (World);GDPperCapita;;TRUE;The World Bank
+Shares of world totals;Percent_of_world_Foreign_Direct_Investment;Foreign Direct Investment;% (World);GDPperCapita;TRUE;TRUE;The World Bank
+Shares of world totals;Percent_of_world_GDP;GDP;% (World);GDPperCapita;;TRUE;The World Bank
+Shares of world totals;Percent_of_world_imports;Imports;% (World);GDPperCapita;;TRUE;The World Bank
+Shares of world totals;Percent_of_world_oil_reserves;Oil reserves;% (World);GDPperCapita;;TRUE;The U.S. Energy Information Administration
+Shares of world totals;Percent_of_world_population;Population;% (World);GDPperCapita;;TRUE;The World Bank
+Stock market, insurance, pensions;Insurance_company_assets_percent_of_GDP;Insurance company assets;% (GDP);GDPperCapita;;;The World Bank
+Stock market, insurance, pensions;Life_insurance_premium_volume_percent_of_GDP;Life insurance premium volume;% (GDP);GDPperCapita;;;Swiss Re
+Stock market, insurance, pensions;Mutual_fund_assets_percent_of_GDP;Mutual fund assets;% (GDP);GDPperCapita;;;The World Bank
+Stock market, insurance, pensions;Non_life_insurance_premium_volume_percent_of_GDP;Non life insurance premium volume;% (GDP);GDPperCapita;;;Swiss Re
+Stock market, insurance, pensions;Nonbank_financial_institutions_assets_percent_of_GDP;Nonbank financial institutions assets;% (GDP);GDPperCapita;;;The International Monetary Fund
+Stock market, insurance, pensions;Number_of_companies_listed_on_the_stock_exchange;Number of companies listed on the stock exchange;#;GDPperCapita;;;The World Bank
+Stock market, insurance, pensions;Pension_fund_assets_as_percent_of_GDP;Pension fund assets;% (GDP);GDPperCapita;;;The World Bank
+Stock market, insurance, pensions;Stock_market_capitalization_as_percent_of_GDP;Stock market capitalization;% (GDP);GDPperCapita;;;The World Bank
+Stock market, insurance, pensions;Stock_market_capitalization_billion_USD;Stock market capitalization;billion USD;GDPperCapita;TRUE;;The World Bank
+Stock market, insurance, pensions;Stock_market_capitalization_w_o_top_10_firms_percent_of_total_market_cap;Stock market capitalization without top 10 firms;% (total market cap);GDPperCapita;;;The World Federation of Exchanges
+Stock market, insurance, pensions;Stock_market_return_percent;Stock market return;%;GDPperCapita;;;Global Financial Development Database
+Stock market, insurance, pensions;Stock_market_turnover_ratio;Stock market turnover ratio;ratio;GDPperCapita;;;The World Bank
+Stock market, insurance, pensions;Stock_market_value_traded_percent_of_GDP;Stock market value traded percent of GDP;% (GDP);GDPperCapita;;;The World Federation of Exchanges
+Stock market, insurance, pensions;Stock_market_value_traded_w_o_top_10_firms___of_total_value_traded;Stock market value traded without top 10 firms;% (total value traded);GDPperCapita;;;The World Federation of Exchanges
+Stock market, insurance, pensions;Stock_price_volatility_percent;Stock price volatility;%;GDPperCapita;;;Global Financial Development Database
+Tourism;International_tourism_revenue;International tourism revenue;million USD;;TRUE;TRUE;World Tourism Organization
+Tourism;International_tourism_revenue_percent_of_GDP;International tourism revenue;% (GDP);;;TRUE;World Tourism Organization
+Tourism;Percent_of_world_tourist_arrivals;Tourist arrivals;% (World);;TRUE;TRUE;World Tourism Organization
+Tourism;Tourist_arrivals;Tourist arrivals;#;;;TRUE;World Tourism Organization
+Tourism;Tourist_departures;Tourist departures;#;;;TRUE;World Tourism Organization
