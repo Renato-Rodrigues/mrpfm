@@ -23,6 +23,7 @@
 #' @importFrom dplyr filter select mutate rename %>% .data
 #' @importFrom magclass as.magpie getSets<-
 #'
+#' @export
 readClimatePolicySupport <- function(subtype) {
   validSubtypes <- c("Vlasceanu2024", "Andre2024")
   if (!subtype %in% validSubtypes) {
@@ -50,18 +51,18 @@ readClimatePolicySupport <- function(subtype) {
     yearCol <- grep("^Year$|^period$", names(raw), ignore.case = TRUE, value = TRUE)[[1]]
     valueCol <- setdiff(names(raw), c("Entity", codeCol, yearCol))[[1]]
 
-    df <- raw |>
-      dplyr::rename(iso3c = !!codeCol, year = !!yearCol, value = !!valueCol) |>
+    df <- raw %>%
+      dplyr::rename(iso3c = !!codeCol, year = !!yearCol, value = !!valueCol) %>%
       dplyr::filter(
         !is.na(.data$iso3c),
         nchar(as.character(.data$iso3c)) == 3,
         !grepl("^OWID_", .data$iso3c) # remove OWID aggregates (e.g. World)
-      ) |>
+      ) %>%
       dplyr::mutate(
         year     = as.integer(.data$year),
         value    = suppressWarnings(as.numeric(.data$value)),
         variable = "Support policies climate"
-      ) |>
+      ) %>%
       dplyr::select("iso3c", "year", "variable", "value")
   } else { # Andre2024
     # File: support-political-climate-action.csv
@@ -77,22 +78,22 @@ readClimatePolicySupport <- function(subtype) {
     yearCol <- grep("^Year$|^period$", names(raw), ignore.case = TRUE, value = TRUE)[[1]]
     valueCol <- setdiff(names(raw), c("Entity", codeCol, yearCol))[[1]]
 
-    df <- raw |>
-      dplyr::rename(iso3c = !!codeCol, year = !!yearCol, value = !!valueCol) |>
+    df <- raw %>%
+      dplyr::rename(iso3c = !!codeCol, year = !!yearCol, value = !!valueCol) %>%
       dplyr::filter(
         !is.na(.data$iso3c),
         nchar(as.character(.data$iso3c)) == 3,
         !grepl("^OWID_", .data$iso3c) # remove OWID aggregates (e.g. World)
-      ) |>
+      ) %>%
       dplyr::mutate(
         year     = as.integer(.data$year),
         value    = suppressWarnings(as.numeric(.data$value)),
         variable = "Support political climate action"
-      ) |>
+      ) %>%
       dplyr::select("iso3c", "year", "variable", "value")
   }
 
-  out <- df |>
+  out <- df %>%
     magclass::as.magpie(spatial = "iso3c", temporal = "year", datacol = "value")
 
   magclass::getSets(out) <- c("iso3c", "year", "variable")
