@@ -3,7 +3,7 @@ message: If you use this software, please cite it using the metadata from this f
 type: software
 title: 'mrpfm: Data for the Political Feasibility Module (PFM) for IAMs'
 version: 0.2.0
-date-released: '2026-05-15'
+date-released: '2026-05-18'
 abstract: Data ingestion and preprocessing for the Political Feasibility Module (PFM),
   following the madrat framework (read*, calc*, convert*, tool* conventions). Provides
   magpie objects consumed by the pfm package.

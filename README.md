@@ -48,7 +48,7 @@ A BibTeX entry for LaTeX users is
 @Misc{,
   title = {mrpfm: Data for the Political Feasibility Module (PFM) for IAMs},
   author = {Renato Rodrigues and Elmar Kriegler},
-  date = {2026-05-15},
+  date = {2026-05-18},
   year = {2026},
   url = {https://github.com/pik-piam/mrpfm},
   note = {Version: 0.2.0},
