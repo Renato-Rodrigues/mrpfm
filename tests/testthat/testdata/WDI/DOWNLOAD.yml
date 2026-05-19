@@ -1,0 +1,17 @@
+title: Select indicators from the WDI
+description: Select indicators from the World Development Indicators database from
+  the World Bank
+author: World Bank
+doi: '-'
+url: '-'
+accessibility: gold
+license: '-'
+release_date: '-'
+unit: '-'
+call:
+  origin: downloadSource(type = type, subtype = if (downloadHasSubtypeArg) subtype
+    else NULL) -> mrdrivers:::downloadWDI() (madrat 3.36.2 | mrdrivers 7.2.0)
+  type: WDI
+  subtype: none
+  time: 2026-05-19 13:53:53 CEST
+comment: see also https://databank.worldbank.org/source/world-development-indicators

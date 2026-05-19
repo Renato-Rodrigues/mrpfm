@@ -1,6 +1,6 @@
 # Data for the Political Feasibility Module (PFM) for IAMs
 
-R package **mrpfm**, version **0.2.0**
+R package **mrpfm**, version **0.2.1**
 
    [![R build status](https://github.com/pik-piam/mrpfm/workflows/check/badge.svg)](https://github.com/pik-piam/mrpfm/actions) [![codecov](https://codecov.io/gh/pik-piam/mrpfm/branch/master/graph/badge.svg)](https://app.codecov.io/gh/pik-piam/mrpfm) 
 
@@ -40,7 +40,7 @@ In case of questions / problems please contact Renato Rodrigues <renato.rodrigue
 
 To cite package **mrpfm** in publications use:
 
-Rodrigues R, Kriegler E (2026). "mrpfm: Data for the Political Feasibility Module (PFM) for IAMs." Version: 0.2.0, <https://github.com/pik-piam/mrpfm>.
+Rodrigues R, Kriegler E (2026). "mrpfm: Data for the Political Feasibility Module (PFM) for IAMs." Version: 0.2.1, <https://github.com/pik-piam/mrpfm>.
 
 A BibTeX entry for LaTeX users is
 
@@ -48,9 +48,9 @@ A BibTeX entry for LaTeX users is
 @Misc{,
   title = {mrpfm: Data for the Political Feasibility Module (PFM) for IAMs},
   author = {Renato Rodrigues and Elmar Kriegler},
-  date = {2026-05-18},
+  date = {2026-05-19},
   year = {2026},
   url = {https://github.com/pik-piam/mrpfm},
-  note = {Version: 0.2.0},
+  note = {Version: 0.2.1},
 }
 ```
