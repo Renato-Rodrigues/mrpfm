@@ -17,12 +17,12 @@ A \code{\link[magclass:magclass-package]{magpie}} object with dimensions
 \description{
 Returns one of six governance indicators or all six combined:
 \itemize{
-\item Voice and Accountability
-\item Political Stability
-\item Government Effectiveness
-\item Regulatory Quality
-\item Rule of Law
-\item Control of Corruption
+\item Voice and Accountability (WGI)
+\item Political Stability (WGI)
+\item Government Effectiveness (WGI)
+\item Regulatory Quality (WGI)
+\item Rule of Law (WGI)
+\item Control of Corruption (WGI)
 }
 }
 \details{

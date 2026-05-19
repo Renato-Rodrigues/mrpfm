@@ -7,12 +7,12 @@
 #' @description
 #' Returns one of six governance indicators or all six combined:
 #' \itemize{
-#'   \item Voice and Accountability
-#'   \item Political Stability
-#'   \item Government Effectiveness
-#'   \item Regulatory Quality
-#'   \item Rule of Law
-#'   \item Control of Corruption
+#'   \item Voice and Accountability (WGI)
+#'   \item Political Stability (WGI)
+#'   \item Government Effectiveness (WGI)
+#'   \item Regulatory Quality (WGI)
+#'   \item Rule of Law (WGI)
+#'   \item Control of Corruption (WGI)
 #' }
 #'
 #' @param subtype character; one of the six WGI indicator codes above or
@@ -24,19 +24,19 @@
 #' @author Renato Rodrigues
 #'
 #' @importFrom readxl read_excel excel_sheets
-#' @importFrom dplyr filter select mutate rename %>% .data
+#' @importFrom dplyr filter select mutate rename .data
 #' @importFrom magclass as.magpie mbind getSets<-
 #' @importFrom madrat toolCountryFill
 #'
 readWGIindicator <- function(subtype = "all") {
   # Map subtype codes to sheet names (short lowercase in actual WGI file)
   indicatorMap <- c(
-    "Voice and Accountability" = "va",
-    "Political Stability" = "pv",
-    "Government Effectiveness" = "ge",
-    "Regulatory Quality" = "rq",
-    "Rule of Law" = "rl",
-    "Control of Corruption" = "cc"
+    "Voice and Accountability (WGI)" = "va",
+    "Political Stability (WGI)" = "pv",
+    "Government Effectiveness (WGI)" = "ge",
+    "Regulatory Quality (WGI)" = "rq",
+    "Rule of Law (WGI)" = "rl",
+    "Control of Corruption (WGI)" = "cc"
   )
 
   validSubtypes <- names(indicatorMap)
@@ -107,14 +107,14 @@ readWGIindicator <- function(subtype = "all") {
     yearCol <- yearMatches[[1]]
     valCol <- valMatches[[1]]
 
-    df <- raw %>%
-      dplyr::select(iso3c = !!codeCol, year = !!yearCol, value = !!valCol) %>%
+    df <- raw |>
+      dplyr::select(iso3c = !!codeCol, year = !!yearCol, value = !!valCol) |>
       dplyr::filter(
         !is.na(.data$iso3c),
         nchar(.data$iso3c) == 3,
         !grepl("^\\d", .data$iso3c),
         !.data$iso3c %in% c("XKX", "ANT")
-      ) %>%
+      ) |>
       dplyr::mutate(
         iso3c    = ifelse(.data$iso3c == "ADO", "AND", .data$iso3c),
         year     = as.integer(.data$year),

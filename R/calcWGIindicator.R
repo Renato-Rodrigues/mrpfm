@@ -5,8 +5,8 @@
 #'
 #' @description
 #' Returns all six WGI governance indicators:
-#' Voice and Accountability, Political Stability, Government Effectiveness,
-#' Regulatory Quality, Rule of Law, Control of Corruption.
+#' Voice and Accountability (WGI), Political Stability (WGI), Government Effectiveness (WGI),
+#' Regulatory Quality (WGI), Rule of Law (WGI), Control of Corruption (WGI).
 #'
 #' @return A list with elements:
 #'   \describe{
