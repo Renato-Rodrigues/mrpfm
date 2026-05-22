@@ -75,10 +75,10 @@ readVDem <- function(subtype = "all") {
   colsNeeded <- c(required, codes)
   raw <- utils::read.csv(csvFile, stringsAsFactors = FALSE, check.names = FALSE)[, colsNeeded]
 
-  # Gleditsch-Ward character codes → ISO 3166-1 alpha-3
+  # ISO 3166-1 alpha-3 code standardization
   raw$iso3c <- countrycode::countrycode(
     raw$country_text_id,
-    origin = "gwc", destination = "iso3c", warn = FALSE
+    origin = "iso3c", destination = "iso3c", warn = FALSE
   )
 
   getLabel <- function(code) {
