@@ -3,6 +3,7 @@
 export(listVDemIndicators)
 export(readClimatePolicySupport)
 export(readSSPextensions)
+export(toolImputeMedians)
 export(toolNormalize)
 export(toolTimeInterpolation)
 import(madrat)

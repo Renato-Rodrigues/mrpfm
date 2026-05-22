@@ -30,7 +30,7 @@
 #'
 calcVDem <- function(subtype = "all") {
   x <- readSource("VDem", subtype = subtype, convert = TRUE)
-  x[is.na(x)] <- 0
+  x <- toolImputeMedians(x)
 
   pop <- tryCatch(
     suppressWarnings(calcOutput("Population", scenario = "SSP2", aggregate = FALSE)),

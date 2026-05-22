@@ -34,6 +34,7 @@ calcClimatePolicySupport <- function() {
   andre <- toolFillYears(andre, allYears)
 
   x <- magclass::mbind(vlasceanu, andre)
+  x <- toolImputeMedians(x)
 
   stopifnot(
     "Climate policy support fractions must be <= 1" = all(x[!is.na(x)] <= 1),

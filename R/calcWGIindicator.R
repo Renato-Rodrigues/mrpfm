@@ -23,7 +23,7 @@
 #'
 calcWGIindicator <- function() {
   x <- readSource("WGIindicator", subtype = "all", convert = TRUE)
-  x[is.na(x)] <- 0
+  x <- toolImputeMedians(x)
 
   # Prepare weights
   # Population for governance indicators spatial scaling

@@ -30,7 +30,7 @@ calcSSPextensions <- function(subtype = "all") {
 
     # fill missing years with interpolation
     data <- toolTimeInterpolation(data, interpolatedYears = c(seq(2000, 2024, 1), seq(2025, 2150, 5)))
-    data[is.na(data)] <- 0
+    data <- toolImputeMedians(data)
 
     # Prepare weights
     # Population for everything related to people (shares, indices, etc.)
