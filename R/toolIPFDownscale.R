@@ -61,23 +61,30 @@ toolIPFDownscale <- function(prior, remind, groups, mapping, tol = 1e-6, maxIter
 
   for (t in remindYears) {
 
-    # 5-year moving-average window centred on t; fall back to last 5 historical years
-    window   <- (t - 2L):(t + 2L)
-    winNames <- histYearNames[histYearsInt %in% window]
-    if (length(winNames) == 0L) {
-      winNames <- tail(histYearNames, 5L)
-    }
-
-    slc       <- priorArr[, winNames, , drop = FALSE]
-    priorMean <- apply(slc, c(1L, 3L), mean, na.rm = TRUE)  # [country, var]
-    priorMean[is.nan(priorMean)] <- 0
-    priorMean <- pmax(priorMean, 0)
+    window <- (t - 2L):(t + 2L)
 
     for (grp in groups) {
       namedVars <- grp$vars
       denomVar  <- grp$denom
       remCol    <- ".rem"
       allCols   <- c(namedVars, remCol)
+
+      # Select window years where this group's denominator has actual non-zero data.
+      # Each group filters independently: PE uses IEA petotal availability; SE uses
+      # Ember seel; they can differ by 1-2 years at the trailing edge. This prevents
+      # sparse trailing years (e.g. Ember has 2024 but IEA petotal stops at 2022)
+      # from producing an all-NaN priorMean and triggering the equal-split fallback.
+      denomOk  <- apply(priorArr[, , denomVar, drop = FALSE], 2L,
+                        function(x) any(!is.na(x) & x > 0))
+      validYrs <- histYearNames[denomOk]
+      validInt <- histYearsInt[denomOk]
+      winNames <- validYrs[validInt %in% window]
+      if (length(winNames) == 0L) winNames <- tail(validYrs, 5L)
+
+      slc       <- priorArr[, winNames, , drop = FALSE]
+      priorMean <- apply(slc, c(1L, 3L), mean, na.rm = TRUE)  # [country, var]
+      priorMean[is.nan(priorMean)] <- 0
+      priorMean <- pmax(priorMean, 0)
 
       for (r in regionCodes) {
         allCtrs <- mapping$CountryCode[mapping$RegionCode == r]
