@@ -16,6 +16,10 @@
 #' by using the maximum absolute value of the bounds. Defaults to targetRange `[-1, 1]`.
 #' @param targetRange Optional target range for normalization (e.g., c(0, 1) or c(-1, 1)).
 #' If NULL, it defaults to `[0, 1]` if all values are non-negative, and `[-1, 1]` otherwise.
+#' @param clamp Logical. If TRUE, output values are clamped to `targetRange` after scaling.
+#' Useful when exogenous bounds are derived from a reference period and applied to data that
+#' may exceed that range (e.g., historical bounds applied to future projections).
+#' Defaults to FALSE.
 #'
 #' @return A normalized magpie object.
 #' @author Renato Rodrigues
@@ -25,7 +29,7 @@
 #' @export
 toolNormalize <- function(data, method = "min-max", scope = "global",
                           minVal = NULL, maxVal = NULL, symmetric = FALSE,
-                          targetRange = NULL) {
+                          targetRange = NULL, clamp = FALSE) {
   if (method != "min-max") {
     stop("Only 'min-max' method is currently supported.")
   }
@@ -40,14 +44,14 @@ toolNormalize <- function(data, method = "min-max", scope = "global",
     vMaxExo <- .getExo(maxVal, v)
 
     if (scope == "global") {
-      out[, , i] <- .normalizeSubset(data[, , i], vMinExo, vMaxExo, symmetric, targetRange)
+      out[, , i] <- .normalizeSubset(data[, , i], vMinExo, vMaxExo, symmetric, targetRange, clamp)
     } else if (scope == "region") {
       for (r in magclass::getItems(data, dim = 1)) {
-        out[r, , i] <- .normalizeSubset(data[r, , i], vMinExo, vMaxExo, symmetric, targetRange)
+        out[r, , i] <- .normalizeSubset(data[r, , i], vMinExo, vMaxExo, symmetric, targetRange, clamp)
       }
     } else if (scope == "time") {
       for (y in getYears(data)) {
-        out[, y, i] <- .normalizeSubset(data[, y, i], vMinExo, vMaxExo, symmetric, targetRange)
+        out[, y, i] <- .normalizeSubset(data[, y, i], vMinExo, vMaxExo, symmetric, targetRange, clamp)
       }
     } else {
       stop("Unknown scope: ", scope)
@@ -73,7 +77,7 @@ toolNormalize <- function(data, method = "min-max", scope = "global",
 
 #' Helper to normalize a subset of data
 #' @noRd
-.normalizeSubset <- function(x, vMinExo, vMaxExo, symmetric, targetRange) {
+.normalizeSubset <- function(x, vMinExo, vMaxExo, symmetric, targetRange, clamp) {
   vMin <- if (!is.null(vMinExo)) vMinExo else min(x, na.rm = TRUE)
   vMax <- if (!is.null(vMaxExo)) vMaxExo else max(x, na.rm = TRUE)
 
@@ -96,7 +100,9 @@ toolNormalize <- function(data, method = "min-max", scope = "global",
   upperBound <- targetRange[2]
 
   if (is.finite(vMin) && is.finite(vMax) && vMax > vMin) {
-    return(lowerBound + (x - vMin) * (upperBound - lowerBound) / (vMax - vMin))
+    result <- lowerBound + (x - vMin) * (upperBound - lowerBound) / (vMax - vMin)
+    if (clamp) result <- pmax(pmin(result, upperBound), lowerBound)
+    return(result)
   } else if (is.finite(vMin) && is.finite(vMax) && vMax == vMin) {
     return(x * 0) # Returns 0 with same structure
   } else {
