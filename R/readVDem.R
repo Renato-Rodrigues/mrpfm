@@ -16,8 +16,9 @@
 #' (e.g. `"v2x_corr"`). Use [`listVDemIndicators()`] to see what columns are
 #' available in the installed dataset file.
 #'
-#' @param subtype character; `"all"` (default) for the four default indicators,
-#'   or any V-Dem column code (e.g. `"v2x_corr"`, `"v2x_polyarchy"`).
+#' @param subtype character; `"all"` (default) for the four accountability indicators,
+#'   `"stateCapacity"` for five state-capacity indicators that replace WGI Government
+#'   Effectiveness (see Details), or any V-Dem column code (e.g. `"v2x_corr"`).
 #'
 #' @return A [`magpie`][magclass::magclass] object with dimensions
 #'   `[iso3c, year, indicator]`. Variable names follow the
@@ -43,19 +44,39 @@
 #' @importFrom madrat toolCountryFill
 #'
 readVDem <- function(subtype = "all") {
+  # Accountability indicators (subtype = "all")
   labelMap <- c(
     "v2x_rule"    = "Rule of Law (VDem)",
     "v2x_veracc"  = "Vertical Accountability (VDem)",
     "v2x_horacc"  = "Horizontal Accountability (VDem)",
     "v2x_diagacc" = "Diagonal Accountability (VDem)"
   )
-  defaultCodes <- names(labelMap)
+  # State-capacity indicators (subtype = "stateCapacity").
+  # Note: v2x_execorr, v2x_corr, and v2x_neopat are "bad when high" (more corruption /
+  # more neopatrimonialism = worse governance). They are stored under their raw labels here
+  # and inverted in panelDataHistorical() before normalisation so the final scale is
+  # consistently 0 = worst, 1 = best.
+  stateCapacityMap <- c(
+    "v2clrspct"  = "Civil Service Professionalism (VDem)",
+    "v2x_execorr" = "Executive Corruption (VDem)",
+    "v2cltrnslw"  = "Rule Predictability (VDem)",
+    "v2x_corr"    = "Political Corruption (VDem)",
+    "v2x_neopat"  = "Neopatrimonialism (VDem)"
+  )
+  defaultCodes      <- names(labelMap)
+  stateCapCodes     <- names(stateCapacityMap)
+  fullLabelMap      <- c(labelMap, stateCapacityMap)
 
   files <- list.files(path = ".", pattern = "\\.csv$", full.names = TRUE, ignore.case = TRUE)
   if (length(files) == 0) stop("No CSV file found in VDem source folder.")
   csvFile <- files[[1]]
 
-  codes <- if (subtype == "all") defaultCodes else subtype
+  codes <- if (subtype == "all")           defaultCodes
+           else if (subtype == "stateCapacity") stateCapCodes
+           else                            subtype
+
+  # Use the combined map so any code from either group gets a proper label
+  labelMap <- fullLabelMap
 
   # Validate requested codes against CSV header before reading full file
   header <- names(utils::read.csv(csvFile, nrows = 0, check.names = FALSE))

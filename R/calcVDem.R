@@ -4,16 +4,23 @@
 #' single magpie object for use as a `calcOutput`.
 #'
 #' @description
-#' Default (`subtype = "all"`) returns four indicators:
+#' Default (`subtype = "all"`) returns four accountability indicators:
 #' Rule of Law (VDem), Vertical Accountability (VDem),
 #' Horizontal Accountability (VDem), Diagonal Accountability (VDem).
 #' All on a 0–1 scale; higher means better governance / stronger accountability.
+#'
+#' `subtype = "stateCapacity"` returns five state-capacity indicators that serve
+#' as V-Dem replacements for WGI Government Effectiveness:
+#' Civil Service Professionalism, Executive Corruption, Rule Predictability,
+#' Political Corruption, Neopatrimonialism.
+#' Note: three of these are "bad when high" — they are inverted in
+#' `panelDataHistorical()` before normalisation.
 #'
 #' Pass any V-Dem column code as `subtype` to retrieve a single arbitrary
 #' indicator (e.g. `calcOutput("VDem", subtype = "v2x_corr")`).
 #' Use [`listVDemIndicators()`] to enumerate available codes.
 #'
-#' @param subtype character; `"all"` (default) or a V-Dem column code.
+#' @param subtype character; `"all"` (default), `"stateCapacity"`, or a V-Dem column code.
 #'
 #' @return A list with:
 #'   \describe{
@@ -60,7 +67,9 @@ calcVDem <- function(subtype = "all") {
     weight[, , ] <- 1
   }
 
-  nIndicators <- if (subtype == "all") 4L else 1L
+  nIndicators <- if (subtype == "all")            4L
+                 else if (subtype == "stateCapacity") 5L
+                 else                                 1L
   stopifnot("Unexpected number of V-Dem indicators" = ndata(x) == nIndicators)
 
   return(list(
