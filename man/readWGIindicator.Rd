@@ -11,7 +11,7 @@ readWGIindicator(subtype = "all")
 \code{"all"} (default) to return all six.}
 }
 \value{
-A \code{\link[magclass:magclass-package]{magpie}} object with dimensions
+A \code{\link[magclass:magclass]{magpie}} object with dimensions
 \verb{[iso3c, year, indicator]}.
 }
 \description{

@@ -4,10 +4,17 @@
 \alias{calcCarbonPrice}
 \title{Calculate Carbon Price value and emisssions coverage based on the World Bank dashboard data}
 \usage{
-calcCarbonPrice(subtype = "effectivePrice")
+calcCarbonPrice(subtype = "effectivePrice", includeSubnational = FALSE)
 }
 \arguments{
 \item{subtype}{data subtype. Either "emissionsCovered", "shareEmissionsCovered", "carbonPrice", "effectivePrice"}
+
+\item{includeSubnational}{Logical. If \code{TRUE}, the \code{"effectivePrice"} subtype
+additionally folds in \emph{subnational} ("within_country") carbon-pricing instruments
+(e.g. California, Quebec, the Chinese pilots), attributed to their parent country as an
+emissions-weighted contribution: \eqn{\sum_i price_i \times covered_i / emissions}, with
+combined coverage capped at 100\% (a first-pass overlap rule). Default \code{FALSE} — the
+national-instrument-only price the model is built on, byte-identical to before. See ADR 0016.}
 }
 \value{
 MAgPIE object with Carbon Price data per country and sector group
@@ -19,6 +26,7 @@ and EDGAR Global GHG Emissions for sectoral disaggregation.
 \examples{
 \dontrun{
 calcOutput("CarbonPrice", subtype = "effectivePrice")
+calcOutput("CarbonPrice", subtype = "effectivePrice", includeSubnational = TRUE)
 }
 
 }

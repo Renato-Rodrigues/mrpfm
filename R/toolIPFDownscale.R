@@ -1,3 +1,4 @@
+# nolint start
 #' @title toolIPFDownscale
 #' @description Disaggregates coarse-region REMIND variables to country level by
 #' preserving each carrier's historical country share within each region.
@@ -37,7 +38,7 @@
 #' @importFrom magclass getItems getYears getNames new.magpie
 #' @export
 toolIPFDownscale <- function(prior, remind, groups, mapping,
-                              nHistYears = 10L, tol = 1e-6, maxIter = 50) {
+                             nHistYears = 10L, tol = 1e-6, maxIter = 50) {
 
   remindYears  <- getYears(remind, as.integer = TRUE)
   histYearNames <- getYears(prior)
@@ -71,7 +72,7 @@ toolIPFDownscale <- function(prior, remind, groups, mapping,
     denomOk  <- apply(priorArr[, , denomVar, drop = FALSE], 2L,
                       function(x) any(!is.na(x) & x > 0))
     validYrs <- histYearNames[denomOk]
-    useYrs   <- tail(validYrs, nHistYears)
+    useYrs   <- utils::tail(validYrs, nHistYears)
 
     if (length(useYrs) == 0L) {
       grp_region_shares[[gname]] <- list()
@@ -105,7 +106,7 @@ toolIPFDownscale <- function(prior, remind, groups, mapping,
         } else {
           # Carrier absent in history: fall back to denominator shares
           carrier_shares[, v] <- if (denom_sum > 0) hist_denom_c / denom_sum
-                                  else rep(1 / length(ctrs), length(ctrs))
+          else rep(1 / length(ctrs), length(ctrs))
         }
       }
 
@@ -114,8 +115,8 @@ toolIPFDownscale <- function(prior, remind, groups, mapping,
       hist_remainder_c <- pmax(0, hist_denom_c - hist_named_sum)
       rem_sum          <- sum(hist_remainder_c)
       remainder_shares <- if (rem_sum > 0) hist_remainder_c / rem_sum
-                          else if (denom_sum > 0) hist_denom_c / denom_sum
-                          else rep(1 / length(ctrs), length(ctrs))
+      else if (denom_sum > 0) hist_denom_c / denom_sum
+      else rep(1 / length(ctrs), length(ctrs))
 
       grp_region_shares[[gname]][[r]] <- list(
         ctrs             = ctrs,
@@ -191,3 +192,4 @@ toolIPFDownscale <- function(prior, remind, groups, mapping,
 
   return(out)
 }
+# nolint end

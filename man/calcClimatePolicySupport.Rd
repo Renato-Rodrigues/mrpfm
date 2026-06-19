@@ -9,7 +9,7 @@ calcClimatePolicySupport()
 \value{
 A list with elements:
 \describe{
-\item{x}{\code{\link[magclass:magclass-package]{magpie}} object \verb{[iso3c, year, variable]}}
+\item{x}{\code{\link[magclass:magclass]{magpie}} object \verb{[iso3c, year, variable]}}
 \item{weight}{\code{NULL} (country-level survey values, no aggregation weight needed)}
 \item{unit}{\code{"fraction"}}
 \item{description}{character description}

@@ -26,11 +26,11 @@ test_that("readVDem returns 1 predefined indicator with correct label", {
 test_that("readVDem returns arbitrary indicator with code-based label", {
   mrLocalEnv("VDem")
   withr::with_dir(sourceDir("VDem"), {
-    x <- suppressWarnings(readVDem("v2x_corr"))
+    x <- suppressWarnings(readVDem("v2x_polyarchy"))
   })
   expect_s4_class(x, "magpie")
   expect_equal(ndata(x), 1L)
-  expect_equal(getNames(x), "v2x_corr (VDem)")
+  expect_equal(getNames(x), "v2x_polyarchy (VDem)")
 })
 
 test_that("readVDem rejects unknown column with helpful error", {
@@ -64,10 +64,10 @@ test_that("calcOutput VDem returns 4 indicators with correct unit", {
 
 test_that("calcOutput VDem subtype returns single arbitrary indicator", {
   mrLocalEnv("VDem")
-  result <- suppressWarnings(calcOutput("VDem", subtype = "v2x_corr", aggregate = FALSE))
+  result <- suppressWarnings(calcOutput("VDem", subtype = "v2x_polyarchy", aggregate = FALSE))
   expect_s4_class(result, "magpie")
   expect_equal(ndata(result), 1L)
-  expect_equal(getNames(result), "v2x_corr (VDem)")
+  expect_equal(getNames(result), "v2x_polyarchy (VDem)")
 })
 
 test_that("listVDemIndicators returns v2x codes from CSV header", {

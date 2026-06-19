@@ -7,10 +7,10 @@
 convertSSPextensions(x)
 }
 \arguments{
-\item{x}{A \code{\link[magclass:magclass-package]{magpie}} object returned from \code{\link[=readSSPextensions]{readSSPextensions()}}.}
+\item{x}{A \code{\link[magclass:magclass]{magpie}} object returned from \code{\link[=readSSPextensions]{readSSPextensions()}}.}
 }
 \value{
-A \code{\link[magclass:magclass-package]{magpie}} object.
+A \code{\link[magclass:magclass]{magpie}} object.
 }
 \description{
 Convert SSP Extensions data

@@ -10,7 +10,7 @@ calcSSPextensions(subtype = "all")
 \item{subtype}{subtype "all" or "drivers_SSP2"}
 }
 \value{
-A list with a \code{\link[magclass:magclass-package]{magpie}} object, weight, unit and description.
+A list with a \code{\link[magclass:magclass]{magpie}} object, weight, unit and description.
 }
 \description{
 Calculate SSP Extensions data

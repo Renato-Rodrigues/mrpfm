@@ -7,13 +7,13 @@
 convertVDem(x, subtype = "all")
 }
 \arguments{
-\item{x}{A \code{\link[magclass:magclass-package]{magpie}} object returned from
+\item{x}{A \code{\link[magclass:magclass]{magpie}} object returned from
 \code{\link[=readVDem]{readVDem()}}.}
 
 \item{subtype}{passed through; \code{"all"} or a V-Dem column code.}
 }
 \value{
-A \code{\link[magclass:magclass-package]{magpie}} object with all ISO3c countries
+A \code{\link[magclass:magclass]{magpie}} object with all ISO3c countries
 (missing values set to \code{NA}).
 }
 \description{

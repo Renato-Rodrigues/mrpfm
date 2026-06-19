@@ -9,7 +9,7 @@ calcFAOLandArea()
 \value{
 A list with elements:
 \describe{
-\item{x}{\code{\link[magclass:magclass-package]{magpie}} object \verb{[iso3c, year, "Land Area"]}}
+\item{x}{\code{\link[magclass:magclass]{magpie}} object \verb{[iso3c, year, "Land Area"]}}
 \item{weight}{\code{NULL}}
 \item{unit}{\code{"1000 ha"}}
 \item{description}{character description}
@@ -20,7 +20,7 @@ Land area is constant in time. The function returns the most recent available
 year's data. Missing countries are set to \code{NA}.
 }
 \details{
-Wraps \code{\link{readSource}} for FAO FAOSTAT land area data and returns it as a
+Wraps \code{\link[madrat:readSource]{readSource}} for FAO FAOSTAT land area data and returns it as a
 \code{calcOutput} compatible magpie object.
 }
 \author{

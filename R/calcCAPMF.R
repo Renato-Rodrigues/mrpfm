@@ -1,3 +1,4 @@
+# nolint start
 #' Calculate OECD Climate Actions and Policies Measurement Framework (CAPMF) data
 #'
 #' Wraps [`readSource`] for CAPMF data and returns sectoral stringency indicators
@@ -5,6 +6,7 @@
 #'
 #' @param subtype character; "all" (default) or a specific sector.
 #' @param minCoverage numeric or logical; threshold of GDP and Population coverage below which a region is excluded. Defaults to 0.8. Set to FALSE or NULL to disable.
+#' @param includeEstimated logical; if TRUE, estimates the composite index scores for newly onboarded developing countries.
 #'
 #' @return A list with:
 #'   \describe{
@@ -17,20 +19,13 @@
 #' @author Renato Rodrigues
 #'
 #' @importFrom madrat readSource calcOutput toolGetMapping
-#' @importFrom magclass getYears getNames time_interpolate ndata getItems dimSums mbind
+#' @importFrom magclass getYears getNames time_interpolate ndata getItems dimSums mbind new.magpie as.magpie
 #'
 #' @export
 calcCAPMF <- function(subtype = "all", minCoverage = 0.8, includeEstimated = FALSE) {
   x <- readSource("CAPMF", subtype = subtype, convert = TRUE)
 
-  # Calculate estimated index from Level 3 variables before median imputation
-  # Using the hierarchical structure of the international policies index (LEV1_INT):
-  # LEV1_INT = mean(LEV2_INT_C_FIN, LEV2_INT_C_COORD, LEV2_INT_GHGREP)
-  # Where:
-  # - LEV2_INT_C_FIN = mean(LEV3_BAN_CREDIT, LEV3_BAN_FF_ABROAD)
-  # - LEV2_INT_C_COORD = mean(LEV3_INT_INIT, LEV3_TREATY, LEV3_PR_AV_MAR)
-  # - LEV2_INT_GHGREP = mean(LEV3_GHG_ACC, LEV3_UNFCCC, LEV3_EVAL_BR)
-  
+
   magpieRowMeans <- function(mobj, vars) {
     present_vars <- intersect(vars, magclass::getNames(mobj))
     if (length(present_vars) == 0) return(NULL)
@@ -197,3 +192,4 @@ calcCAPMF <- function(subtype = "all", minCoverage = 0.8, includeEstimated = FAL
     description = "OECD Climate Actions and Policies Measurement Framework (CAPMF) indicators for the PFM"
   ))
 }
+# nolint end

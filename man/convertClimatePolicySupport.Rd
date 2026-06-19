@@ -7,13 +7,13 @@
 convertClimatePolicySupport(x, subtype)
 }
 \arguments{
-\item{x}{A \code{\link[magclass:magclass-package]{magpie}} object returned from
+\item{x}{A \code{\link[magclass:magclass]{magpie}} object returned from
 \code{\link[=readClimatePolicySupport]{readClimatePolicySupport()}} with values in percent \verb{[0, 100]}.}
 
 \item{subtype}{character; passed through (\code{"Vlasceanu2024"} or \code{"Andre2024"}).}
 }
 \value{
-A \code{\link[magclass:magclass-package]{magpie}} object with all ISO3c countries,
+A \code{\link[magclass:magclass]{magpie}} object with all ISO3c countries,
 values in the range \verb{[0, 1]}. Missing countries are set to \code{NA}.
 }
 \description{

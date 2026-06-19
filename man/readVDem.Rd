@@ -7,11 +7,12 @@
 readVDem(subtype = "all")
 }
 \arguments{
-\item{subtype}{character; \code{"all"} (default) for the four default indicators,
-or any V-Dem column code (e.g. \code{"v2x_corr"}, \code{"v2x_polyarchy"}).}
+\item{subtype}{character; \code{"all"} (default) for the four accountability indicators,
+\code{"stateCapacity"} for five state-capacity indicators that replace WGI Government
+Effectiveness (see Details), or any V-Dem column code (e.g. \code{"v2x_corr"}).}
 }
 \value{
-A \code{\link[magclass:magclass-package]{magpie}} object with dimensions
+A \code{\link[magclass:magclass]{magpie}} object with dimensions
 \verb{[iso3c, year, indicator]}. Variable names follow the
 \code{"<Concept> (VDem)"} convention (see ADR 0002).
 }

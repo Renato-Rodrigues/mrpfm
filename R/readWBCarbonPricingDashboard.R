@@ -1,3 +1,4 @@
+# nolint start
 #' Read World Bank Carbon Pricing Dashboard data
 #'
 #' This data can be downloaded directly from the site.
@@ -10,8 +11,7 @@
 #' @author Renato Rodrigues
 #'
 #' @importFrom readxl read_excel
-#' @importFrom dplyr select all_of matches mutate left_join across filter %>% rename_with join_by group_by
-#' bind_rows case_when .data summarize coalesce
+#' @importFrom dplyr select all_of matches mutate left_join across filter %>% rename_with join_by group_by bind_rows case_when .data summarize coalesce
 #' @importFrom tidyr extract pivot_longer
 #' @importFrom quitte as.quitte
 #'
@@ -22,13 +22,13 @@ readWBCarbonPricingDashboard <- function(subtype = "price") {
   rawInfo <- suppressMessages(
     readxl::read_excel(dashboardFile, sheet = "Compliance_Gen Info", skip = 1, .name_repair = "unique")
   ) %>%
-    rename_with(~gsub(" ", "_", tolower(.x)))
+    rename_with(~ gsub(" ", "_", tolower(.x)))
   rawEmissions <- readxl::read_excel(dashboardFile, sheet = "Compliance_Emissions", skip = 2) %>%
-    rename_with(~gsub(" ", "_", tolower(.x)))
+    rename_with(~ gsub(" ", "_", tolower(.x)))
   rawRevenue <- readxl::read_excel(dashboardFile, sheet = "Compliance_Revenue", skip = 1) %>%
-    rename_with(~gsub(" ", "_", tolower(.x)))
+    rename_with(~ gsub(" ", "_", tolower(.x)))
   rawPrice <- readxl::read_excel(dashboardFile, sheet = "Compliance_Price", skip = 1) %>%
-    rename_with(~gsub(" ", "_", tolower(.x)))
+    rename_with(~ gsub(" ", "_", tolower(.x)))
 
   wbRegionMapping <- toolGetMapping("wbRegion.csv", type = "regional", where = "mrpfm")
   wbSectoralMapping <- toolGetMapping("wbSector.csv", type = "sectoral", where = "mrpfm")
@@ -46,8 +46,8 @@ readWBCarbonPricingDashboard <- function(subtype = "price") {
       isCov(fcol("agriculture,_forestry_and_fishing_fuel_use")) | isCov(fcol("waste"))
     bunkF <- isCov(fcol("aviation"))
     derived <- data.frame(unique_id = rawInfo$unique_id, derived_sg = dplyr::case_when(
-      bulkF & diffF ~ "all", bulkF ~ "bulk", diffF ~ "diffuse", bunkF ~ "bunkers", TRUE ~ NA_character_),
-      stringsAsFactors = FALSE)
+                                                                                       bulkF & diffF ~ "all", bulkF ~ "bulk", diffF ~ "diffuse", bunkF ~ "bunkers", TRUE ~ NA_character_),
+    stringsAsFactors = FALSE)
     wbSectoralMapping <- wbSectoralMapping %>%
       dplyr::left_join(derived, by = "unique_id") %>%
       dplyr::mutate(sector_group = dplyr::if_else(is.na(.data$sector_group) | .data$sector_group == "",
@@ -86,7 +86,7 @@ readWBCarbonPricingDashboard <- function(subtype = "price") {
       regex = "(\\d+\\.?\\d*)% of jurisdiction emissions, (\\d+\\.?\\d*)% of global emissions",
       remove = TRUE
     ) %>%
-    left_join(metadata %>% select(c("unique_id", "type", "status")) , by = "unique_id") %>% # nolint
+    left_join(metadata %>% select(c("unique_id", "type", "status")), by = "unique_id") %>% # nolint
     dplyr::select(c("unique_id", "region", "region_type", "type", "status", "emissions_coverage")) %>%
     dplyr::mutate(emissions_coverage = as.numeric(.data$emissions_coverage) / 100) %>%
     filter(!(is.na(.data$emissions_coverage)))
@@ -131,8 +131,8 @@ readWBCarbonPricingDashboard <- function(subtype = "price") {
   wbEmissionsShare <- rawEmissions %>%
     dplyr::select(c("name_of_the_initiative",
                     all_of(names(rawEmissions)[suppressWarnings(!is.na(as.numeric(names(rawEmissions))))]))) %>%
-    dplyr::left_join(metadata %>% dplyr::select(c("unique_id", "instrument_name"))
-                     , by = join_by("name_of_the_initiative" == "instrument_name")) %>%
+    dplyr::left_join(metadata %>% dplyr::select(c("unique_id", "instrument_name")),
+ by = join_by("name_of_the_initiative" == "instrument_name")) %>%
     left_join(wbRegionMapping, by = "unique_id") %>%
     left_join(wbSectoralMapping, by = "unique_id") %>%
     left_join(metadata %>% select(c("unique_id", "type", "status")), by = "unique_id") %>%  # nolint
@@ -174,13 +174,23 @@ readWBCarbonPricingDashboard <- function(subtype = "price") {
   }
 
   switch(subtype,
-         "price" = { dd <- wbPrice }, # nolint
-         "revenue" = { dd <- wbRevenue }, # nolint
-         "wbCoverage" = { dd <- wbCoverage }, # nolint
-         "priceAprilFirst" = { dd <- priceAprilFirst }, # nolint
-         "emissionsCovered" = { dd <- wbEmissionsCovered }) # nolint
+         "price" = {
+ dd <- wbPrice
+ }, # nolint
+         "revenue" = {
+ dd <- wbRevenue
+ }, # nolint
+         "wbCoverage" = {
+ dd <- wbCoverage
+ }, # nolint
+         "priceAprilFirst" = {
+ dd <- priceAprilFirst
+ }, # nolint
+         "emissionsCovered" = {
+ dd <- wbEmissionsCovered
+ }) # nolint
 
-  #expand EU ETS data to all EU countries
+  # expand EU ETS data to all EU countries
   EU27 <- c("AUT", "BEL", "BGR", "HRV", "CYP", "CZE", "DNK", "EST", "FIN", "FRA", "DEU", "GRC", "HUN", "IRL", "ITA", # nolint
             "LVA", "LTU", "LUX", "MLT", "NLD", "POL", "PRT", "ROU", "SVK", "SVN", "ESP", "SWE")
   EU_ETS <- c(EU27, "ISL", "LIE", "NOR") # nolint
@@ -218,11 +228,11 @@ readWBCarbonPricingDashboard <- function(subtype = "price") {
       rename(value = .data$diff) %>%
       filter(.data$value > 0)
     data <- data %>%
-      filter(!((.data$region %in% EU_ETS)
-               & (.data$region_type == "country")
-               & (.data$type == "carbon_tax")
-               & (.data$status == "implemented")
-               & (.data$sector_group == "bulk"))) %>%
+      filter(!((.data$region %in% EU_ETS)               &
+ (.data$region_type == "country")               &
+ (.data$type == "carbon_tax")               &
+ (.data$status == "implemented")               &
+ (.data$sector_group == "bulk"))) %>%
       rbind(additionalCP)
   } else if (subtype %in% c("emissionsCovered")) {
     # country ETS coverage proportional to country bulk emissions size
@@ -234,7 +244,7 @@ readWBCarbonPricingDashboard <- function(subtype = "price") {
       dplyr::mutate(period = as.character(.data$period))
     emiBulkShare <- wbEmissionsCovered %>%
       filter(.data$unique_id == "ETS_EU") %>%
-      select(where(~length(unique(.x)) > 1)) %>%
+      select(where(~ length(unique(.x)) > 1)) %>%
       left_join(emiBulk %>% filter(.data$region %in% EU_ETS) %>% group_by(.data$period) %>% # nolint
                   summarize(value = sum(.data$value, na.rm = TRUE), .groups = "drop"),
                 by = "period", suffix = c("_emi", "_wb")) %>%
@@ -265,3 +275,4 @@ readWBCarbonPricingDashboard <- function(subtype = "price") {
 
   return(out)
 }
+# nolint end

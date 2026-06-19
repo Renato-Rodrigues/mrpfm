@@ -11,7 +11,8 @@ toolNormalize(
   minVal = NULL,
   maxVal = NULL,
   symmetric = FALSE,
-  targetRange = NULL
+  targetRange = NULL,
+  clamp = FALSE
 )
 }
 \arguments{
@@ -33,6 +34,11 @@ by using the maximum absolute value of the bounds. Defaults to targetRange \verb
 
 \item{targetRange}{Optional target range for normalization (e.g., c(0, 1) or c(-1, 1)).
 If NULL, it defaults to \verb{[0, 1]} if all values are non-negative, and \verb{[-1, 1]} otherwise.}
+
+\item{clamp}{Logical. If TRUE, output values are clamped to \code{targetRange} after scaling.
+Useful when exogenous bounds are derived from a reference period and applied to data that
+may exceed that range (e.g., historical bounds applied to future projections).
+Defaults to FALSE.}
 }
 \value{
 A normalized magpie object.

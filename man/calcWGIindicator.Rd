@@ -9,7 +9,7 @@ calcWGIindicator()
 \value{
 A list with elements:
 \describe{
-\item{x}{\code{\link[magclass:magclass-package]{magpie}} object \verb{[iso3c, year, indicator]}}
+\item{x}{\code{\link[magclass:magclass]{magpie}} object \verb{[iso3c, year, indicator]}}
 \item{weight}{\code{NULL} (indicators are already country-level index values)}
 \item{unit}{\code{"index"}}
 \item{description}{character description}
@@ -21,7 +21,7 @@ Voice and Accountability (WGI), Political Stability (WGI), Government Effectiven
 Regulatory Quality (WGI), Rule of Law (WGI), Control of Corruption (WGI).
 }
 \details{
-Wraps \code{\link{readSource}} for WGI indicator data and returns all six governance
+Wraps \code{\link[madrat:readSource]{readSource}} for WGI indicator data and returns all six governance
 indicators as a single magpie object suitable for use as a \code{calcOutput}.
 }
 \author{

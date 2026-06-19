@@ -7,11 +7,11 @@
 convertFAOLandArea(x)
 }
 \arguments{
-\item{x}{A \code{\link[magclass:magclass-package]{magpie}} object returned from
+\item{x}{A \code{\link[magclass:magclass]{magpie}} object returned from
 \code{\link[=readFAOLandArea]{readFAOLandArea()}}.}
 }
 \value{
-A \code{\link[magclass:magclass-package]{magpie}} object with all ISO3c countries
+A \code{\link[magclass:magclass]{magpie}} object with all ISO3c countries
 (missing values set to \code{NA}).
 }
 \description{

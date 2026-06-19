@@ -7,13 +7,13 @@
 convertWBCarbonPricingDashboard(x, subtype)
 }
 \arguments{
-\item{x}{A \code{\link[magclass:magclass-package]{magpie}} object returned from
+\item{x}{A \code{\link[magclass:magclass]{magpie}} object returned from
 \code{\link[=readWBCarbonPricingDashboard]{readWBCarbonPricingDashboard()}}.}
 
 \item{subtype}{character, type of data: price, priceAprilFirst, wbCoverage, revenue, emissionsCovered}
 }
 \value{
-A \code{\link[magclass:magclass-package]{magpie}} object.
+A \code{\link[magclass:magclass]{magpie}} object.
 }
 \description{
 Convert Read World Bank Carbon Pricing Dashboard data

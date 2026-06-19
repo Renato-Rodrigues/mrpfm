@@ -7,13 +7,13 @@
 convertWGIindicator(x, subtype = "all")
 }
 \arguments{
-\item{x}{A \code{\link[magclass:magclass-package]{magpie}} object returned from
+\item{x}{A \code{\link[magclass:magclass]{magpie}} object returned from
 \code{\link[=readWGIindicator]{readWGIindicator()}}.}
 
 \item{subtype}{passed through; one of the WGI indicator codes or \code{"all"}.}
 }
 \value{
-A \code{\link[magclass:magclass-package]{magpie}} object with all ISO3c countries
+A \code{\link[magclass:magclass]{magpie}} object with all ISO3c countries
 (missing values set to \code{NA}).
 }
 \description{
