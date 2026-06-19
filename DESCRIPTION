@@ -28,6 +28,9 @@ Imports:
     zoo,
     stats,
     utils
+Suggests:
+    testthat,
+    withr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 Config/roxygen2/version: 8.0.0
