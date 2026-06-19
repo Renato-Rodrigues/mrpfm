@@ -9,7 +9,7 @@ R package **mrpfm**, version **0.3.0**
 Data ingestion and preprocessing for the Political Feasibility Module (PFM),
     following the madrat framework (read*, calc*, convert*, tool* conventions).
     Provides magpie objects consumed by the pfm package.
-
+README_additions.md
 
 ## Installation
 
