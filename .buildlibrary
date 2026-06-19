@@ -1,0 +1,12 @@
+ValidationKey: '618690'
+AutocreateReadme: yes
+AddInReadme: README_additions.md
+AutocreateCITATION: yes
+AcceptedWarnings:
+- 'Warning: package ''.*'' was built under R version'
+- 'Warning: namespace ''.*'' is not available and has been replaced'
+AcceptedNotes: ~
+allowLinterWarnings: no
+enforceVersionUpdate: no
+skipCoverage: no
+UsePkgDown: no
