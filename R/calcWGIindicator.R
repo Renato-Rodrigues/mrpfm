@@ -26,8 +26,10 @@ calcWGIindicator <- function() {
   x <- toolImputeMedians(x)
 
   # Prepare weights
-  # Population for governance indicators spatial scaling
-  pop <- calcOutput("Population", scenario = c("SSP1", "SSP2", "SSP3", "SSP4", "SSP5"), aggregate = FALSE)
+  # Population for governance indicators spatial scaling. Only the SSP2 slice is used as the
+  # weight (see below), so request SSP2 alone: fetching all five SSPs would force the full
+  # mrdrivers SSP scenario construction (raw SSP download) for no benefit. (ADR 0017.)
+  pop <- calcOutput("Population", scenario = "SSP2", aggregate = FALSE)
 
   # Linear projection for intermediate years
   yearsData <- getYears(x, as.integer = TRUE)

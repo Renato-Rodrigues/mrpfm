@@ -2,7 +2,9 @@
 #'
 #' This data can be downloaded directly from the site.
 #'
-#' @param subtype character, type of data: price, priceAprilFirst, wbCoverage, revenue, emissionsCovered
+#' @param subtype character, type of data: price, priceAprilFirst, wbCoverage, revenue,
+#'   emissionsCovered, or the subnational variants priceSubnational / emissionsCoveredSubnational
+#'   (within_country instruments mapped to their parent country, instrument identity kept)
 #' @returns MagPIE object with world banck data on carbon price per country
 #'
 #' @author Renato Rodrigues
@@ -30,6 +32,28 @@ readWBCarbonPricingDashboard <- function(subtype = "price") {
 
   wbRegionMapping <- toolGetMapping("wbRegion.csv", type = "regional", where = "mrpfm")
   wbSectoralMapping <- toolGetMapping("wbSector.csv", type = "sectoral", where = "mrpfm")
+
+  # Flag-derived sector_group fallback (ADR 0016): for instruments NOT classified in
+  # wbSector.csv (empty/NA sector_group), derive it from the dashboard's own per-sector
+  # coverage flags ("Yes"/"In principle"). The manual mapping stays authoritative where
+  # present, so existing (implemented) classifications — and the default outputs — are
+  # unchanged; this only auto-classifies new/unmapped instruments in future vintages.
+  if ("sector_group" %in% names(wbSectoralMapping)) {
+    isCov <- function(col) if (is.null(col)) FALSE else (!is.na(col) & col %in% c("Yes", "In principle"))
+    fcol <- function(nm) if (nm %in% names(rawInfo)) rawInfo[[nm]] else NULL
+    bulkF <- isCov(fcol("electricity_and_heat")) | isCov(fcol("industry")) | isCov(fcol("mining_and_extractives"))
+    diffF <- isCov(fcol("transport")) | isCov(fcol("buildings")) |
+      isCov(fcol("agriculture,_forestry_and_fishing_fuel_use")) | isCov(fcol("waste"))
+    bunkF <- isCov(fcol("aviation"))
+    derived <- data.frame(unique_id = rawInfo$unique_id, derived_sg = dplyr::case_when(
+      bulkF & diffF ~ "all", bulkF ~ "bulk", diffF ~ "diffuse", bunkF ~ "bunkers", TRUE ~ NA_character_),
+      stringsAsFactors = FALSE)
+    wbSectoralMapping <- wbSectoralMapping %>%
+      dplyr::left_join(derived, by = "unique_id") %>%
+      dplyr::mutate(sector_group = dplyr::if_else(is.na(.data$sector_group) | .data$sector_group == "",
+                                                  .data$derived_sg, .data$sector_group)) %>%
+      dplyr::select(-"derived_sg")
+  }
 
   metadata <- rawInfo  %>%
     left_join(wbRegionMapping, by = "unique_id") %>%
@@ -136,6 +160,18 @@ readWBCarbonPricingDashboard <- function(subtype = "price") {
     left_join(histEmiGlo, by = "period", suffix = c("_share", "_emiGLO")) %>%
     mutate(value = .data$value_share * .data$value_emiGLO) %>%
     select(-c("value_share", "value_emiGLO"))
+
+  # Subnational ("within_country") instruments mapped to their PARENT country, with the
+  # instrument identity (unique_id) kept so callers can pair price x covered per
+  # instrument and aggregate (calcCarbonPrice's includeSubnational path). Returned early
+  # so the country-level subtypes below are completely unaffected (byte-identical).
+  if (subtype %in% c("priceSubnational", "emissionsCoveredSubnational")) {
+    src <- if (subtype == "priceSubnational") wbPrice else wbEmissionsCovered
+    sub <- src %>%
+      dplyr::filter(.data$region_type == "within_country") %>%
+      dplyr::select(c("region", "unique_id", "sector_group", "period", "value"))
+    return(as.magpie(sub, spatial = "region", temporal = "period", datacol = "value"))
+  }
 
   switch(subtype,
          "price" = { dd <- wbPrice }, # nolint

@@ -4,6 +4,12 @@
 #' and EDGAR Global GHG Emissions for sectoral disaggregation.
 #'
 #' @param subtype data subtype. Either "emissionsCovered", "shareEmissionsCovered", "carbonPrice", "effectivePrice"
+#' @param includeSubnational Logical. If \code{TRUE}, the \code{"effectivePrice"} subtype
+#'   additionally folds in \emph{subnational} ("within_country") carbon-pricing instruments
+#'   (e.g. California, Quebec, the Chinese pilots), attributed to their parent country as an
+#'   emissions-weighted contribution: \eqn{\sum_i price_i \times covered_i / emissions}, with
+#'   combined coverage capped at 100% (a first-pass overlap rule). Default \code{FALSE} — the
+#'   national-instrument-only price the model is built on, byte-identical to before. See ADR 0016.
 #' @returns MAgPIE object with Carbon Price data per country and sector group
 #'
 #' @author Renato Rodrigues
@@ -11,12 +17,13 @@
 #' @examples
 #' \dontrun{
 #' calcOutput("CarbonPrice", subtype = "effectivePrice")
+#' calcOutput("CarbonPrice", subtype = "effectivePrice", includeSubnational = TRUE)
 #' }
 #'
 #' @importFrom quitte as.quitte
 #' @importFrom dplyr rename select mutate left_join across filter %>% bind_rows .data
 #'
-calcCarbonPrice <- function(subtype = "effectivePrice") {
+calcCarbonPrice <- function(subtype = "effectivePrice", includeSubnational = FALSE) {
   priceRaw <- madrat::readSource("WBCarbonPricingDashboard", subtype = "price")
 
   priceFull <- magclass::dimReduce(magclass::dimSums(magclass::mselect(priceRaw, status = "implemented"),
@@ -149,16 +156,51 @@ calcCarbonPrice <- function(subtype = "effectivePrice") {
       )
     ])
 
-  # GDP per capita
-  pop <- calcOutput("PopulationPast", aggregate = FALSE)
-  gdp <- calcOutput("GDPPast", aggregate = FALSE)
-  gdpPerCapita <- magclass::collapseNames(gdp[, intersect(getYears(pop), getYears(gdp)), ] /
-    pop[, intersect(getYears(pop), getYears(gdp)), ])
-  # copying last year for missing years
-  tmp <- tmp2 <- gdpPerCapita[, 2023, ]
-  magclass::getYears(tmp) <- 2024
-  magclass::getYears(tmp2) <- 2025
-  gdpPerCapita <- magclass::mbind(gdpPerCapita, tmp, tmp2)
+  # ── Subnational extension (ADR 0016): fold within_country instruments into the
+  # effective price of their parent country, as an emissions-weighted contribution
+  # sum_i(price_i x covered_i)/emissions, with combined coverage capped at 100%
+  # (first-pass overlap rule). Default OFF -> effectivePrice unchanged below.
+  # NB: a full recompute of this function needs the EDGAR booklet vintage the cache was
+  # built with; where that source is absent, derive the subnational contribution from the
+  # cached national price + the `*Subnational` reader subtypes (see build-subnational-sensitivity.R).
+  if (isTRUE(includeSubnational)) {
+    subP <- tryCatch(madrat::readSource("WBCarbonPricingDashboard", subtype = "priceSubnational"),
+                     error = function(e) NULL)
+    subC <- tryCatch(madrat::readSource("WBCarbonPricingDashboard", subtype = "emissionsCoveredSubnational"),
+                     error = function(e) NULL)
+    common <- character(0)
+    if (!is.null(subP) && !is.null(subC)) {
+      common <- intersect(magclass::getNames(subP), magclass::getNames(subC))
+      common <- common[grepl("[.](bulk|diffuse|all)$", common)]    # keep "all"; drop bunkers / unmapped
+      yy <- intersect(magclass::getYears(subP), magclass::getYears(subC))
+    }
+    if (length(common)) {
+      pxc <- subP[, yy, common] * subC[, yy, common]               # US$ * Mt per instrument
+      cov <- subC[, yy, common]
+      ry <- intersect(yy, magclass::getYears(histEmiPerSectorGroupFiltered))
+      rr <- intersect(magclass::getItems(pxc, 1), magclass::getItems(histEmiPerSectorGroupFiltered, 1))
+      hb <- magclass::collapseNames(histEmiPerSectorGroupFiltered[rr, ry, "bulk"])
+      hd <- magclass::collapseNames(histEmiPerSectorGroupFiltered[rr, ry, "diffuse"])
+      tot <- hb + hd; shB <- hb / tot; shB[!is.finite(shB)] <- 0; shD <- 1 - shB; shD[!is.finite(shD)] <- 0
+      zero <- hb * 0
+      # per-sector-group sum over instruments; an "all" instrument's price applies to both
+      # sectors and its covered emissions split by the parent country's bulk/diffuse shares.
+      psum <- function(x, s) { if (!s %in% magclass::getItems(x, dim = 3.2)) return(zero)
+        z <- magclass::collapseNames(magclass::dimSums(magclass::mselect(x, sector_group = s), dim = 3.1))[rr, ry]
+        z[!is.finite(z)] <- 0; z }
+      pxB <- psum(pxc, "bulk") + psum(pxc, "all") * shB; pxD <- psum(pxc, "diffuse") + psum(pxc, "all") * shD
+      cvB <- psum(cov, "bulk") + psum(cov, "all") * shB; cvD <- psum(cov, "diffuse") + psum(cov, "all") * shD
+      natB <- magclass::collapseNames(emissionsCovered[rr, ry, "bulk"])
+      natD <- magclass::collapseNames(emissionsCovered[rr, ry, "diffuse"])
+      hrB <- pmax(hb - natB, 0); hrD <- pmax(hd - natD, 0)         # headroom to 100% after national coverage
+      sclB <- pmin(cvB, hrB) / cvB; sclB[!is.finite(sclB)] <- 0; subB <- (pxB * sclB) / hb; subB[!is.finite(subB)] <- 0
+      sclD <- pmin(cvD, hrD) / cvD; sclD[!is.finite(sclD)] <- 0; subD <- (pxD * sclD) / hd; subD[!is.finite(subD)] <- 0
+      addS <- function(ecp, add, sgi) { g <- intersect(magclass::getItems(ecp, 1), magclass::getItems(add, 1))
+        v <- intersect(magclass::getYears(ecp), magclass::getYears(add))
+        ecp[g, v, sgi] <- ecp[g, v, sgi] + setNames(add[g, v], sgi); ecp }
+      effectivePrice <- addS(addS(effectivePrice, subB, "bulk"), subD, "diffuse")
+    }
+  }
 
   switch(subtype, # nolint
     "emissionsCovered" = { # nolint

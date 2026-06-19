@@ -12,9 +12,9 @@
 #' @return An imputed magpie object of the same shape.
 #' @author Renato Rodrigues
 #'
-#' @importFrom magclass getItems getYears getNames
+#' @importFrom magclass getItems getYears getNames getSets getSets<- as.magpie
 #' @importFrom madrat toolGetMapping
-#' @importFrom stats median
+#' @importFrom stats median aggregate
 #' @export
 toolImputeMedians <- function(data, regionMappingFiles = c("regionmapping_54.csv", "regionmappingH12.csv")) {
   # If there are no NAs, return immediately
@@ -37,7 +37,7 @@ toolImputeMedians <- function(data, regionMappingFiles = c("regionmapping_54.csv
         warning("Mapping file ", mapFile, " does not contain 'CountryCode' and 'RegionCode' columns. Skipping.")
         next
       }
-      country2region <- setNames(mapping$RegionCode, mapping$CountryCode)
+      country2region <- stats::setNames(mapping$RegionCode, mapping$CountryCode)
       mappingsInfo[[mapFile]] <- list(
         country2region = country2region
       )
@@ -48,80 +48,80 @@ toolImputeMedians <- function(data, regionMappingFiles = c("regionmapping_54.csv
     warning("No valid region mappings loaded. Falling back entirely to global medians.")
   }
 
-  out <- data
-  countries <- getItems(data, dim = 1)
-  years <- getYears(data)
-  vars <- getNames(data)
+  df <- as.data.frame(data)
 
-  # Loop through years and variables
-  for (v in vars) {
-    for (y in years) {
-      vals <- out[, y, v]
-      naIdx <- which(is.na(vals))
-      if (length(naIdx) == 0) next
+  # Identify standard columns in magclass data.frame
+  reg_col <- if ("Region" %in% colnames(df)) "Region" else if ("Cell" %in% colnames(df)) "Cell" else colnames(df)[1]
+  yr_col  <- if ("Year" %in% colnames(df)) "Year" else colnames(df)[2]
+  val_col <- if ("Value" %in% colnames(df)) "Value" else colnames(df)[4]
+  # All data-subdimension columns (everything that is not region / year / value). Combining
+  # them into a single variable key makes the imputation robust to a multi-subdimension 3rd
+  # dimension (e.g. Scenario.Variable in calcSSPextensions); single-subdim callers (WGI, VDem)
+  # reduce to the prior single-"Data1" behaviour.
+  dim_cols <- setdiff(colnames(df), c("Cell", reg_col, yr_col, val_col))
 
-      # Precompute non-NA countries for this specific year/variable
-      nonNaVals <- vals[-naIdx, , ]
-      nonNaCountries <- getItems(nonNaVals, dim = 1)
+  df$Region_char <- as.character(df[[reg_col]])
+  df$Year_char   <- as.character(df[[yr_col]])
+  df$Var_char    <- if (length(dim_cols) == 1) as.character(df[[dim_cols]]) else
+    do.call(paste, c(df[dim_cols], sep = "."))
+  df$Val_num     <- as.numeric(df[[val_col]])
 
-      # 1. Compute global median
-      globalMedian <- if (length(nonNaCountries) > 0) {
-        median(as.numeric(vals), na.rm = TRUE)
-      } else {
-        NA_real_
-      }
+  # 1. Compute global medians by Year and Variable
+  global_medians <- aggregate(Val_num ~ Year_char + Var_char, data = df, FUN = median, na.rm = TRUE)
+  global_medians$Key_Global <- paste(global_medians$Year_char, global_medians$Var_char, sep = "_")
+  global_medians_vec <- stats::setNames(global_medians$Val_num, global_medians$Key_Global)
 
-      # 2. Precompute regional medians for all active mapping files
-      regMediansPerMap <- list()
-      for (mapFile in names(mappingsInfo)) {
-        country2region <- mappingsInfo[[mapFile]]$country2region
-        nonNaRegions <- country2region[nonNaCountries]
+  # 2. Precompute regional medians for all active mapping files
+  regMediansVecPerMap <- list()
+  for (mapFile in names(mappingsInfo)) {
+    country2region <- mappingsInfo[[mapFile]]$country2region
 
-        regMedians <- list()
-        if (length(nonNaCountries) > 0) {
-          # Find unique regions that have data
-          uniqueRegs <- unique(nonNaRegions[!is.na(nonNaRegions)])
-          for (r in uniqueRegs) {
-            rCountries <- nonNaCountries[which(nonNaRegions == r)]
-            regMedians[[r]] <- median(as.numeric(vals[rCountries, , ]), na.rm = TRUE)
-          }
-        }
-        regMediansPerMap[[mapFile]] <- regMedians
-      }
+    df$RegionCode <- country2region[df$Region_char]
 
-      # 3. Impute missing values
-      naCountries <- countries[naIdx]
-      for (i in seq_along(naIdx)) {
-        cnt <- naCountries[i]
+    # Compute medians by RegionCode, Year, Var
+    reg_medians <- aggregate(Val_num ~ RegionCode + Year_char + Var_char, data = df, FUN = median, na.rm = TRUE)
+    reg_medians$Key_Region <- paste(reg_medians$Year_char, reg_medians$Var_char, reg_medians$RegionCode, sep = "_")
 
-        imputedVal <- NA_real_
-        # Try each mapping file in the order provided
-        for (mapFile in names(mappingsInfo)) {
-          country2region <- mappingsInfo[[mapFile]]$country2region
-          regMedians <- regMediansPerMap[[mapFile]]
-
-          reg <- country2region[cnt]
-          if (!is.na(reg) && reg %in% names(regMedians)) {
-            val <- regMedians[[reg]]
-            if (!is.na(val)) {
-              imputedVal <- val
-              break # Found a valid regional median! Stop trying other mappings.
-            }
-          }
-        }
-
-        # 4. Fallback to global median if all regional medians are NA or unresolved
-        if (is.na(imputedVal)) {
-          imputedVal <- globalMedian
-        }
-
-        # If we successfully found a median, assign it
-        if (!is.na(imputedVal)) {
-          out[naIdx[i], y, v] <- imputedVal
-        }
-      }
-    }
+    regMediansVecPerMap[[mapFile]] <- stats::setNames(reg_medians$Val_num, reg_medians$Key_Region)
   }
+
+  # 3. Impute missing values (Fully Vectorized)
+  imputedVal <- df$Val_num
+  na_idx <- which(is.na(imputedVal))
+
+  if (length(na_idx) > 0) {
+    na_regions <- df$Region_char[na_idx]
+    na_years   <- df$Year_char[na_idx]
+    na_vars    <- df$Var_char[na_idx]
+
+    # Try each mapping in order of priority
+    for (mapFile in names(mappingsInfo)) {
+      country2region <- mappingsInfo[[mapFile]]$country2region
+      reg_medians_vec <- regMediansVecPerMap[[mapFile]]
+
+      region_vec <- country2region[na_regions]
+      lookup_key <- paste(na_years, na_vars, region_vec, sep = "_")
+
+      cntMedians <- reg_medians_vec[lookup_key]
+
+      still_na <- is.na(imputedVal[na_idx])
+      imputedVal[na_idx][still_na] <- cntMedians[still_na]
+    }
+
+    # 4. Fallback to global median if all regional medians are NA or unresolved
+    lookup_key_global <- paste(na_years, na_vars, sep = "_")
+    globalMedians <- global_medians_vec[lookup_key_global]
+
+    still_na <- is.na(imputedVal[na_idx])
+    imputedVal[na_idx][still_na] <- globalMedians[still_na]
+
+    df[[val_col]] <- imputedVal
+  }
+
+  # 5. Convert back to magpie object and restore sets
+  out <- as.magpie(df[, c(reg_col, yr_col, dim_cols, val_col)],
+                   spatial = 1, temporal = 2, datacol = 2 + length(dim_cols) + 1)
+  getSets(out) <- getSets(data)
 
   return(out)
 }

@@ -32,11 +32,15 @@ calcSSPextensions <- function(subtype = "all") {
     data <- toolTimeInterpolation(data, interpolatedYears = c(seq(2000, 2024, 1), seq(2025, 2150, 5)))
     data <- toolImputeMedians(data)
 
-    # Prepare weights
+    # Prepare weights. Only fetch the scenarios actually present in `data` (the weight loop
+    # below indexes pop/gdp by the scenarios in data's 3rd dim): for the drivers_SSP2 subtype
+    # that is SSP2 alone, so requesting all five SSPs would needlessly force the full mrdrivers
+    # SSP scenario construction (raw SSP download). (ADR 0017.)
+    wScenarios <- if (subtype == "drivers_SSP2") "SSP2" else c("SSP1", "SSP2", "SSP3", "SSP4", "SSP5")
     # Population for everything related to people (shares, indices, etc.)
-    pop <- calcOutput("Population", scenario = c("SSP1", "SSP2", "SSP3", "SSP4", "SSP5"), aggregate = FALSE)
+    pop <- calcOutput("Population", scenario = wScenarios, aggregate = FALSE)
     # GDP for economic shares
-    gdp <- calcOutput("GDP", scenario = c("SSP1", "SSP2", "SSP3", "SSP4", "SSP5"), aggregate = FALSE)
+    gdp <- calcOutput("GDP", scenario = wScenarios, aggregate = FALSE)
 
     # Linear projection
     yearsData <- getYears(data, as.integer = TRUE)
