@@ -6,7 +6,11 @@
 #' Electricity and Industry sector indices), \strong{diffuse} (mean of the Buildings
 #' and Transport sector indices) and, where the module-level indices are present,
 #' \strong{composite} (mean of the Sectoral / Cross-sectoral / International LEV1
-#' module indices). Sector aggregation uses the OECD's own convention of simple
+#' module indices). Each sector index is itself reconstructed from the deployed
+#' CAPMF LEV2 codes, which split every sector into market-based (`LEV2_SEC_*_MBI`)
+#' and non-market-based (`LEV2_SEC_*_NMBI`) instruments: a sector's stringency is the
+#' mean of its instrument-type children, and Bulk/Diffuse then average the relevant
+#' sector indices. Sector aggregation uses the OECD's own convention of simple
 #' averages over the available children.
 #'
 #' Unlike [`calcCAPMF()`], values are \strong{never imputed}: these series are model
@@ -56,21 +60,31 @@ calcPolicyStringency <- function(source = "official", minCoverage = 0.8) {
   x <- readSource("CAPMF", subtype = subtype, convert = TRUE)
   vars <- magclass::getNames(x)
 
-  # CAPMF variables are named "<CLIM_ACT_POL code> (CAPMF)". The LEV2 sector-level
-  # aggregates are matched by pattern: the exact code spelling can only be confirmed
-  # against the deployed OECD dataflow, so the first pattern is the expected code and
-  # the later ones are spelling fallbacks. The shortest hit wins, so a sector
-  # aggregate is preferred over any longer instrument-level code.
+  # CAPMF variables are named "<CLIM_ACT_POL code> (CAPMF)". The deployed OECD
+  # dataflow splits each LEV2 sector into market-based (MBI) and non-market-based
+  # (NMBI) instruments: LEV2_SEC_<E|I|B|T>_<MBI|NMBI>. A sector's stringency is the
+  # OECD simple mean over its available instrument-type children; Bulk and Diffuse
+  # then average the relevant sector indices (a faithful two-level hierarchy, so a
+  # sector missing one instrument type still contributes its available value and is
+  # weighted equally against the other sector). Patterns tolerate spelling drift and
+  # fall back to the older long-form single codes (LEV2_SEC_ELEC).
+
+  # rowMeanVars: NA-aware equal-weight mean over a set of variables in `mobj`.
+  rowMeanVars <- function(mobj, v) {
+    v <- intersect(unlist(v[!vapply(v, is.null, logical(1))]), magclass::getNames(mobj))
+    if (length(v) == 0) return(NULL)
+    count <- magclass::dimSums(!is.na(mobj[, , v]), dim = 3)
+    total <- magclass::dimSums(mobj[, , v], dim = 3, na.rm = TRUE)
+    count[count == 0] <- NA
+    return(total / count)
+  }
+
+  # findVar: resolve a single LEV1 module code (shortest hit wins over any longer code).
   findVar <- function(patterns, label, required = TRUE) {
     for (p in patterns) {
       hits <- grep(p, vars, value = TRUE)
       if (length(hits) > 0) {
-        hit <- hits[which.min(nchar(hits))]
-        if (length(hits) > 1) {
-          message("calcPolicyStringency: matched '", hit, "' for ", label,
-                  " (other candidates: ", paste(setdiff(hits, hit), collapse = ", "), ")")
-        }
-        return(hit)
+        return(hits[which.min(nchar(hits))])
       }
     }
     if (required) {
@@ -81,26 +95,47 @@ calcPolicyStringency <- function(source = "official", minCoverage = 0.8) {
     NULL
   }
 
-  elec <- findVar(c("^LEV2_SEC_ELEC \\(CAPMF\\)$", "^LEV2[_A-Z]*ELEC"), "Electricity")
-  ind <- findVar(c("^LEV2_SEC_IND \\(CAPMF\\)$", "^LEV2[_A-Z]*IND"), "Industry")
-  buildings <- findVar(c("^LEV2_SEC_BUILDINGS \\(CAPMF\\)$", "^LEV2[_A-Z]*BUIL"), "Buildings")
-  transport <- findVar(c("^LEV2_SEC_TRANSPORT \\(CAPMF\\)$", "^LEV2[_A-Z]*TRAN"), "Transport")
+  # sectorChildren: all instrument-type children of a LEV2 sector (letter = E/I/B/T),
+  # with a long-form fallback (altToken, e.g. ELEC) for the legacy single-code spelling.
+  sectorChildren <- function(letter, altToken, label) {
+    patterns <- c(
+      paste0("^LEV2_SEC_", letter, "_N?MBI \\(CAPMF\\)$"), # E_MBI / E_NMBI form
+      paste0("^LEV2_SEC_", letter, "_"),                   # any child of the sector
+      paste0("^LEV2[_A-Z]*", altToken)                     # legacy LEV2_SEC_ELEC form
+    )
+    for (p in patterns) {
+      hits <- grep(p, vars, value = TRUE)
+      if (length(hits) > 0) {
+        message("calcPolicyStringency: ", label, " built from ", paste(hits, collapse = " + "))
+        return(hits)
+      }
+    }
+    stop("calcPolicyStringency: no CAPMF variable found for ", label,
+         ". Available LEV1/LEV2 codes: ",
+         paste(grep("^LEV[12]_", vars, value = TRUE), collapse = ", "))
+  }
+
+  # Level 1: reconstruct each sector index from its instrument-type children.
+  sectors <- list(
+    elec      = rowMeanVars(x, sectorChildren("E", "ELEC", "Electricity")),
+    ind       = rowMeanVars(x, sectorChildren("I", "IND", "Industry")),
+    buildings = rowMeanVars(x, sectorChildren("B", "BUIL", "Buildings")),
+    transport = rowMeanVars(x, sectorChildren("T", "TRAN", "Transport"))
+  )
+  sectors <- sectors[!vapply(sectors, is.null, logical(1))]
+  for (nm in names(sectors)) {
+    magclass::getNames(sectors[[nm]]) <- nm
+  }
+  sec <- do.call(magclass::mbind, unname(sectors))
+
   lev1Sec <- findVar(c("^LEV1_SEC \\(CAPMF\\)$"), "Sectoral module", required = FALSE)
   lev1Cross <- findVar(c("^LEV1_CROSS_SEC \\(CAPMF\\)$", "^LEV1_CROSS"), "Cross-sectoral module", required = FALSE)
   lev1Int <- findVar(c("^LEV1_INT \\(CAPMF\\)$"), "International module", required = FALSE)
 
-  rowMeanVars <- function(mobj, v) {
-    v <- intersect(unlist(v[!vapply(v, is.null, logical(1))]), magclass::getNames(mobj))
-    if (length(v) == 0) return(NULL)
-    count <- magclass::dimSums(!is.na(mobj[, , v]), dim = 3)
-    total <- magclass::dimSums(mobj[, , v], dim = 3, na.rm = TRUE)
-    count[count == 0] <- NA
-    return(total / count)
-  }
-
+  # Level 2: average the relevant sector indices into the PSM outcomes.
   pieces <- list(
-    bulk = rowMeanVars(x, list(elec, ind)),
-    diffuse = rowMeanVars(x, list(buildings, transport)),
+    bulk = rowMeanVars(sec, list("elec", "ind")),
+    diffuse = rowMeanVars(sec, list("buildings", "transport")),
     composite = rowMeanVars(x, list(lev1Sec, lev1Cross, lev1Int))
   )
   if (is.null(pieces$composite)) {
