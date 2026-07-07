@@ -36,7 +36,11 @@ variables of the Policy Stringency Model (ADR 0036): \strong{bulk} (mean of the
 Electricity and Industry sector indices), \strong{diffuse} (mean of the Buildings
 and Transport sector indices) and, where the module-level indices are present,
 \strong{composite} (mean of the Sectoral / Cross-sectoral / International LEV1
-module indices). Sector aggregation uses the OECD's own convention of simple
+module indices). Each sector index is itself reconstructed from the deployed
+CAPMF LEV2 codes, which split every sector into market-based (\verb{LEV2_SEC_*_MBI})
+and non-market-based (\verb{LEV2_SEC_*_NMBI}) instruments: a sector's stringency is the
+mean of its instrument-type children, and Bulk/Diffuse then average the relevant
+sector indices. Sector aggregation uses the OECD's own convention of simple
 averages over the available children.
 }
 \details{
