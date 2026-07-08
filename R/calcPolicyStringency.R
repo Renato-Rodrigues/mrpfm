@@ -47,7 +47,9 @@
 #' @importFrom magclass getYears getNames getItems dimSums mbind setNames time_interpolate
 #'
 #' @export
-calcPolicyStringency <- function(source = "official", minCoverage = 0.8) {
+calcPolicyStringency <- function(source = "official", minCoverage = 0.8,
+                                 sectorResolution = "two") {
+  sectorResolution <- match.arg(sectorResolution, c("two", "four"))
   subtype <- switch(source,
     official = "all",
     expanded = "expanded",
@@ -132,13 +134,26 @@ calcPolicyStringency <- function(source = "official", minCoverage = 0.8) {
   lev1Cross <- findVar(c("^LEV1_CROSS_SEC \\(CAPMF\\)$", "^LEV1_CROSS"), "Cross-sectoral module", required = FALSE)
   lev1Int <- findVar(c("^LEV1_INT \\(CAPMF\\)$"), "International module", required = FALSE)
 
-  # Level 2: average the relevant sector indices into the PSM outcomes.
-  pieces <- list(
-    bulk = rowMeanVars(sec, list("elec", "ind")),
-    diffuse = rowMeanVars(sec, list("buildings", "transport")),
-    composite = rowMeanVars(x, list(lev1Sec, lev1Cross, lev1Int))
-  )
-  if (is.null(pieces$composite)) {
+  # Level 2: average the relevant sector indices into the PSM outcomes, OR emit the
+  # four raw sector indices for the four-sector resolution (sectorResolution="four",
+  # 2026-07-08): electricity/industry/buildings/transport, the CAPMF-native sectors
+  # that REMIND's sectoral policy levers consume. The two-sector Bulk/Diffuse pairing
+  # is the validated default (ADR 0036).
+  if (identical(sectorResolution, "four")) {
+    fourMap <- c(elec = "Electricity", ind = "Industry",
+                 buildings = "Buildings", transport = "Transport")
+    pieces <- list()
+    for (nm in names(sectors)) {
+      pieces[[fourMap[[nm]]]] <- magclass::setNames(sectors[[nm]], NULL)
+    }
+  } else {
+    pieces <- list(
+      bulk = rowMeanVars(sec, list("elec", "ind")),
+      diffuse = rowMeanVars(sec, list("buildings", "transport")),
+      composite = rowMeanVars(x, list(lev1Sec, lev1Cross, lev1Int))
+    )
+  }
+  if (identical(sectorResolution, "two") && is.null(pieces$composite)) {
     message("calcPolicyStringency: no LEV1 module indices found; 'composite' outcome skipped.")
   }
   pieces <- pieces[!vapply(pieces, is.null, logical(1))]

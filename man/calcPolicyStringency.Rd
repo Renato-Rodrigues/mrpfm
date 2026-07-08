@@ -4,7 +4,11 @@
 \alias{calcPolicyStringency}
 \title{Calculate CAPMF-based Policy Stringency outcomes (PSM dependent variables)}
 \usage{
-calcPolicyStringency(source = "official", minCoverage = 0.8)
+calcPolicyStringency(
+  source = "official",
+  minCoverage = 0.8,
+  sectorResolution = "two"
+)
 }
 \arguments{
 \item{source}{character; \code{"official"} (default) uses the published CAPMF database.
