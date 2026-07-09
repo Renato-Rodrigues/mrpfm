@@ -7,7 +7,8 @@
 calcPolicyStringency(
   source = "official",
   minCoverage = 0.8,
-  sectorResolution = "two"
+  sectorResolution = "two",
+  weighting = "equal"
 )
 }
 \arguments{
@@ -19,6 +20,19 @@ never a headline fit.}
 \item{minCoverage}{numeric, logical or NULL; threshold of GDP and Population
 coverage below which a whole region's countries are excluded (set \code{NA}).
 Defaults to 0.8. Set to \code{FALSE} or \code{NULL} to disable.}
+
+\item{sectorResolution}{character; \code{"two"} (default) returns the Bulk/Diffuse/
+composite outcomes, \code{"four"} the raw Electricity/Industry/Buildings/Transport
+sector indices.}
+
+\item{weighting}{how the sector indices are aggregated into Bulk and Diffuse
+(two-sector only; ignored for \code{sectorResolution = "four"}). \code{"equal"} (default)
+uses the OECD simple mean. Alternatively supply GHG- or GDP-share weights à la
+Metta-Versmessen (2025) as either a \strong{named numeric vector} over the sector
+short names (\code{c(elec=, ind=, buildings=, transport=)}, broadcast to all cells)
+or a \strong{magpie} \verb{[iso3c, year, sector]} of per-cell weights (build one with the
+companion script \code{pfm-paper/R/psm-sector-weights.R}). Weights are renormalised
+within the non-missing members of each pairing.}
 }
 \value{
 A list with:

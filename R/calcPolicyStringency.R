@@ -27,6 +27,17 @@
 #' @param minCoverage numeric, logical or NULL; threshold of GDP and Population
 #'   coverage below which a whole region's countries are excluded (set `NA`).
 #'   Defaults to 0.8. Set to `FALSE` or `NULL` to disable.
+#' @param sectorResolution character; `"two"` (default) returns the Bulk/Diffuse/
+#'   composite outcomes, `"four"` the raw Electricity/Industry/Buildings/Transport
+#'   sector indices.
+#' @param weighting how the sector indices are aggregated into Bulk and Diffuse
+#'   (two-sector only; ignored for `sectorResolution = "four"`). `"equal"` (default)
+#'   uses the OECD simple mean. Alternatively supply GHG- or GDP-share weights à la
+#'   Metta-Versmessen (2025) as either a **named numeric vector** over the sector
+#'   short names (`c(elec=, ind=, buildings=, transport=)`, broadcast to all cells)
+#'   or a **magpie** `[iso3c, year, sector]` of per-cell weights (build one with the
+#'   companion script `pfm-paper/R/psm-sector-weights.R`). Weights are renormalised
+#'   within the non-missing members of each pairing.
 #'
 #' @return A list with:
 #'   \describe{
@@ -48,8 +59,19 @@
 #'
 #' @export
 calcPolicyStringency <- function(source = "official", minCoverage = 0.8,
-                                 sectorResolution = "two") {
+                                 sectorResolution = "two", weighting = "equal") {
   sectorResolution <- match.arg(sectorResolution, c("two", "four"))
+  if (is.character(weighting)) {
+    weighting <- match.arg(weighting, "equal")
+  } else if (!(inherits(weighting, "magpie") ||
+               (is.numeric(weighting) && !is.null(names(weighting))))) {
+    stop("calcPolicyStringency: 'weighting' must be \"equal\", a named numeric vector ",
+         "(elec/ind/buildings/transport), or a magpie of per-cell sector weights.")
+  }
+  if (identical(sectorResolution, "four") && !identical(weighting, "equal")) {
+    warning("calcPolicyStringency: 'weighting' is ignored for sectorResolution=\"four\" ",
+            "(raw sector indices are returned unweighted).")
+  }
   subtype <- switch(source,
     official = "all",
     expanded = "expanded",
@@ -147,9 +169,16 @@ calcPolicyStringency <- function(source = "official", minCoverage = 0.8,
       pieces[[fourMap[[nm]]]] <- magclass::setNames(sectors[[nm]], NULL)
     }
   } else {
+    if (identical(weighting, "equal")) {
+      bulk <- rowMeanVars(sec, list("elec", "ind"))
+      diffuse <- rowMeanVars(sec, list("buildings", "transport"))
+    } else {
+      bulk <- .weightedSectorMean(sec, c("elec", "ind"), weighting)
+      diffuse <- .weightedSectorMean(sec, c("buildings", "transport"), weighting)
+    }
     pieces <- list(
-      bulk = rowMeanVars(sec, list("elec", "ind")),
-      diffuse = rowMeanVars(sec, list("buildings", "transport")),
+      bulk = bulk,
+      diffuse = diffuse,
       composite = rowMeanVars(x, list(lev1Sec, lev1Cross, lev1Int))
     )
   }
@@ -263,5 +292,40 @@ calcPolicyStringency <- function(source = "official", minCoverage = 0.8,
             paste(badRegions, collapse = ", "))
   }
   return(x)
+}
+
+# Weighted, NA-aware mean of member sector indices (e.g. c("elec","ind")) using
+# per-cell weights `w`: a magpie [iso3c, year, memberSectors], or a named numeric
+# vector over the sector short names (broadcast to all cells). Weights are
+# renormalised within the members that are non-NA in each cell, so a cell missing one
+# sector still returns the other sector's value (matching the equal-weight rule).
+.weightedSectorMean <- function(sec, members, w) {
+  members <- intersect(members, magclass::getNames(sec))
+  if (length(members) == 0) return(NULL)
+  s <- sec[, , members]
+  wm <- s
+  wm[, , ] <- NA
+  if (inherits(w, "magpie")) {
+    common <- intersect(members, magclass::getNames(w))
+    if (length(common) == 0) {
+      stop("calcPolicyStringency: weight magpie has none of the sectors ",
+           paste(members, collapse = ", "), " in dim 3.")
+    }
+    yrs <- intersect(magclass::getYears(s), magclass::getYears(w))
+    reg <- intersect(magclass::getItems(s, dim = 1), magclass::getItems(w, dim = 1))
+    for (m in common) {
+      wm[reg, yrs, m] <- w[reg, yrs, m]
+    }
+  } else {
+    for (m in members) {
+      if (!m %in% names(w)) next
+      wm[, , m] <- as.numeric(w[[m]])
+    }
+  }
+  wm[is.na(s)] <- NA
+  num <- magclass::dimSums(s * wm, dim = 3, na.rm = TRUE)
+  den <- magclass::dimSums(wm, dim = 3, na.rm = TRUE)
+  den[den == 0] <- NA
+  num / den
 }
 # nolint end
