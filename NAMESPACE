@@ -3,6 +3,7 @@
 export(calcCAPMF)
 export(calcPolicyRatchetEvents)
 export(calcPolicyStringency)
+export(computeSectorWeights)
 export(convertCAPMF)
 export(downloadCAPMF)
 export(listVDemIndicators)

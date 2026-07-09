@@ -32,11 +32,11 @@
 #'   sector indices.
 #' @param weighting how the sector indices are aggregated into Bulk and Diffuse
 #'   (two-sector only; ignored for `sectorResolution = "four"`). `"equal"` (default)
-#'   uses the OECD simple mean. Alternatively supply GHG- or GDP-share weights à la
-#'   Metta-Versmessen (2025) as either a **named numeric vector** over the sector
-#'   short names (`c(elec=, ind=, buildings=, transport=)`, broadcast to all cells)
-#'   or a **magpie** `[iso3c, year, sector]` of per-cell weights (build one with the
-#'   companion script `pfm-paper/R/psm-sector-weights.R`). Weights are renormalised
+#'   uses the OECD simple mean; `"ghg"` or `"gdp"` use GHG-/GDP-share weights à la
+#'   Metta-Versmessen (2025), sourced in the data layer by [`computeSectorWeights()`].
+#'   You may also pass weights directly as a **named numeric vector** over the sector
+#'   short names (`c(elec=, ind=, buildings=, transport=)`, broadcast to all cells) or
+#'   a **magpie** `[iso3c, year, sector]` of per-cell weights. Weights are renormalised
 #'   within the non-missing members of each pairing.
 #'
 #' @return A list with:
@@ -62,11 +62,11 @@ calcPolicyStringency <- function(source = "official", minCoverage = 0.8,
                                  sectorResolution = "two", weighting = "equal") {
   sectorResolution <- match.arg(sectorResolution, c("two", "four"))
   if (is.character(weighting)) {
-    weighting <- match.arg(weighting, "equal")
+    weighting <- match.arg(weighting, c("equal", "ghg", "gdp"))
   } else if (!(inherits(weighting, "magpie") ||
                (is.numeric(weighting) && !is.null(names(weighting))))) {
-    stop("calcPolicyStringency: 'weighting' must be \"equal\", a named numeric vector ",
-         "(elec/ind/buildings/transport), or a magpie of per-cell sector weights.")
+    stop("calcPolicyStringency: 'weighting' must be \"equal\"/\"ghg\"/\"gdp\", a named ",
+         "numeric vector (elec/ind/buildings/transport), or a magpie of per-cell sector weights.")
   }
   if (identical(sectorResolution, "four") && !identical(weighting, "equal")) {
     warning("calcPolicyStringency: 'weighting' is ignored for sectorResolution=\"four\" ",
@@ -173,8 +173,11 @@ calcPolicyStringency <- function(source = "official", minCoverage = 0.8,
       bulk <- rowMeanVars(sec, list("elec", "ind"))
       diffuse <- rowMeanVars(sec, list("buildings", "transport"))
     } else {
-      bulk <- .weightedSectorMean(sec, c("elec", "ind"), weighting)
-      diffuse <- .weightedSectorMean(sec, c("buildings", "transport"), weighting)
+      # "ghg"/"gdp" resolve to a per-cell weight magpie via the data layer; a magpie or
+      # named vector is used as supplied.
+      w <- if (is.character(weighting)) computeSectorWeights(weighting, ref = sec) else weighting
+      bulk <- .weightedSectorMean(sec, c("elec", "ind"), w)
+      diffuse <- .weightedSectorMean(sec, c("buildings", "transport"), w)
     }
     pieces <- list(
       bulk = bulk,

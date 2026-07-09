@@ -34,14 +34,25 @@ test_that("a magpie of equal weights reproduces the equal-weight Bulk (invarianc
 
 test_that("an invalid weighting errors clearly", {
   mrLocalEnv("CAPMF")
+  expect_error(                                            # not one of equal/ghg/gdp
+    suppressWarnings(suppressMessages(
+      calcPolicyStringency(minCoverage = FALSE, weighting = "nonsense"))),
+    "should be|must be"
+  )
+  expect_error(                                            # unnamed numeric vector
+    suppressWarnings(suppressMessages(
+      calcPolicyStringency(minCoverage = FALSE, weighting = c(1, 2)))),
+    "must be"
+  )
+})
+
+test_that("weighting='ghg' routes through the data layer (computeSectorWeights)", {
+  mrLocalEnv("CAPMF")
+  # In the fixture env there is no FE/emissions source, so it must error loudly from
+  # the data layer rather than silently mis-weight (documents the wiring).
   expect_error(
     suppressWarnings(suppressMessages(
       calcPolicyStringency(minCoverage = FALSE, weighting = "ghg"))),
-    "should be|must be"
-  )
-  expect_error(
-    suppressWarnings(suppressMessages(
-      calcPolicyStringency(minCoverage = FALSE, weighting = c(1, 2)))),  # unnamed vector
-    "must be"
+    "computeSectorWeights|source|FE|resolve"
   )
 })

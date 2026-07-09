@@ -27,11 +27,11 @@ sector indices.}
 
 \item{weighting}{how the sector indices are aggregated into Bulk and Diffuse
 (two-sector only; ignored for \code{sectorResolution = "four"}). \code{"equal"} (default)
-uses the OECD simple mean. Alternatively supply GHG- or GDP-share weights à la
-Metta-Versmessen (2025) as either a \strong{named numeric vector} over the sector
-short names (\code{c(elec=, ind=, buildings=, transport=)}, broadcast to all cells)
-or a \strong{magpie} \verb{[iso3c, year, sector]} of per-cell weights (build one with the
-companion script \code{pfm-paper/R/psm-sector-weights.R}). Weights are renormalised
+uses the OECD simple mean; \code{"ghg"} or \code{"gdp"} use GHG-/GDP-share weights à la
+Metta-Versmessen (2025), sourced in the data layer by \code{\link[=computeSectorWeights]{computeSectorWeights()}}.
+You may also pass weights directly as a \strong{named numeric vector} over the sector
+short names (\code{c(elec=, ind=, buildings=, transport=)}, broadcast to all cells) or
+a \strong{magpie} \verb{[iso3c, year, sector]} of per-cell weights. Weights are renormalised
 within the non-missing members of each pairing.}
 }
 \value{
