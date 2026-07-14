@@ -1,0 +1,19 @@
+REF_AREA,Reference area,ACTIVITY,Economic activity,TRANSACTION,PRICE_BASE,TIME_PERIOD,OBS_VALUE
+DEU,Germany,D35,"Electricity gas steam and air conditioning supply",B1G,V,2015,10
+DEU,Germany,C,Manufacturing,B1G,V,2015,30
+DEU,Germany,L,Real estate activities,B1G,V,2015,20
+DEU,Germany,H,Transportation and storage,B1G,V,2015,40
+DEU,Germany,D35,"Electricity gas steam and air conditioning supply",B1G,V,2016,12
+DEU,Germany,C,Manufacturing,B1G,V,2016,28
+DEU,Germany,L,Real estate activities,B1G,V,2016,20
+DEU,Germany,H,Transportation and storage,B1G,V,2016,40
+FRA,France,D35,"Electricity gas steam and air conditioning supply",B1G,V,2015,5
+FRA,France,C,Manufacturing,B1G,V,2015,15
+FRA,France,L,Real estate activities,B1G,V,2015,30
+FRA,France,H,Transportation and storage,B1G,V,2015,50
+FRA,France,D35,"Electricity gas steam and air conditioning supply",B1G,V,2016,6
+FRA,France,C,Manufacturing,B1G,V,2016,14
+FRA,France,L,Real estate activities,B1G,V,2016,30
+FRA,France,H,Transportation and storage,B1G,V,2016,50
+DEU,Germany,TOTAL,Total all activities,B1G,V,2015,100
+DEU,Germany,C,Manufacturing,B1G,Y,2015,999

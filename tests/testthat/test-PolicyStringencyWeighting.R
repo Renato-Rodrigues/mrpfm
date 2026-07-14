@@ -48,11 +48,27 @@ test_that("an invalid weighting errors clearly", {
 
 test_that("weighting='ghg' routes through the data layer (computeSectorWeights)", {
   mrLocalEnv("CAPMF")
-  # In the fixture env there is no FE/emissions source, so it must error loudly from
-  # the data layer rather than silently mis-weight (documents the wiring).
+  # In the fixture env there is no EDGAR emissions source, so it must error loudly
+  # from the data layer rather than silently mis-weight (documents the wiring).
   expect_error(
     suppressWarnings(suppressMessages(
       calcPolicyStringency(minCoverage = FALSE, weighting = "ghg"))),
-    "computeSectorWeights|source|FE|resolve"
+    "computeSectorWeights|source|EDGAR|resolve"
+  )
+})
+
+test_that("weighting='fe' and 'gdp' route through their own data-layer sources", {
+  mrLocalEnv("CAPMF")
+  # "fe" is the explicit final-energy activity proxy (the pre-2026-07-13 "ghg"
+  # source, honestly renamed); "gdp" needs the OECD value-added-by-activity reader.
+  expect_error(
+    suppressWarnings(suppressMessages(
+      calcPolicyStringency(minCoverage = FALSE, weighting = "fe"))),
+    "computeSectorWeights|source|final-energy|resolve"
+  )
+  expect_error(
+    suppressWarnings(suppressMessages(
+      calcPolicyStringency(minCoverage = FALSE, weighting = "gdp"))),
+    "computeSectorWeights|source|OECDValueAdded|resolve"
   )
 })

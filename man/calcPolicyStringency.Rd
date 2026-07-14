@@ -27,12 +27,15 @@ sector indices.}
 
 \item{weighting}{how the sector indices are aggregated into Bulk and Diffuse
 (two-sector only; ignored for \code{sectorResolution = "four"}). \code{"equal"} (default)
-uses the OECD simple mean; \code{"ghg"} or \code{"gdp"} use GHG-/GDP-share weights à la
-Metta-Versmessen (2025), sourced in the data layer by \code{\link[=computeSectorWeights]{computeSectorWeights()}}.
-You may also pass weights directly as a \strong{named numeric vector} over the sector
-short names (\code{c(elec=, ind=, buildings=, transport=)}, broadcast to all cells) or
-a \strong{magpie} \verb{[iso3c, year, sector]} of per-cell weights. Weights are renormalised
-within the non-missing members of each pairing.}
+uses the OECD simple mean; \code{"ghg"} (EDGAR sectoral emissions) or \code{"gdp"} (OECD
+value added by activity) use GHG-/GDP-share weights à la Metta-Versmessen (2025),
+and \code{"fe"} uses final-energy shares as an explicit activity proxy — all sourced in
+the data layer by \code{\link[=computeSectorWeights]{computeSectorWeights()}}. (Benefits-of-the-Doubt/DEA weighting
+is deliberately not offered: Metta-Versmessen's own finding is that EPS_BOD is
+collinear/least stable.) You may also pass weights directly as a \strong{named numeric
+vector} over the sector short names (\code{c(elec=, ind=, buildings=, transport=)},
+broadcast to all cells) or a \strong{magpie} \verb{[iso3c, year, sector]} of per-cell
+weights. Weights are renormalised within the non-missing members of each pairing.}
 }
 \value{
 A list with:

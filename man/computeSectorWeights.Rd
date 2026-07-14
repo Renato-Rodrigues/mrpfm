@@ -4,11 +4,11 @@
 \alias{computeSectorWeights}
 \title{Sector weights for CAPMF Bulk/Diffuse aggregation (T2 aggregation sensitivity)}
 \usage{
-computeSectorWeights(kind = c("ghg", "gdp"), ref)
+computeSectorWeights(kind = c("ghg", "gdp", "fe"), ref)
 }
 \arguments{
-\item{kind}{\code{"ghg"} (sector shares of GHG emissions) or \code{"gdp"} (sector shares of
-value added).}
+\item{kind}{\code{"ghg"} (sector shares of GHG emissions, EDGAR), \code{"gdp"} (sector
+shares of value added, OECD), or \code{"fe"} (final-energy activity proxy).}
 
 \item{ref}{a \code{\link[magclass:magclass]{magpie}} object whose \code{iso3c} and \code{year}
 dimensions the weights are aligned to (typically the sector-index object built in
@@ -20,13 +20,29 @@ A magpie \verb{[iso3c, year, \{elec,ind,buildings,transport\}]} of per-cell shar
 missing, so \code{\link[=calcPolicyStringency]{calcPolicyStringency()}} falls back to the available members).
 }
 \description{
-Builds per-cell GHG- or GDP-share weights over the four CAPMF sectors
-(Electricity, Industry, Buildings, Transport) for use as the \code{weighting} argument
-of \code{\link[=calcPolicyStringency]{calcPolicyStringency()}}, following Metta-Versmessen (2025). Kept in the data
-layer so the aggregation-sensitivity analysis is executable entirely from
-\pkg{mrpfm}/\pkg{pfm} (no paper-repo dependency).
+Builds per-cell GHG-, GDP- or final-energy-share weights over the four CAPMF
+sectors (Electricity, Industry, Buildings, Transport) for use as the \code{weighting}
+argument of \code{\link[=calcPolicyStringency]{calcPolicyStringency()}}, following Metta-Versmessen (2025). Kept
+in the data layer so the aggregation-sensitivity analysis is executable entirely
+from \pkg{mrpfm}/\pkg{pfm} (no paper-repo dependency).
 }
 \details{
+Sources (decided 2026-07-13, ADR-less T2 scope decision):
+\itemize{
+\item \code{"ghg"} — sectoral GHG emissions from the EDGAR reader
+(\code{readSource("EDGARghg")}; the same series that disaggregates the effective
+carbon price), so the name says what the weights are. Sector map: Power
+Industry -> elec; Industrial Combustion + Processes + Fuel Exploitation ->
+ind (mirroring the bulk grouping in \code{calcCarbonPrice}); Buildings ->
+buildings; Transport -> transport.
+\item \code{"fe"} — final energy by sector (\code{calcOutput("FE")}) as an explicit,
+honestly-named activity proxy (the former "ghg" source, kept as a free
+robustness rung).
+\item \code{"gdp"} — value added by ISIC activity from the OECD annual national
+accounts reader (\code{readSource("OECDValueAdded")}), Metta-Versmessen proxy
+mapping: D35 electricity/gas -> elec; C manufacturing -> ind; L real
+estate -> buildings; H transport/storage -> transport.
+}
 You must confirm ONE thing for a given data setup: the mapping from the source
 series' sub-sector labels to the four PSM sectors (the \code{map4} greps below). The
 function \code{stop()}s loudly with the available labels if a sector cannot be mapped —

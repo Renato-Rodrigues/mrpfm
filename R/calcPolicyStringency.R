@@ -32,12 +32,15 @@
 #'   sector indices.
 #' @param weighting how the sector indices are aggregated into Bulk and Diffuse
 #'   (two-sector only; ignored for `sectorResolution = "four"`). `"equal"` (default)
-#'   uses the OECD simple mean; `"ghg"` or `"gdp"` use GHG-/GDP-share weights à la
-#'   Metta-Versmessen (2025), sourced in the data layer by [`computeSectorWeights()`].
-#'   You may also pass weights directly as a **named numeric vector** over the sector
-#'   short names (`c(elec=, ind=, buildings=, transport=)`, broadcast to all cells) or
-#'   a **magpie** `[iso3c, year, sector]` of per-cell weights. Weights are renormalised
-#'   within the non-missing members of each pairing.
+#'   uses the OECD simple mean; `"ghg"` (EDGAR sectoral emissions) or `"gdp"` (OECD
+#'   value added by activity) use GHG-/GDP-share weights à la Metta-Versmessen (2025),
+#'   and `"fe"` uses final-energy shares as an explicit activity proxy — all sourced in
+#'   the data layer by [`computeSectorWeights()`]. (Benefits-of-the-Doubt/DEA weighting
+#'   is deliberately not offered: Metta-Versmessen's own finding is that EPS_BOD is
+#'   collinear/least stable.) You may also pass weights directly as a **named numeric
+#'   vector** over the sector short names (`c(elec=, ind=, buildings=, transport=)`,
+#'   broadcast to all cells) or a **magpie** `[iso3c, year, sector]` of per-cell
+#'   weights. Weights are renormalised within the non-missing members of each pairing.
 #'
 #' @return A list with:
 #'   \describe{
@@ -62,10 +65,10 @@ calcPolicyStringency <- function(source = "official", minCoverage = 0.8,
                                  sectorResolution = "two", weighting = "equal") {
   sectorResolution <- match.arg(sectorResolution, c("two", "four"))
   if (is.character(weighting)) {
-    weighting <- match.arg(weighting, c("equal", "ghg", "gdp"))
+    weighting <- match.arg(weighting, c("equal", "ghg", "gdp", "fe"))
   } else if (!(inherits(weighting, "magpie") ||
                (is.numeric(weighting) && !is.null(names(weighting))))) {
-    stop("calcPolicyStringency: 'weighting' must be \"equal\"/\"ghg\"/\"gdp\", a named ",
+    stop("calcPolicyStringency: 'weighting' must be \"equal\"/\"ghg\"/\"gdp\"/\"fe\", a named ",
          "numeric vector (elec/ind/buildings/transport), or a magpie of per-cell sector weights.")
   }
   if (identical(sectorResolution, "four") && !identical(weighting, "equal")) {
