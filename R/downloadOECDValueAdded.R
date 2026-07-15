@@ -16,12 +16,18 @@
 #' @importFrom utils download.file
 #' @export
 downloadOECDValueAdded <- function() {
-  # Annual national accounts, value added by activity (Table 6), gross value added
-  # (B1G), all reference areas, all activities; CSV with labels so the reader can
-  # match on human-readable activity names.
+  # Annual national accounts, value added by activity (Table 6), VERIFIED 2026-07-15
+  # against the live API (54 countries, 1990-2025). Key dimensions (12):
+  # FREQ.REF_AREA.SECTOR.COUNTERPART_SECTOR.TRANSACTION.INSTR_ASSET.ACTIVITY.
+  # EXPENDITURE.UNIT_MEASURE.PRICE_BASE.TRANSFORMATION.TABLE_IDENTIFIER
+  # Filtered to gross value added (B1G), total economy (S1), current prices in
+  # national currency (XDC/V - shares are unit-free), non-transformed (N), and the
+  # four ISIC sections the PSM sector weights need: C manufacturing, D electricity/
+  # gas (NOT "D35" - this dataflow uses the plain section code), H transport,
+  # L real estate. CSV with labels so the reader can match on activity names.
   url <- paste0(
-    "https://sdmx.oecd.org/public/rest/data/OECD.SDD.NAD,DSD_NAMAIN10@DF_TABLE6,1.1/",
-    "A..........?format=csvfilewithlabels&startPeriod=1990"
+    "https://sdmx.oecd.org/public/rest/data/OECD.SDD.NAD,DSD_NAMAIN10@DF_TABLE6/",
+    "A..S1.S1.B1G._Z.C+D+H+L._Z.XDC.V.N.?startPeriod=1990&format=csvfilewithlabels"
   )
   destfile <- "oecd_value_added.csv"
 
