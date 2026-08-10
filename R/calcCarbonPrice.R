@@ -51,7 +51,7 @@ calcCarbonPrice <- function(subtype = "effectivePrice", includeSubnational = FAL
   bulk <- c("Industrial Combustion", "Power Industry", "Processes", "Fuel Exploitation")
   diffuse <- c("Buildings", "Transport", "Agriculture", "Waste")
   bunkers <- c("Aviation", "Shipping")
-  histEmiRaw <- madrat::readSource("EDGARghg")
+  histEmiRaw <- madrat::readSource("EDGARghg", subtype = "ghg_by_sector")
 
   # copying last year for missing years
   missYears <- setdiff(c(2000:2025), getYears(histEmiRaw, as.integer = TRUE))
@@ -165,39 +165,62 @@ calcCarbonPrice <- function(subtype = "effectivePrice", includeSubnational = FAL
   # cached national price + the `*Subnational` reader subtypes (see build-subnational-sensitivity.R).
   if (isTRUE(includeSubnational)) {
     subP <- tryCatch(madrat::readSource("WBCarbonPricingDashboard", subtype = "priceSubnational"),
-                     error = function(e) NULL)
+      error = function(e) NULL
+    )
     subC <- tryCatch(madrat::readSource("WBCarbonPricingDashboard", subtype = "emissionsCoveredSubnational"),
-                     error = function(e) NULL)
+      error = function(e) NULL
+    )
     common <- character(0)
     if (!is.null(subP) && !is.null(subC)) {
       common <- intersect(magclass::getNames(subP), magclass::getNames(subC))
-      common <- common[grepl("[.](bulk|diffuse|all)$", common)]    # keep "all"; drop bunkers / unmapped
+      common <- common[grepl("[.](bulk|diffuse|all)$", common)] # keep "all"; drop bunkers / unmapped
       yy <- intersect(magclass::getYears(subP), magclass::getYears(subC))
     }
     if (length(common)) {
-      pxc <- subP[, yy, common] * subC[, yy, common]               # US$ * Mt per instrument
+      pxc <- subP[, yy, common] * subC[, yy, common] # US$ * Mt per instrument
       cov <- subC[, yy, common]
       ry <- intersect(yy, magclass::getYears(histEmiPerSectorGroupFiltered))
       rr <- intersect(magclass::getItems(pxc, 1), magclass::getItems(histEmiPerSectorGroupFiltered, 1))
       hb <- magclass::collapseNames(histEmiPerSectorGroupFiltered[rr, ry, "bulk"])
       hd <- magclass::collapseNames(histEmiPerSectorGroupFiltered[rr, ry, "diffuse"])
-      tot <- hb + hd; shB <- hb / tot; shB[!is.finite(shB)] <- 0; shD <- 1 - shB; shD[!is.finite(shD)] <- 0
+      tot <- hb + hd
+      shB <- hb / tot
+      shB[!is.finite(shB)] <- 0
+      shD <- 1 - shB
+      shD[!is.finite(shD)] <- 0
       zero <- hb * 0
       # per-sector-group sum over instruments; an "all" instrument's price applies to both
       # sectors and its covered emissions split by the parent country's bulk/diffuse shares.
-      psum <- function(x, s) { if (!s %in% magclass::getItems(x, dim = 3.2)) return(zero)
+      psum <- function(x, s) {
+        if (!s %in% magclass::getItems(x, dim = 3.2)) {
+          return(zero)
+        }
         z <- magclass::collapseNames(magclass::dimSums(magclass::mselect(x, sector_group = s), dim = 3.1))[rr, ry]
-        z[!is.finite(z)] <- 0; z }
-      pxB <- psum(pxc, "bulk") + psum(pxc, "all") * shB; pxD <- psum(pxc, "diffuse") + psum(pxc, "all") * shD
-      cvB <- psum(cov, "bulk") + psum(cov, "all") * shB; cvD <- psum(cov, "diffuse") + psum(cov, "all") * shD
+        z[!is.finite(z)] <- 0
+        z
+      }
+      pxB <- psum(pxc, "bulk") + psum(pxc, "all") * shB
+      pxD <- psum(pxc, "diffuse") + psum(pxc, "all") * shD
+      cvB <- psum(cov, "bulk") + psum(cov, "all") * shB
+      cvD <- psum(cov, "diffuse") + psum(cov, "all") * shD
       natB <- magclass::collapseNames(emissionsCovered[rr, ry, "bulk"])
       natD <- magclass::collapseNames(emissionsCovered[rr, ry, "diffuse"])
-      hrB <- pmax(hb - natB, 0); hrD <- pmax(hd - natD, 0)         # headroom to 100% after national coverage
-      sclB <- pmin(cvB, hrB) / cvB; sclB[!is.finite(sclB)] <- 0; subB <- (pxB * sclB) / hb; subB[!is.finite(subB)] <- 0
-      sclD <- pmin(cvD, hrD) / cvD; sclD[!is.finite(sclD)] <- 0; subD <- (pxD * sclD) / hd; subD[!is.finite(subD)] <- 0
-      addS <- function(ecp, add, sgi) { g <- intersect(magclass::getItems(ecp, 1), magclass::getItems(add, 1))
+      hrB <- pmax(hb - natB, 0)
+      hrD <- pmax(hd - natD, 0) # headroom to 100% after national coverage
+      sclB <- pmin(cvB, hrB) / cvB
+      sclB[!is.finite(sclB)] <- 0
+      subB <- (pxB * sclB) / hb
+      subB[!is.finite(subB)] <- 0
+      sclD <- pmin(cvD, hrD) / cvD
+      sclD[!is.finite(sclD)] <- 0
+      subD <- (pxD * sclD) / hd
+      subD[!is.finite(subD)] <- 0
+      addS <- function(ecp, add, sgi) {
+        g <- intersect(magclass::getItems(ecp, 1), magclass::getItems(add, 1))
         v <- intersect(magclass::getYears(ecp), magclass::getYears(add))
-        ecp[g, v, sgi] <- ecp[g, v, sgi] + setNames(add[g, v], sgi); ecp }
+        ecp[g, v, sgi] <- ecp[g, v, sgi] + setNames(add[g, v], sgi)
+        ecp
+      }
       effectivePrice <- addS(addS(effectivePrice, subB, "bulk"), subD, "diffuse")
     }
   }

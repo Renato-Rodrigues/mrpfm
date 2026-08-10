@@ -46,68 +46,86 @@ computeSectorWeights <- function(kind = c("ghg", "gdp", "fe"), ref) {
 
   # Source the sectoral activity series (see the roxygen for the source decisions).
   src <- switch(kind,
-    ghg = tryCatch(readSource("EDGARghg"), error = function(e) NULL),
-    fe  = tryCatch(calcOutput("FE", aggregate = FALSE, warnNA = FALSE), error = function(e) NULL),
+    ghg = tryCatch(readSource("EDGARghg", subtype = "ghg_by_sector"),
+      error = function(e) NULL
+    ),
+    fe = tryCatch(calcOutput("FE", aggregate = FALSE, warnNA = FALSE), error = function(e) NULL),
     gdp = tryCatch(readSource("OECDValueAdded"), error = function(e) NULL)
   )
   if (is.null(src)) {
-    stop("computeSectorWeights: could not resolve a '", kind, "' source series. Wire a ",
-         switch(kind, ghg = "sectoral-emissions (EDGARghg)",
-                gdp = "by-activity value-added (OECDValueAdded)",
-                fe = "final-energy"),
-         " series here before using weighting = \"", kind, "\".")
+    stop(
+      "computeSectorWeights: could not resolve a '", kind, "' source series. Wire a ",
+      switch(kind,
+        ghg = "sectoral-emissions (EDGARghg)",
+        gdp = "by-activity value-added (OECDValueAdded)",
+        fe = "final-energy"
+      ),
+      " series here before using weighting = \"", kind, "\"."
+    )
   }
-  message("computeSectorWeights[", kind, "]: source dim-3 labels: ",
-          paste(getNames(src), collapse = ", "))
+  message(
+    "computeSectorWeights[", kind, "]: source dim-3 labels: ",
+    paste(getNames(src), collapse = ", ")
+  )
 
   # map4: sum the source sub-sectors into the four PSM sectors. CONFIRM these greps
   # against the labels printed above for your data setup.
   map4 <- switch(kind,
     ghg = list(
-      elec      = grep("Power Industry",                             getNames(src), value = TRUE),
-      ind       = grep("Industrial Combustion|Processes|Fuel Exploitation",
-                       getNames(src), value = TRUE),
-      buildings = grep("Buildings",                                  getNames(src), value = TRUE),
-      transport = grep("Transport",                                  getNames(src), value = TRUE)
+      elec = grep("Power Industry", getNames(src), value = TRUE),
+      ind = grep("Industrial Combustion|Processes|Fuel Exploitation",
+        getNames(src),
+        value = TRUE
+      ),
+      buildings = grep("Buildings", getNames(src), value = TRUE),
+      transport = grep("Transport", getNames(src), value = TRUE)
     ),
     gdp = list(
-      elec      = grep("D35|electricity",     getNames(src), ignore.case = TRUE, value = TRUE),
-      ind       = grep("^C$|manufactur",      getNames(src), ignore.case = TRUE, value = TRUE),
-      buildings = grep("^L$|real estate",     getNames(src), ignore.case = TRUE, value = TRUE),
-      transport = grep("^H$|transport",       getNames(src), ignore.case = TRUE, value = TRUE)
+      elec      = grep("D35|electricity", getNames(src), ignore.case = TRUE, value = TRUE),
+      ind       = grep("^C$|manufactur", getNames(src), ignore.case = TRUE, value = TRUE),
+      buildings = grep("^L$|real estate", getNames(src), ignore.case = TRUE, value = TRUE),
+      transport = grep("^H$|transport", getNames(src), ignore.case = TRUE, value = TRUE)
     ),
     fe = list(
       elec      = grep("elec|power|generation|utilit", getNames(src), ignore.case = TRUE, value = TRUE),
-      ind       = grep("indust|manufact",              getNames(src), ignore.case = TRUE, value = TRUE),
-      buildings = grep("build|resid|commerc|real",     getNames(src), ignore.case = TRUE, value = TRUE),
-      transport = grep("transp",                       getNames(src), ignore.case = TRUE, value = TRUE)
+      ind       = grep("indust|manufact", getNames(src), ignore.case = TRUE, value = TRUE),
+      buildings = grep("build|resid|commerc|real", getNames(src), ignore.case = TRUE, value = TRUE),
+      transport = grep("transp", getNames(src), ignore.case = TRUE, value = TRUE)
     )
   )
   if (kind == "gdp" && length(getNames(src)) <= 1L) {
-    stop("computeSectorWeights[gdp]: the value-added series is total-only; supply a ",
-         "by-activity series (e.g. OECD/WDI value added) and complete map4.")
+    stop(
+      "computeSectorWeights[gdp]: the value-added series is total-only; supply a ",
+      "by-activity series (e.g. OECD/WDI value added) and complete map4."
+    )
   }
   empty <- names(map4)[lengths(map4) == 0]
   if (length(empty)) {
-    stop("computeSectorWeights[", kind, "]: no source label mapped to sector(s) ",
-         paste(empty, collapse = ", "), ". Available labels: ",
-         paste(getNames(src), collapse = ", "), " — complete map4.")
+    stop(
+      "computeSectorWeights[", kind, "]: no source label mapped to sector(s) ",
+      paste(empty, collapse = ", "), ". Available labels: ",
+      paste(getNames(src), collapse = ", "), " — complete map4."
+    )
   }
-  act <- do.call(mbind, lapply(SEC, function(s)
-    setNames(dimSums(src[, , map4[[s]]], dim = 3, na.rm = TRUE), s)))
+  act <- do.call(mbind, lapply(SEC, function(s) {
+    setNames(dimSums(src[, , map4[[s]]], dim = 3, na.rm = TRUE), s)
+  }))
 
   # align to ref's iso3c x year, then normalise to per-cell shares over the four sectors
   reg <- intersect(getItems(act, dim = 1), getItems(ref, dim = 1))
   yrs <- intersect(getYears(act), getYears(ref))
   if (length(reg) == 0 || length(yrs) == 0) {
-    stop("computeSectorWeights[", kind, "]: the weight source shares no ",
-         if (length(reg) == 0) "countries" else "years",
-         " with the sector index — cannot build weights (source: ",
-         paste(range(getYears(act, as.integer = TRUE)), collapse = "-"), ", ",
-         length(getItems(act, dim = 1)), " countries).")
+    stop(
+      "computeSectorWeights[", kind, "]: the weight source shares no ",
+      if (length(reg) == 0) "countries" else "years",
+      " with the sector index — cannot build weights (source: ",
+      paste(range(getYears(act, as.integer = TRUE)), collapse = "-"), ", ",
+      length(getItems(act, dim = 1)), " countries)."
+    )
   }
   act <- act[reg, yrs, SEC]
-  tot <- dimSums(act, dim = 3, na.rm = TRUE); tot[tot == 0] <- NA
+  tot <- dimSums(act, dim = 3, na.rm = TRUE)
+  tot[tot == 0] <- NA
   act / tot
 }
 # nolint end
