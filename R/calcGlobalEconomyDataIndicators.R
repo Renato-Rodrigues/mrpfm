@@ -67,7 +67,7 @@ calcGlobalEconomyDataIndicators <- function(outPeriod = 2003:2021) {
   )
 
   # weight ("arableLand", "GDPperCapita", "landArea", "population", "NULL", "")
-  mapping <- toolGetMapping("regionmapping_62.csv", where = "mappingfolder", type = "regional")
+  mapping <- toolPFMMapping("regionmapping_62.csv", type = "regional")
 
   gdp <- calcOutput("GDPPast", aggregate = FALSE)[, outPeriod, ] %>%
     as.data.frame() %>%

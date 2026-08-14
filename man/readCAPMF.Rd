@@ -10,7 +10,7 @@ readCAPMF(subtype = "all")
 \item{subtype}{character, type of data: "all" or specific sector.}
 }
 \value{
-A \code{\link[magclass:magclass]{magpie}} object with dimensions \verb{[iso3c, year, variable]}.
+A \code{\link[magclass:magclass-package]{magpie}} object with dimensions \verb{[iso3c, year, variable]}.
 }
 \description{
 Reads the CAPMF policy stringency data from a CSV file.

@@ -26,7 +26,7 @@ toolImputeMedians <- function(data, regionMappingFiles = c("regionmapping_54.csv
   mappingsInfo <- list()
   for (mapFile in regionMappingFiles) {
     mapping <- tryCatch(
-      toolGetMapping(mapFile, type = "regional", where = "mappingfolder"),
+      toolPFMMapping(mapFile, type = "regional"),
       error = function(e) {
         warning("Could not load region mapping file: ", mapFile)
         NULL

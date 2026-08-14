@@ -10,7 +10,7 @@ convertOECDValueAdded(x)
 \item{x}{magpie object from \code{\link[=readOECDValueAdded]{readOECDValueAdded()}}.}
 }
 \value{
-A \code{\link[magclass:magclass]{magpie}} object covering all madrat countries.
+A \code{\link[magclass:magclass-package]{magpie}} object covering all madrat countries.
 }
 \description{
 Fills the OECD country sample up to the madrat ISO3 universe with \code{NA} (no

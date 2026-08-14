@@ -73,7 +73,7 @@ calcCAPMF <- function(subtype = "all", minCoverage = 0.8, includeEstimated = FAL
       mappingFile <- "regionmapping_54.csv"
     }
     m <- tryCatch(
-      toolGetMapping(mappingFile, type = "regional", where = "mappingfolder"),
+      toolPFMMapping(mappingFile, type = "regional"),
       error = function(e) {
         warning("Could not load ", mappingFile, " in calcCAPMF. Skipping coverage filtering.")
         NULL

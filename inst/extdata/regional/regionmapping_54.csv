@@ -1,0 +1,250 @@
+X;CountryCode;RegionCode;missingH12
+Afghanistan;AFG;OAS_other;OAS
+Aland Islands;ALA;FIN;EUR
+Albania;ALB;NES_EU;NEU
+Algeria;DZA;NAF_other;MEA
+American Samoa;ASM;SEA_other;OAS
+Andorra;AND;NES_EU;NEU
+Angola;AGO;AFC_other;SSA
+Anguilla;AIA;OLA;LAM
+Antarctica;ATA;OLA;LAM
+Antigua and Barbuda;ATG;OLA;LAM
+Argentina;ARG;ARG;LAM
+Armenia;ARM;CAS;REF
+Aruba;ABW;OLA;LAM
+Australia;AUS;ANZ;CAZ
+Austria;AUT;AUT;EUR
+Azerbaijan;AZE;CAS;REF
+Bahamas;BHS;OLA;LAM
+Bahrain;BHR;MEA_other;MEA
+Bangladesh;BGD;BGD;OAS
+Barbados;BRB;OLA;LAM
+Belarus;BLR;CAS;REF
+Belgium;BEL;BELUX;EUR
+Belize;BLZ;OLA;LAM
+Benin;BEN;AFC_other;SSA
+Bermuda;BMU;OLA;LAM
+Bhutan;BTN;OAS_other;OAS
+Bolivia, Plurinational State of;BOL;OLA;LAM
+Bonaire, Sint Eustatius and Saba;BES;OLA;LAM
+Bosnia and Herzegovina;BIH;NES_EU;NEU
+Botswana;BWA;AFC_other;SSA
+Bouvet Island;BVT;OLA;LAM
+Brazil;BRA;BRA;LAM
+British Indian Ocean Territory;IOT;GBR;EUR
+Brunei Darussalam;BRN;SEA_other;OAS
+Bulgaria;BGR;ECS;EUR
+Burkina Faso;BFA;AFC_other;SSA
+Burundi;BDI;AFC_other;SSA
+Cambodia;KHM;SEA_other;OAS
+Cameroon;CMR;AFC_other;SSA
+Canada;CAN;CAN;CAZ
+Cape Verde;CPV;AFC_other;SSA
+Cayman Islands;CYM;OLA;LAM
+Central African Republic;CAF;AFC_other;SSA
+Chad;TCD;NAF_other;MEA
+Chile;CHL;CHL;LAM
+China;CHN;CHA;CHA
+Christmas Island;CXR;ANZ;CAZ
+Cocos (Keeling) Islands;CCK;ANZ;CAZ
+Colombia;COL;COL;LAM
+Comoros;COM;AFC_other;SSA
+Congo;COG;AFC_other;SSA
+Congo, the Democratic Republic of the;COD;COD;SSA
+Cook Islands;COK;SEA_other;OAS
+Costa Rica;CRI;OLA;LAM
+Cote d Ivoire;CIV;AFC_other;SSA
+Croatia;HRV;ECS;EUR
+Cuba;CUB;OLA;LAM
+Curacao;CUW;OLA;LAM
+Cyprus;CYP;GRC;EUR
+Czech Republic;CZE;ECE_other;EUR
+Denmark;DNK;DNK;EUR
+Djibouti;DJI;AFC_other;SSA
+Dominica;DMA;OLA;LAM
+Dominican Republic;DOM;OLA;LAM
+Ecuador;ECU;OLA;LAM
+Egypt;EGY;EGY;MEA
+El Salvador;SLV;OLA;LAM
+Equatorial Guinea;GNQ;AFC_other;SSA
+Eritrea;ERI;AFC_other;SSA
+Estonia;EST;ECE_other;EUR
+Ethiopia;ETH;ETH;SSA
+Falkland Islands (Malvinas);FLK;OLA;LAM
+Faroe Islands;FRO;DNK;EUR
+Fiji;FJI;SEA_other;OAS
+Finland;FIN;FIN;EUR
+France;FRA;FRA;EUR
+French Guiana;GUF;OLA;LAM
+French Polynesia;PYF;SEA_other;OAS
+French Southern Territories;ATF;FRA;EUR
+Gabon;GAB;AFC_other;SSA
+Gambia;GMB;AFC_other;SSA
+Georgia;GEO;NES_EU;NEU
+Germany;DEU;DEU;EUR
+Ghana;GHA;AFC_other;SSA
+Gibraltar;GIB;GBR;EUR
+Greece;GRC;GRC;EUR
+Greenland;GRL;DNK;EUR
+Grenada;GRD;OLA;LAM
+Guadeloupe;GLP;OLA;LAM
+Guam;GUM;SEA_other;OAS
+Guatemala;GTM;OLA;LAM
+Guernsey;GGY;GBR;EUR
+Guinea;GIN;AFC_other;SSA
+Guinea-Bissau;GNB;AFC_other;SSA
+Guyana;GUY;OLA;LAM
+Haiti;HTI;OLA;LAM
+Heard Island and McDonald Islands;HMD;ANZ;CAZ
+Holy See (Vatican City State);VAT;NES_EU;NEU
+Honduras;HND;OLA;LAM
+Hong Kong;HKG;CHA;CHA
+Hungary;HUN;ECS;EUR
+Iceland;ISL;NEN_other;NEU
+India;IND;IND;IND
+Indonesia;IDN;IDN;OAS
+Iran, Islamic Republic of;IRN;IRN;MEA
+Iraq;IRQ;MEA_other;MEA
+Ireland;IRL;IRL;EUR
+Isle of Man;IMN;GBR;EUR
+Israel;ISR;MEA_other;MEA
+Italy;ITA;ITA;EUR
+Jamaica;JAM;OLA;LAM
+Japan;JPN;JPN;JPN
+Jersey;JEY;GBR;EUR
+Jordan;JOR;MEA_other;MEA
+Kazakhstan;KAZ;CAS;REF
+Kenya;KEN;AFC_other;SSA
+Kiribati;KIR;SEA_other;OAS
+Korea, Democratic People's Republic of;PRK;CAS;REF
+Korea, Republic of;KOR;KOR;OAS
+Kuwait;KWT;MEA_other;MEA
+Kyrgyzstan;KGZ;CAS;REF
+Lao People's Democratic Republic;LAO;SEA_other;OAS
+Latvia;LVA;ECE_other;EUR
+Lebanon;LBN;MEA_other;MEA
+Lesotho;LSO;AFC_other;SSA
+Liberia;LBR;AFC_other;SSA
+Libya;LBY;NAF_other;MEA
+Liechtenstein;LIE;NEN_other;NEU
+Lithuania;LTU;ECE_other;EUR
+Luxembourg;LUX;BELUX;EUR
+Macao;MAC;CHA;CHA
+Macedonia, the former Yugoslav Republic of;MKD;NES_EU;NEU
+Madagascar;MDG;AFC_other;SSA
+Malawi;MWI;AFC_other;SSA
+Malaysia;MYS;SEA_other;OAS
+Maldives;MDV;SEA_other;OAS
+Mali;MLI;NAF_other;MEA
+Malta;MLT;ITA;EUR
+Marshall Islands;MHL;SEA_other;OAS
+Martinique;MTQ;OLA;LAM
+Mauritania;MRT;NAF_other;MEA
+Mauritius;MUS;AFC_other;SSA
+Mayotte;MYT;AFC_other;SSA
+Mexico;MEX;MEX;LAM
+Micronesia, Federated States of;FSM;SEA_other;OAS
+Moldova, Republic of;MDA;NES_EU;NEU
+Monaco;MCO;NES_EU;NEU
+Mongolia;MNG;CAS;REF
+Montenegro;MNE;NES_EU;NEU
+Montserrat;MSR;OLA;LAM
+Morocco;MAR;NAF_other;MEA
+Mozambique;MOZ;AFC_other;SSA
+Myanmar;MMR;SEA_other;OAS
+Namibia;NAM;AFC_other;SSA
+Nauru;NRU;SEA_other;OAS
+Nepal;NPL;OAS_other;OAS
+Netherlands;NLD;NLD;EUR
+New Caledonia;NCL;SEA_other;OAS
+New Zealand;NZL;ANZ;CAZ
+Nicaragua;NIC;OLA;LAM
+Niger;NER;NAF_other;MEA
+Nigeria;NGA;NGA;SSA
+Niue;NIU;SEA_other;OAS
+Norfolk Island;NFK;SEA_other;OAS
+Northern Mariana Islands;MNP;SEA_other;OAS
+Norway;NOR;NOR;NEU
+Oman;OMN;MEA_other;MEA
+Pakistan;PAK;PAK;OAS
+Palau;PLW;SEA_other;OAS
+Palestine, State of;PSE;MEA_other;MEA
+Panama;PAN;OLA;LAM
+Papua New Guinea;PNG;SEA_other;OAS
+Paraguay;PRY;OLA;LAM
+Peru;PER;OLA;LAM
+Philippines;PHL;PHL;OAS
+Pitcairn;PCN;SEA_other;OAS
+Poland;POL;POL;EUR
+Portugal;PRT;PRT;EUR
+Puerto Rico;PRI;OLA;LAM
+Qatar;QAT;MEA_other;MEA
+Reunion;REU;AFC_other;SSA
+Romania;ROU;ECS;EUR
+Russian Federation;RUS;RUS;REF
+Rwanda;RWA;AFC_other;SSA
+Saint Barthelemy;BLM;OLA;LAM
+Saint Helena, Ascension and Tristan da Cunha;SHN;AFC_other;SSA
+Saint Kitts and Nevis;KNA;OLA;LAM
+Saint Lucia;LCA;OLA;LAM
+Saint Martin (French part);MAF;OLA;LAM
+Saint Pierre and Miquelon;SPM;FRA;EUR
+Saint Vincent and the Grenadines;VCT;OLA;LAM
+Samoa;WSM;SEA_other;OAS
+San Marino;SMR;NES_EU;NEU
+Sao Tome and Principe;STP;AFC_other;SSA
+Saudi Arabia;SAU;SAU;MEA
+Senegal;SEN;AFC_other;SSA
+Serbia;SRB;NES_EU;NEU
+Seychelles;SYC;AFC_other;SSA
+Sierra Leone;SLE;AFC_other;SSA
+Singapore;SGP;SEA_other;OAS
+Sint Maarten (Dutch part);SXM;OLA;LAM
+Slovakia;SVK;ECE_other;EUR
+Slovenia;SVN;ECS;EUR
+Solomon Islands;SLB;SEA_other;OAS
+Somalia;SOM;AFC_other;SSA
+South Africa;ZAF;ZAF;SSA
+South Georgia and the South Sandwich Islands;SGS;OLA;LAM
+South Sudan;SSD;AFC_other;SSA
+Spain;ESP;ESP;EUR
+Sri Lanka;LKA;SEA_other;OAS
+Sudan;SDN;NAF_other;MEA
+Suriname;SUR;OLA;LAM
+Svalbard and Jan Mayen;SJM;NOR;NEU
+Swaziland;SWZ;AFC_other;SSA
+Sweden;SWE;SWE;EUR
+Switzerland;CHE;NEN_other;NEU
+Syrian Arab Republic;SYR;MEA_other;MEA
+Taiwan, Province of China;TWN;CHA;CHA
+Tajikistan;TJK;CAS;REF
+Tanzania, United Republic of;TZA;AFC_other;SSA
+Thailand;THA;THA;OAS
+Timor-Leste;TLS;SEA_other;OAS
+Togo;TGO;AFC_other;SSA
+Tokelau;TKL;SEA_other;OAS
+Tonga;TON;SEA_other;OAS
+Trinidad and Tobago;TTO;OLA;LAM
+Tunisia;TUN;NAF_other;MEA
+Turkey;TUR;TUR;NEU
+Turkmenistan;TKM;CAS;REF
+Turks and Caicos Islands;TCA;OLA;LAM
+Tuvalu;TUV;SEA_other;OAS
+Uganda;UGA;AFC_other;SSA
+Ukraine;UKR;NES_EU;NEU
+United Arab Emirates;ARE;MEA_other;MEA
+United Kingdom;GBR;GBR;EUR
+United States;USA;USA;USA
+United States Minor Outlying Islands;UMI;SEA_other;OAS
+Uruguay;URY;OLA;LAM
+Uzbekistan;UZB;CAS;REF
+Vanuatu;VUT;SEA_other;OAS
+Venezuela, Bolivarian Republic of;VEN;OLA;LAM
+Viet Nam;VNM;VNM;OAS
+Virgin Islands, British;VGB;OLA;LAM
+Virgin Islands, U.S.;VIR;OLA;LAM
+Wallis and Futuna;WLF;SEA_other;OAS
+Western Sahara;ESH;NAF_other;MEA
+Yemen;YEM;MEA_other;MEA
+Zambia;ZMB;AFC_other;SSA
+Zimbabwe;ZWE;AFC_other;SSA

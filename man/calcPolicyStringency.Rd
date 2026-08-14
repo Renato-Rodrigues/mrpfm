@@ -40,7 +40,7 @@ weights. Weights are renormalised within the non-missing members of each pairing
 \value{
 A list with:
 \describe{
-\item{x}{\code{\link[magclass:magclass]{magpie}} object \verb{[iso3c, year, variable]} with
+\item{x}{\code{\link[magclass:magclass-package]{magpie}} object \verb{[iso3c, year, variable]} with
 variables \code{bulk}, \code{diffuse} and (if resolvable) \code{composite}. NOTE: at country
 level, missing observations are encoded as value 0 with weight 0 (an
 aggregation device) — use \code{weight > 0} to identify real data, or

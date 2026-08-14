@@ -12,7 +12,7 @@ readVDem(subtype = "all")
 Effectiveness (see Details), or any V-Dem column code (e.g. \code{"v2x_corr"}).}
 }
 \value{
-A \code{\link[magclass:magclass]{magpie}} object with dimensions
+A \code{\link[magclass:magclass-package]{magpie}} object with dimensions
 \verb{[iso3c, year, indicator]}. Variable names follow the
 \code{"<Concept> (VDem)"} convention (see ADR 0002).
 }

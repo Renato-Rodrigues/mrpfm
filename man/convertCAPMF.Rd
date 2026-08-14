@@ -7,12 +7,12 @@
 convertCAPMF(x, subtype = "all")
 }
 \arguments{
-\item{x}{A \code{\link[magclass:magclass]{magpie}} object returned from \code{\link[=readCAPMF]{readCAPMF()}}.}
+\item{x}{A \code{\link[magclass:magclass-package]{magpie}} object returned from \code{\link[=readCAPMF]{readCAPMF()}}.}
 
 \item{subtype}{passed through; "all" or specific sector.}
 }
 \value{
-A \code{\link[magclass:magclass]{magpie}} object with all ISO3c countries (missing values set to \code{NA}).
+A \code{\link[magclass:magclass-package]{magpie}} object with all ISO3c countries (missing values set to \code{NA}).
 }
 \description{
 Fills missing countries with \code{NA} to ensure a complete ISO country list.

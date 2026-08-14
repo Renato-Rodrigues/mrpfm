@@ -7,7 +7,7 @@
 readOECDValueAdded()
 }
 \value{
-A \code{\link[magclass:magclass]{magpie}} object \verb{[iso3c, year, activity]} of
+A \code{\link[magclass:magclass-package]{magpie}} object \verb{[iso3c, year, activity]} of
 value added (current prices, national currency or the source unit — only the
 within-country cross-activity SHARES are consumed downstream, so the unit
 cancels).

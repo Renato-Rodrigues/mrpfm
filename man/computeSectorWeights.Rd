@@ -10,7 +10,7 @@ computeSectorWeights(kind = c("ghg", "gdp", "fe"), ref)
 \item{kind}{\code{"ghg"} (sector shares of GHG emissions, EDGAR), \code{"gdp"} (sector
 shares of value added, OECD), or \code{"fe"} (final-energy activity proxy).}
 
-\item{ref}{a \code{\link[magclass:magclass]{magpie}} object whose \code{iso3c} and \code{year}
+\item{ref}{a \code{\link[magclass:magclass-package]{magpie}} object whose \code{iso3c} and \code{year}
 dimensions the weights are aligned to (typically the sector-index object built in
 \code{\link[=calcPolicyStringency]{calcPolicyStringency()}}).}
 }

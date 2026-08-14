@@ -1,0 +1,250 @@
+X;CountryCode;RegionCode
+Afghanistan;AFG;other
+Aland Islands;ALA;EU
+Albania;ALB;other
+Algeria;DZA;other
+American Samoa;ASM;other
+Andorra;AND;other
+Angola;AGO;other
+Anguilla;AIA;other
+Antarctica;ATA;other
+Antigua and Barbuda;ATG;other
+Argentina;ARG;OECD
+Armenia;ARM;other
+Aruba;ABW;other
+Australia;AUS;OECD
+Austria;AUT;EU
+Azerbaijan;AZE;other
+Bahamas;BHS;other
+Bahrain;BHR;other
+Bangladesh;BGD;other
+Barbados;BRB;other
+Belarus;BLR;other
+Belgium;BEL;EU
+Belize;BLZ;other
+Benin;BEN;other
+Bermuda;BMU;other
+Bhutan;BTN;other
+Bolivia, Plurinational State of;BOL;other
+Bonaire, Sint Eustatius and Saba;BES;other
+Bosnia and Herzegovina;BIH;other
+Botswana;BWA;other
+Bouvet Island;BVT;other
+Brazil;BRA;other
+British Indian Ocean Territory;IOT;OECD
+Brunei Darussalam;BRN;other
+Bulgaria;BGR;EU
+Burkina Faso;BFA;other
+Burundi;BDI;other
+Cambodia;KHM;other
+Cameroon;CMR;other
+Canada;CAN;OECD
+Cape Verde;CPV;other
+Cayman Islands;CYM;other
+Central African Republic;CAF;other
+Chad;TCD;other
+Chile;CHL;OECD
+China;CHN;other
+Christmas Island;CXR;OECD
+Cocos (Keeling) Islands;CCK;OECD
+Colombia;COL;OECD
+Comoros;COM;other
+Congo;COG;other
+Congo, the Democratic Republic of the;COD;other
+Cook Islands;COK;other
+Costa Rica;CRI;OECD
+Cote d Ivoire;CIV;other
+Croatia;HRV;EU
+Cuba;CUB;other
+Curacao;CUW;other
+Cyprus;CYP;EU
+Czech Republic;CZE;EU
+Denmark;DNK;EU
+Djibouti;DJI;other
+Dominica;DMA;other
+Dominican Republic;DOM;other
+Ecuador;ECU;other
+Egypt;EGY;other
+El Salvador;SLV;other
+Equatorial Guinea;GNQ;other
+Eritrea;ERI;other
+Estonia;EST;EU
+Ethiopia;ETH;other
+Falkland Islands (Malvinas);FLK;other
+Faroe Islands;FRO;EU
+Fiji;FJI;other
+Finland;FIN;EU
+France;FRA;EU
+French Guiana;GUF;other
+French Polynesia;PYF;other
+French Southern Territories;ATF;EU
+Gabon;GAB;other
+Gambia;GMB;other
+Georgia;GEO;other
+Germany;DEU;EU
+Ghana;GHA;other
+Gibraltar;GIB;OECD
+Greece;GRC;EU
+Greenland;GRL;EU
+Grenada;GRD;other
+Guadeloupe;GLP;other
+Guam;GUM;other
+Guatemala;GTM;other
+Guernsey;GGY;OECD
+Guinea;GIN;other
+Guinea-Bissau;GNB;other
+Guyana;GUY;other
+Haiti;HTI;other
+Heard Island and McDonald Islands;HMD;OECD
+Holy See (Vatican City State);VAT;other
+Honduras;HND;other
+Hong Kong;HKG;other
+Hungary;HUN;EU
+Iceland;ISL;EU
+India;IND;other
+Indonesia;IDN;other
+Iran, Islamic Republic of;IRN;other
+Iraq;IRQ;other
+Ireland;IRL;EU
+Isle of Man;IMN;OECD
+Israel;ISR;OECD
+Italy;ITA;EU
+Jamaica;JAM;other
+Japan;JPN;OECD
+Jersey;JEY;OECD
+Jordan;JOR;other
+Kazakhstan;KAZ;other
+Kenya;KEN;other
+Kiribati;KIR;other
+Korea, Democratic People's Republic of;PRK;other
+Korea, Republic of;KOR;OECD
+Kuwait;KWT;other
+Kyrgyzstan;KGZ;other
+Lao People's Democratic Republic;LAO;other
+Latvia;LVA;EU
+Lebanon;LBN;other
+Lesotho;LSO;other
+Liberia;LBR;other
+Libya;LBY;other
+Liechtenstein;LIE;EU
+Lithuania;LTU;EU
+Luxembourg;LUX;EU
+Macao;MAC;other
+Macedonia, the former Yugoslav Republic of;MKD;other
+Madagascar;MDG;other
+Malawi;MWI;other
+Malaysia;MYS;other
+Maldives;MDV;other
+Mali;MLI;other
+Malta;MLT;EU
+Marshall Islands;MHL;other
+Martinique;MTQ;other
+Mauritania;MRT;other
+Mauritius;MUS;other
+Mayotte;MYT;other
+Mexico;MEX;OECD
+Micronesia, Federated States of;FSM;other
+Moldova, Republic of;MDA;other
+Monaco;MCO;other
+Mongolia;MNG;other
+Montenegro;MNE;other
+Montserrat;MSR;other
+Morocco;MAR;other
+Mozambique;MOZ;other
+Myanmar;MMR;other
+Namibia;NAM;other
+Nauru;NRU;other
+Nepal;NPL;other
+Netherlands;NLD;EU
+New Caledonia;NCL;other
+New Zealand;NZL;OECD
+Nicaragua;NIC;other
+Niger;NER;other
+Nigeria;NGA;other
+Niue;NIU;other
+Norfolk Island;NFK;other
+Northern Mariana Islands;MNP;other
+Norway;NOR;EU
+Oman;OMN;other
+Pakistan;PAK;other
+Palau;PLW;other
+Palestine, State of;PSE;other
+Panama;PAN;other
+Papua New Guinea;PNG;other
+Paraguay;PRY;other
+Peru;PER;other
+Philippines;PHL;other
+Pitcairn;PCN;other
+Poland;POL;EU
+Portugal;PRT;EU
+Puerto Rico;PRI;other
+Qatar;QAT;other
+Reunion;REU;other
+Romania;ROU;EU
+Russian Federation;RUS;other
+Rwanda;RWA;other
+Saint Barthelemy;BLM;other
+Saint Helena, Ascension and Tristan da Cunha;SHN;other
+Saint Kitts and Nevis;KNA;other
+Saint Lucia;LCA;other
+Saint Martin (French part);MAF;other
+Saint Pierre and Miquelon;SPM;EU
+Saint Vincent and the Grenadines;VCT;other
+Samoa;WSM;other
+San Marino;SMR;other
+Sao Tome and Principe;STP;other
+Saudi Arabia;SAU;other
+Senegal;SEN;other
+Serbia;SRB;other
+Seychelles;SYC;other
+Sierra Leone;SLE;other
+Singapore;SGP;other
+Sint Maarten (Dutch part);SXM;other
+Slovakia;SVK;EU
+Slovenia;SVN;EU
+Solomon Islands;SLB;other
+Somalia;SOM;other
+South Africa;ZAF;other
+South Georgia and the South Sandwich Islands;SGS;other
+South Sudan;SSD;other
+Spain;ESP;EU
+Sri Lanka;LKA;other
+Sudan;SDN;other
+Suriname;SUR;other
+Svalbard and Jan Mayen;SJM;OECD
+Swaziland;SWZ;other
+Sweden;SWE;EU
+Switzerland;CHE;EU
+Syrian Arab Republic;SYR;other
+Taiwan, Province of China;TWN;other
+Tajikistan;TJK;other
+Tanzania, United Republic of;TZA;other
+Thailand;THA;other
+Timor-Leste;TLS;other
+Togo;TGO;other
+Tokelau;TKL;other
+Tonga;TON;other
+Trinidad and Tobago;TTO;other
+Tunisia;TUN;other
+Turkey;TUR;OECD
+Turkmenistan;TKM;other
+Turks and Caicos Islands;TCA;other
+Tuvalu;TUV;other
+Uganda;UGA;other
+Ukraine;UKR;other
+United Arab Emirates;ARE;other
+United Kingdom;GBR;OECD
+United States;USA;OECD
+United States Minor Outlying Islands;UMI;other
+Uruguay;URY;other
+Uzbekistan;UZB;other
+Vanuatu;VUT;other
+Venezuela, Bolivarian Republic of;VEN;other
+Viet Nam;VNM;other
+Virgin Islands, British;VGB;other
+Virgin Islands, U.S.;VIR;other
+Wallis and Futuna;WLF;other
+Western Sahara;ESH;other
+Yemen;YEM;other
+Zambia;ZMB;other
+Zimbabwe;ZWE;other

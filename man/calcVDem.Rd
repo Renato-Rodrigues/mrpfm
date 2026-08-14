@@ -12,7 +12,7 @@ calcVDem(subtype = "all")
 \value{
 A list with:
 \describe{
-\item{x}{\code{\link[magclass:magclass]{magpie}} object \verb{[iso3c, year, indicator]}}
+\item{x}{\code{\link[magclass:magclass-package]{magpie}} object \verb{[iso3c, year, indicator]}}
 \item{weight}{SSP2 population weights for spatial aggregation}
 \item{unit}{\code{"index (0-1)"}}
 \item{description}{character description}
@@ -36,7 +36,7 @@ indicator (e.g. \code{calcOutput("VDem", subtype = "v2x_corr")}).
 Use \code{\link[=listVDemIndicators]{listVDemIndicators()}} to enumerate available codes.
 }
 \details{
-Wraps \code{\link[madrat:readSource]{readSource}} for V-Dem data and returns governance indicators as a
+Wraps \code{\link[madrat:readSource]{madrat::readSource}} for V-Dem data and returns governance indicators as a
 single magpie object for use as a \code{calcOutput}.
 }
 \author{

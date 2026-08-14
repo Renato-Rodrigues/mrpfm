@@ -250,7 +250,7 @@ calcPolicyStringency <- function(source = "official", minCoverage = 0.8,
     mappingFile <- "regionmapping_54.csv"
   }
   m <- tryCatch(
-    toolGetMapping(mappingFile, type = "regional", where = "mappingfolder"),
+    toolPFMMapping(mappingFile, type = "regional"),
     error = function(e) NULL
   )
   if (is.null(m)) {

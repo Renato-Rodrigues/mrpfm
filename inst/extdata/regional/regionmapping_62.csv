@@ -1,0 +1,250 @@
+X;CountryCode;RegionCode;missingH12;REMIND_62;REMIND_54;REMIND_39;REMIND_26;REMIND_21;REMIND_12
+Afghanistan;AFG;OAS_other;rest;OAS_other;OAS_other;OAS_central;OAS;OAS;OAS
+Aland Islands;ALA;FIN;EUR;FIN;FIN;ENC;ENC;ENC;EUR
+Albania;ALB;ALB;NEU;ALB;NES_EU;NES_EU;NES;NES;NEU
+Algeria;DZA;NAF_other;rest;NAF_other;NAF_other;NAF;MEA;MEA;MEA
+American Samoa;ASM;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Andorra;AND;NES_other;NEU;NES_other;NES_EU;NES_EU;NES;NES;NEU
+Angola;AGO;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Anguilla;AIA;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Antarctica;ATA;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Antigua and Barbuda;ATG;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Argentina;ARG;ARG;rest;ARG;ARG;OLA;LAM;LAM;LAM
+Armenia;ARM;REF_other;rest;REF_other;CAS;CAS;REF;REF;REF
+Aruba;ABW;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Australia;AUS;AUS;rest;AUS;ANZ;ANZ;CAZ;CAZ;CAZ
+Austria;AUT;AUT;EUR;AUT;AUT;AUT;AUT;EWN;EUR
+Azerbaijan;AZE;REF_other;rest;REF_other;CAS;CAS;REF;REF;REF
+Bahamas;BHS;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Bahrain;BHR;MEA_other;rest;MEA_other;MEA_other;MEA_other;MEA;MEA;MEA
+Bangladesh;BGD;BGD;rest;BGD;BGD;OAS_central;OAS;OAS;OAS
+Barbados;BRB;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Belarus;BLR;REF_other;rest;REF_other;CAS;CAS;REF;REF;REF
+Belgium;BEL;BELUX;EUR;BELUX;BELUX;BELUX;BELUX;EWN;EUR
+Belize;BLZ;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Benin;BEN;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Bermuda;BMU;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Bhutan;BTN;OAS_other;rest;OAS_other;OAS_other;OAS_central;OAS;OAS;OAS
+Bolivia, Plurinational State of;BOL;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Bonaire, Sint Eustatius and Saba;BES;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Bosnia and Herzegovina;BIH;NES_other;NEU;NES_other;NES_EU;NES_EU;NES;NES;NEU
+Botswana;BWA;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Bouvet Island;BVT;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Brazil;BRA;BRA;rest;BRA;BRA;BRA;LAM;LAM;LAM
+British Indian Ocean Territory;IOT;GBR;EUR;GBR;GBR;GBR;GBR;UKI;EUR
+Brunei Darussalam;BRN;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Bulgaria;BGR;ECS;EUR;ECS;ECS;ECS;ECS;ECS;EUR
+Burkina Faso;BFA;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Burundi;BDI;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Cambodia;KHM;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Cameroon;CMR;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Canada;CAN;CAN;rest;CAN;CAN;CAN;CAZ;CAZ;CAZ
+Cape Verde;CPV;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Cayman Islands;CYM;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Central African Republic;CAF;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Chad;TCD;NAF_other;rest;NAF_other;NAF_other;NAF;MEA;MEA;MEA
+Chile;CHL;CHL;rest;CHL;CHL;OLA;LAM;LAM;LAM
+China;CHN;CHA;rest;CHA;CHA;CHA;CHA;CHA;CHA
+Christmas Island;CXR;AUS;rest;AUS;ANZ;ANZ;CAZ;CAZ;CAZ
+Cocos (Keeling) Islands;CCK;AUS;rest;AUS;ANZ;ANZ;CAZ;CAZ;CAZ
+Colombia;COL;COL;rest;COL;COL;OLA;LAM;LAM;LAM
+Comoros;COM;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Congo;COG;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Congo, the Democratic Republic of the;COD;COD;rest;COD;COD;AFC;SSA;SSA;SSA
+Cook Islands;COK;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Costa Rica;CRI;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Cote d Ivoire;CIV;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Croatia;HRV;ECS;EUR;ECS;ECS;ECS;ECS;ECS;EUR
+Cuba;CUB;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Curacao;CUW;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Cyprus;CYP;GRC;EUR;GRC;GRC;GRC;GRC;ESC;EUR
+Czech Republic;CZE;ECE_other;EUR;ECE_other;ECE_other;ECE_other;ECE_other;ECE;EUR
+Denmark;DNK;DNK;EUR;DNK;DNK;ENC;ENC;ENC;EUR
+Djibouti;DJI;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Dominica;DMA;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Dominican Republic;DOM;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Ecuador;ECU;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Egypt;EGY;EGY;rest;EGY;EGY;NAF;MEA;MEA;MEA
+El Salvador;SLV;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Equatorial Guinea;GNQ;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Eritrea;ERI;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Estonia;EST;ECE_other;EUR;ECE_other;ECE_other;ECE_other;ECE_other;ECE;EUR
+Ethiopia;ETH;ETH;rest;ETH;ETH;AFC;SSA;SSA;SSA
+Falkland Islands (Malvinas);FLK;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Faroe Islands;FRO;DNK;EUR;DNK;DNK;ENC;ENC;ENC;EUR
+Fiji;FJI;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Finland;FIN;FIN;EUR;FIN;FIN;ENC;ENC;ENC;EUR
+France;FRA;FRA;EUR;FRA;FRA;FRA;FRA;FRA;EUR
+French Guiana;GUF;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+French Polynesia;PYF;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+French Southern Territories;ATF;FRA;EUR;FRA;FRA;FRA;FRA;FRA;EUR
+Gabon;GAB;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Gambia;GMB;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Georgia;GEO;NES_other;NEU;NES_other;NES_EU;NES_EU;NES;NES;NEU
+Germany;DEU;DEU;EUR;DEU;DEU;DEU;DEU;DEU;EUR
+Ghana;GHA;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Gibraltar;GIB;GBR;EUR;GBR;GBR;GBR;GBR;UKI;EUR
+Greece;GRC;GRC;EUR;GRC;GRC;GRC;GRC;ESC;EUR
+Greenland;GRL;DNK;EUR;DNK;DNK;ENC;ENC;ENC;EUR
+Grenada;GRD;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Guadeloupe;GLP;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Guam;GUM;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Guatemala;GTM;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Guernsey;GGY;GBR;EUR;GBR;GBR;GBR;GBR;UKI;EUR
+Guinea;GIN;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Guinea-Bissau;GNB;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Guyana;GUY;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Haiti;HTI;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Heard Island and McDonald Islands;HMD;AUS;rest;AUS;ANZ;ANZ;CAZ;CAZ;CAZ
+Holy See (Vatican City State);VAT;NES_other;NEU;NES_other;NES_EU;NES_EU;NES;NES;NEU
+Honduras;HND;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Hong Kong;HKG;CHA;rest;CHA;CHA;CHA;CHA;CHA;CHA
+Hungary;HUN;ECS;EUR;ECS;ECS;ECS;ECS;ECS;EUR
+Iceland;ISL;ISL;NEU;ISL;NEN_other;NEN_other;NEN;NEN;NEU
+India;IND;IND;rest;IND;IND;IND;IND;IND;IND
+Indonesia;IDN;IDN;rest;IDN;IDN;IDN;OAS;OAS;OAS
+Iran, Islamic Republic of;IRN;IRN;rest;IRN;IRN;IRN;MEA;MEA;MEA
+Iraq;IRQ;MEA_other;rest;MEA_other;MEA_other;MEA_other;MEA;MEA;MEA
+Ireland;IRL;IRL;EUR;IRL;IRL;IRL;IRL;UKI;EUR
+Isle of Man;IMN;GBR;EUR;GBR;GBR;GBR;GBR;UKI;EUR
+Israel;ISR;MEA_other;rest;MEA_other;MEA_other;MEA_other;MEA;MEA;MEA
+Italy;ITA;ITA;EUR;ITA;ITA;ITA;ITA;ESC;EUR
+Jamaica;JAM;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Japan;JPN;JPN;rest;JPN;JPN;JPN;JPN;JPN;JPN
+Jersey;JEY;GBR;EUR;GBR;GBR;GBR;GBR;UKI;EUR
+Jordan;JOR;MEA_other;rest;MEA_other;MEA_other;MEA_other;MEA;MEA;MEA
+Kazakhstan;KAZ;KAZ;rest;KAZ;CAS;CAS;REF;REF;REF
+Kenya;KEN;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Kiribati;KIR;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Korea, Democratic People's Republic of;PRK;REF_other;rest;REF_other;CAS;CAS;REF;REF;REF
+Korea, Republic of;KOR;KOR;rest;KOR;KOR;KOR;OAS;OAS;OAS
+Kuwait;KWT;MEA_other;rest;MEA_other;MEA_other;MEA_other;MEA;MEA;MEA
+Kyrgyzstan;KGZ;REF_other;rest;REF_other;CAS;CAS;REF;REF;REF
+Lao People's Democratic Republic;LAO;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Latvia;LVA;ECE_other;EUR;ECE_other;ECE_other;ECE_other;ECE_other;ECE;EUR
+Lebanon;LBN;MEA_other;rest;MEA_other;MEA_other;MEA_other;MEA;MEA;MEA
+Lesotho;LSO;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Liberia;LBR;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Libya;LBY;NAF_other;rest;NAF_other;NAF_other;NAF;MEA;MEA;MEA
+Liechtenstein;LIE;CHE;NEU;CHE;NEN_other;NEN_other;NEN;NEN;NEU
+Lithuania;LTU;ECE_other;EUR;ECE_other;ECE_other;ECE_other;ECE_other;ECE;EUR
+Luxembourg;LUX;BELUX;EUR;BELUX;BELUX;BELUX;BELUX;EWN;EUR
+Macao;MAC;CHA;rest;CHA;CHA;CHA;CHA;CHA;CHA
+Macedonia, the former Yugoslav Republic of;MKD;NES_other;NEU;NES_other;NES_EU;NES_EU;NES;NES;NEU
+Madagascar;MDG;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Malawi;MWI;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Malaysia;MYS;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Maldives;MDV;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Mali;MLI;NAF_other;rest;NAF_other;NAF_other;NAF;MEA;MEA;MEA
+Malta;MLT;ITA;EUR;ITA;ITA;ITA;ITA;ESC;EUR
+Marshall Islands;MHL;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Martinique;MTQ;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Mauritania;MRT;NAF_other;rest;NAF_other;NAF_other;NAF;MEA;MEA;MEA
+Mauritius;MUS;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Mayotte;MYT;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Mexico;MEX;MEX;rest;MEX;MEX;MEX;LAM;LAM;LAM
+Micronesia, Federated States of;FSM;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Moldova, Republic of;MDA;NES_other;NEU;NES_other;NES_EU;NES_EU;NES;NES;NEU
+Monaco;MCO;NES_other;NEU;NES_other;NES_EU;NES_EU;NES;NES;NEU
+Mongolia;MNG;REF_other;rest;REF_other;CAS;CAS;REF;REF;REF
+Montenegro;MNE;NES_other;NEU;NES_other;NES_EU;NES_EU;NES;NES;NEU
+Montserrat;MSR;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Morocco;MAR;NAF_other;rest;NAF_other;NAF_other;NAF;MEA;MEA;MEA
+Mozambique;MOZ;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Myanmar;MMR;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Namibia;NAM;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Nauru;NRU;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Nepal;NPL;OAS_other;rest;OAS_other;OAS_other;OAS_central;OAS;OAS;OAS
+Netherlands;NLD;NLD;EUR;NLD;NLD;NLD;NLD;EWN;EUR
+New Caledonia;NCL;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+New Zealand;NZL;NZL;rest;NZL;ANZ;ANZ;CAZ;CAZ;CAZ
+Nicaragua;NIC;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Niger;NER;NAF_other;rest;NAF_other;NAF_other;NAF;MEA;MEA;MEA
+Nigeria;NGA;NGA;rest;NGA;NGA;AFC;SSA;SSA;SSA
+Niue;NIU;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Norfolk Island;NFK;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Northern Mariana Islands;MNP;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Norway;NOR;NOR;NEU;NOR;NOR;NOR;NEN;NEN;NEU
+Oman;OMN;MEA_other;rest;MEA_other;MEA_other;MEA_other;MEA;MEA;MEA
+Pakistan;PAK;PAK;rest;PAK;PAK;OAS_central;OAS;OAS;OAS
+Palau;PLW;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Palestine, State of;PSE;MEA_other;rest;MEA_other;MEA_other;MEA_other;MEA;MEA;MEA
+Panama;PAN;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Papua New Guinea;PNG;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Paraguay;PRY;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Peru;PER;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Philippines;PHL;PHL;rest;PHL;PHL;SEA;OAS;OAS;OAS
+Pitcairn;PCN;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Poland;POL;POL;EUR;POL;POL;POL;POL;ECE;EUR
+Portugal;PRT;PRT;EUR;PRT;PRT;ESW;ESW;ESW;EUR
+Puerto Rico;PRI;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Qatar;QAT;MEA_other;rest;MEA_other;MEA_other;MEA_other;MEA;MEA;MEA
+Reunion;REU;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Romania;ROU;ECS;EUR;ECS;ECS;ECS;ECS;ECS;EUR
+Russian Federation;RUS;RUS;rest;RUS;RUS;RUS;REF;REF;REF
+Rwanda;RWA;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Saint Barthelemy;BLM;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Saint Helena, Ascension and Tristan da Cunha;SHN;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Saint Kitts and Nevis;KNA;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Saint Lucia;LCA;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Saint Martin (French part);MAF;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Saint Pierre and Miquelon;SPM;FRA;EUR;FRA;FRA;FRA;FRA;FRA;EUR
+Saint Vincent and the Grenadines;VCT;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Samoa;WSM;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+San Marino;SMR;NES_other;NEU;NES_other;NES_EU;NES_EU;NES;NES;NEU
+Sao Tome and Principe;STP;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Saudi Arabia;SAU;SAU;rest;SAU;SAU;SAU;MEA;MEA;MEA
+Senegal;SEN;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Serbia;SRB;NES_other;NEU;NES_other;NES_EU;NES_EU;NES;NES;NEU
+Seychelles;SYC;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Sierra Leone;SLE;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Singapore;SGP;SGP;rest;SGP;SEA_other;SEA;OAS;OAS;OAS
+Sint Maarten (Dutch part);SXM;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Slovakia;SVK;ECE_other;EUR;ECE_other;ECE_other;ECE_other;ECE_other;ECE;EUR
+Slovenia;SVN;ECS;EUR;ECS;ECS;ECS;ECS;ECS;EUR
+Solomon Islands;SLB;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Somalia;SOM;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+South Africa;ZAF;ZAF;rest;ZAF;ZAF;ZAF;SSA;SSA;SSA
+South Georgia and the South Sandwich Islands;SGS;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+South Sudan;SSD;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Spain;ESP;ESP;EUR;ESP;ESP;ESW;ESW;ESW;EUR
+Sri Lanka;LKA;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Sudan;SDN;NAF_other;rest;NAF_other;NAF_other;NAF;MEA;MEA;MEA
+Suriname;SUR;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Svalbard and Jan Mayen;SJM;NOR;NEU;NOR;NOR;NOR;NEN;NEN;NEU
+Swaziland;SWZ;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Sweden;SWE;SWE;EUR;SWE;SWE;ENC;ENC;ENC;EUR
+Switzerland;CHE;CHE;NEU;CHE;NEN_other;NEN_other;NEN;NEN;NEU
+Syrian Arab Republic;SYR;MEA_other;rest;MEA_other;MEA_other;MEA_other;MEA;MEA;MEA
+Taiwan, Province of China;TWN;CHA;rest;CHA;CHA;CHA;CHA;CHA;CHA
+Tajikistan;TJK;REF_other;rest;REF_other;CAS;CAS;REF;REF;REF
+Tanzania, United Republic of;TZA;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Thailand;THA;THA;rest;THA;THA;SEA;OAS;OAS;OAS
+Timor-Leste;TLS;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Togo;TGO;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Tokelau;TKL;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Tonga;TON;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Trinidad and Tobago;TTO;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Tunisia;TUN;NAF_other;rest;NAF_other;NAF_other;NAF;MEA;MEA;MEA
+Turkey;TUR;TUR;NEU;TUR;TUR;TUR;NES;NES;NEU
+Turkmenistan;TKM;REF_other;rest;REF_other;CAS;CAS;REF;REF;REF
+Turks and Caicos Islands;TCA;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Tuvalu;TUV;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Uganda;UGA;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Ukraine;UKR;UKR;NEU;UKR;NES_EU;NES_EU;NES;NES;NEU
+United Arab Emirates;ARE;MEA_other;rest;MEA_other;MEA_other;MEA_other;MEA;MEA;MEA
+United Kingdom;GBR;GBR;EUR;GBR;GBR;GBR;GBR;UKI;EUR
+United States;USA;USA;rest;USA;USA;USA;USA;USA;USA
+United States Minor Outlying Islands;UMI;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Uruguay;URY;URY;rest;URY;OLA;OLA;LAM;LAM;LAM
+Uzbekistan;UZB;REF_other;rest;REF_other;CAS;CAS;REF;REF;REF
+Vanuatu;VUT;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Venezuela, Bolivarian Republic of;VEN;VEN;rest;VEN;OLA;OLA;LAM;LAM;LAM
+Viet Nam;VNM;VNM;rest;VNM;VNM;SEA;OAS;OAS;OAS
+Virgin Islands, British;VGB;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Virgin Islands, U.S.;VIR;LAM_other;rest;LAM_other;OLA;OLA;LAM;LAM;LAM
+Wallis and Futuna;WLF;SEA_other2;rest;SEA_other2;SEA_other;SEA;OAS;OAS;OAS
+Western Sahara;ESH;NAF_other;rest;NAF_other;NAF_other;NAF;MEA;MEA;MEA
+Yemen;YEM;MEA_other;rest;MEA_other;MEA_other;MEA_other;MEA;MEA;MEA
+Zambia;ZMB;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA
+Zimbabwe;ZWE;AFC_other;rest;AFC_other;AFC_other;AFC;SSA;SSA;SSA

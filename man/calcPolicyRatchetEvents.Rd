@@ -23,7 +23,7 @@ single instrument to count as a tightening event. Default \code{0.5}.}
 \value{
 A list with:
 \describe{
-\item{x}{\code{\link[magclass:magclass]{magpie}} \verb{[iso3c, year, variable]} with
+\item{x}{\code{\link[magclass:magclass-package]{magpie}} \verb{[iso3c, year, variable]} with
 \verb{Ratchet Event} (0/1: any event), \verb{Ratchet Count} (number of instruments
 with an event) and \verb{Ratchet Intensity} (summed positive stringency jumps
 over event instruments).}

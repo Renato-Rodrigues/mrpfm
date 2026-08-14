@@ -16,14 +16,14 @@ calcCAPMF(subtype = "all", minCoverage = 0.8, includeEstimated = FALSE)
 \value{
 A list with:
 \describe{
-\item{x}{\code{\link[magclass:magclass]{magpie}} object \verb{[iso3c, year, variable]}}
+\item{x}{\code{\link[magclass:magclass-package]{magpie}} object \verb{[iso3c, year, variable]}}
 \item{weight}{SSP2 population weights for spatial aggregation}
 \item{unit}{\code{"index (0-10)"}}
 \item{description}{character description}
 }
 }
 \description{
-Wraps \code{\link[madrat:readSource]{readSource}} for CAPMF data and returns sectoral stringency indicators
+Wraps \code{\link[madrat:readSource]{madrat::readSource}} for CAPMF data and returns sectoral stringency indicators
 as a single magpie object for use as a \code{calcOutput}.
 }
 \author{
