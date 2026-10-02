@@ -27,6 +27,12 @@
 #' @param minCoverage numeric, logical or NULL; threshold of GDP and Population
 #'   coverage below which a whole region's countries are excluded (set `NA`).
 #'   Defaults to 0.8. Set to `FALSE` or `NULL` to disable.
+#' @param coverageMapping Name of the region mapping whose regions the coverage filter judges
+#'   (\code{toolPFMMapping}). \code{NULL} (default) reads madrat's global \code{regionmapping}
+#'   setting, the behaviour up to mrpfm 0.4.0. Pass it explicitly: madrat's cache key covers this
+#'   function's arguments but not the global setting, so without it a cached result filtered by
+#'   other regions is indistinguishable from this one (a shared cluster cache held one that had
+#'   dropped 11 of 48 countries, 2026-10-03).
 #' @param sectorResolution character; `"two"` (default) returns the Bulk/Diffuse/
 #'   composite outcomes, `"four"` the raw Electricity/Industry/Buildings/Transport
 #'   sector indices.
@@ -62,7 +68,8 @@
 #'
 #' @export
 calcPolicyStringency <- function(source = "official", minCoverage = 0.8,
-                                 sectorResolution = "two", weighting = "equal") {
+                                 sectorResolution = "two", weighting = "equal",
+                                 coverageMapping = NULL) {
   sectorResolution <- match.arg(sectorResolution, c("two", "four"))
   if (is.character(weighting)) {
     weighting <- match.arg(weighting, c("equal", "ghg", "gdp", "fe"))
@@ -203,7 +210,7 @@ calcPolicyStringency <- function(source = "official", minCoverage = 0.8,
   }
   if (!isFALSE(minCoverage) && !is.null(minCoverage)) {
     hasData <- apply(!is.na(out), 1, any)
-    out <- .filterRegionalCoverage(out, minCoverage, names(hasData)[hasData])
+    out <- .filterRegionalCoverage(out, minCoverage, names(hasData)[hasData], coverageMapping)
   }
 
   # SSP2 population weights (fallback to equal weights in isolated environments)
@@ -244,8 +251,8 @@ calcPolicyStringency <- function(source = "official", minCoverage = 0.8,
 # Exclude (set NA) all countries of regions whose data-bearing members cover less
 # than `minCoverage` of the region's GDP AND population (reference year 2020, or the
 # latest common GDP/population year before it).
-.filterRegionalCoverage <- function(x, minCoverage, coveredCountries) {
-  mappingFile <- madrat::getConfig("regionmapping")
+.filterRegionalCoverage <- function(x, minCoverage, coveredCountries, mappingFile = NULL) {
+  if (is.null(mappingFile)) mappingFile <- madrat::getConfig("regionmapping")
   if (is.null(mappingFile) || mappingFile == "") {
     mappingFile <- "regionmapping_54.csv"
   }

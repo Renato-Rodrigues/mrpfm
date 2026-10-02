@@ -7,6 +7,9 @@
 #' @param subtype character; "all" (default) or a specific sector.
 #' @param minCoverage numeric or logical; threshold of GDP and Population coverage below which a region is excluded. Defaults to 0.8. Set to FALSE or NULL to disable.
 #' @param includeEstimated logical; if TRUE, estimates the composite index scores for newly onboarded developing countries.
+#' @param coverageMapping Name of the region mapping whose regions the coverage filter judges;
+#'   \code{NULL} (default) reads madrat's global \code{regionmapping}. See
+#'   \code{\link{calcPolicyStringency}}: pass it explicitly so it enters madrat's cache key.
 #'
 #' @return A list with:
 #'   \describe{
@@ -22,7 +25,8 @@
 #' @importFrom magclass getYears getNames time_interpolate ndata getItems dimSums mbind new.magpie as.magpie
 #'
 #' @export
-calcCAPMF <- function(subtype = "all", minCoverage = 0.8, includeEstimated = FALSE) {
+calcCAPMF <- function(subtype = "all", minCoverage = 0.8, includeEstimated = FALSE,
+                      coverageMapping = NULL) {
   x <- readSource("CAPMF", subtype = subtype, convert = TRUE)
 
 
@@ -68,7 +72,7 @@ calcCAPMF <- function(subtype = "all", minCoverage = 0.8, includeEstimated = FAL
   }
 
   if (!isFALSE(minCoverage) && !is.null(minCoverage)) {
-    mappingFile <- madrat::getConfig("regionmapping")
+    mappingFile <- if (is.null(coverageMapping)) madrat::getConfig("regionmapping") else coverageMapping
     if (is.null(mappingFile) || mappingFile == "") {
       mappingFile <- "regionmapping_54.csv"
     }

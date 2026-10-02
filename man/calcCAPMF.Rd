@@ -4,7 +4,12 @@
 \alias{calcCAPMF}
 \title{Calculate OECD Climate Actions and Policies Measurement Framework (CAPMF) data}
 \usage{
-calcCAPMF(subtype = "all", minCoverage = 0.8, includeEstimated = FALSE)
+calcCAPMF(
+  subtype = "all",
+  minCoverage = 0.8,
+  includeEstimated = FALSE,
+  coverageMapping = NULL
+)
 }
 \arguments{
 \item{subtype}{character; "all" (default) or a specific sector.}
@@ -12,6 +17,10 @@ calcCAPMF(subtype = "all", minCoverage = 0.8, includeEstimated = FALSE)
 \item{minCoverage}{numeric or logical; threshold of GDP and Population coverage below which a region is excluded. Defaults to 0.8. Set to FALSE or NULL to disable.}
 
 \item{includeEstimated}{logical; if TRUE, estimates the composite index scores for newly onboarded developing countries.}
+
+\item{coverageMapping}{Name of the region mapping whose regions the coverage filter judges;
+\code{NULL} (default) reads madrat's global \code{regionmapping}. See
+\code{\link{calcPolicyStringency}}: pass it explicitly so it enters madrat's cache key.}
 }
 \value{
 A list with:
@@ -23,7 +32,7 @@ A list with:
 }
 }
 \description{
-Wraps \code{\link[madrat:readSource]{madrat::readSource}} for CAPMF data and returns sectoral stringency indicators
+Wraps \code{\link{readSource}} for CAPMF data and returns sectoral stringency indicators
 as a single magpie object for use as a \code{calcOutput}.
 }
 \author{

@@ -38,3 +38,22 @@ test_that("calcPolicyStringency rejects unknown source and warns on the simulate
     "simulated stub"
   )
 })
+
+test_that("the coverage filter judges the regions it is given, not madrat's global setting", {
+  m <- toolPFMMapping("regionmappingH12.csv", type = "regional", verbose = FALSE)
+  ctry <- m$CountryCode
+  ref <- new.magpie(ctry, 2020, "v", fill = 1)
+  testthat::local_mocked_bindings(calcOutput = function(type, ...) ref, .package = "mrpfm")
+  x <- new.magpie(c("DEU", "FRA"), 2020, "bulk", fill = 5)
+  # H12: DEU + FRA are far below 80% of EUR's GDP/population -> the whole region is excluded
+  h12 <- suppressMessages(mrpfm:::.filterRegionalCoverage(x, 0.8, c("DEU", "FRA"), "regionmappingH12.csv"))
+  expect_true(all(is.na(h12)))
+  # a mapping in which each country is its own region keeps both
+  dir <- withr::local_tempdir()
+  dir.create(file.path(dir, "regional"))
+  utils::write.table(data.frame(X = ctry, CountryCode = ctry, RegionCode = ctry),
+                     file.path(dir, "regional", "regionmapping_ctry.csv"), sep = ";", row.names = FALSE, quote = FALSE)
+  suppressMessages(madrat::localConfig(mappingfolder = dir, .verbose = FALSE))
+  own <- suppressMessages(mrpfm:::.filterRegionalCoverage(x, 0.8, c("DEU", "FRA"), "regionmapping_ctry.csv"))
+  expect_equal(as.numeric(own), c(5, 5))
+})

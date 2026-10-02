@@ -8,7 +8,8 @@ calcPolicyStringency(
   source = "official",
   minCoverage = 0.8,
   sectorResolution = "two",
-  weighting = "equal"
+  weighting = "equal",
+  coverageMapping = NULL
 )
 }
 \arguments{
@@ -36,6 +37,13 @@ collinear/least stable.) You may also pass weights directly as a \strong{named n
 vector} over the sector short names (\code{c(elec=, ind=, buildings=, transport=)},
 broadcast to all cells) or a \strong{magpie} \verb{[iso3c, year, sector]} of per-cell
 weights. Weights are renormalised within the non-missing members of each pairing.}
+
+\item{coverageMapping}{Name of the region mapping whose regions the coverage filter judges
+(\code{toolPFMMapping}). \code{NULL} (default) reads madrat's global \code{regionmapping}
+setting, the behaviour up to mrpfm 0.4.0. Pass it explicitly: madrat's cache key covers this
+function's arguments but not the global setting, so without it a cached result filtered by
+other regions is indistinguishable from this one (a shared cluster cache held one that had
+dropped 11 of 48 countries, 2026-10-03).}
 }
 \value{
 A list with:
