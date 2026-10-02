@@ -7,7 +7,9 @@
 calcSSPextensions(subtype = "all")
 }
 \arguments{
-\item{subtype}{subtype "all" or "drivers_SSP2"}
+\item{subtype}{subtype "all", or "drivers_SSP1" ... "drivers_SSP5": the six PFM driver series
+for one SSP. The Rule-of-Law Index is published for SSP1-3 only (Andrijevic et al. 2020);
+for SSP4 and SSP5 it takes the SSP2 path, relabelled, and says so.}
 }
 \value{
 A list with a \code{\link[magclass:magclass-package]{magpie}} object, weight, unit and description.
