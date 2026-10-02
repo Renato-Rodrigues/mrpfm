@@ -33,17 +33,17 @@ depends on \pkg{mrpfm}, so this is the one place both can reach, and one place i
 the point — a second copy is a second thing to drift.
 
 Why not simply let madrat search everything: with \code{where = NULL} madrat also
-consults every package in \code{getConfig("packages")}, and those copies are not
-interchangeable. madrat's own bundled \code{regionmappingH12.csv} assigns 15
-countries to different regions than the REMIND input data — Ukraine, Georgia and
-Moldova move between REF and NEU, Mongolia and North Korea between OAS and REF,
-Greenland between NEU and EUR, and four Sahel states between SSA and MEA. Silently
-picking that copy re-aggregates every regional result under a different definition
-of the regions. So the search order here is closed, not open.
+consults every package in \code{getConfig("packages")}, and which copy it returns would
+depend on what happens to be installed; copies of the same name are not always
+interchangeable (a future update of the H12 regions moves 15 countries - Ukraine,
+Georgia, Moldova, Mongolia, North Korea, Greenland, four Sahel states ...). So the
+search order here is closed, not open.
 
-The bundled copies are byte- and content-verified against the REMIND input data;
-see \code{inst/extdata/PROVENANCE.md}. The fallback is a convenience for a machine
-without the input data, not a second opinion.
+The bundled H12 and EU21 copies are the REMIND fork's own \code{config/} mappings, the
+regions REMIND solves on (since 2026-10-02; they were the future update until then, so a
+machine without a mappingfolder used other regions than REMIND). The others are verified
+against the REMIND input data. See \code{inst/extdata/PROVENANCE.md}. The fallback is a
+convenience for a machine without the input data, not a second opinion.
 }
 \author{
 Renato Rodrigues
