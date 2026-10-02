@@ -58,6 +58,10 @@ toolIPFDownscale <- function(prior, remind, groups, mapping,
 
   # Convert prior to plain array [country, year, var] for fast slicing
   priorArr <- as.array(prior[priorCtrs, , ])
+  # The REMIND values are read, and the result written, as plain arrays too: element-wise magpie
+  # indexing in the loops below cost ~29 s of every ~99 s coupling call (profile of 2026-10-02).
+  remArr <- as.array(remind)
+  oarr   <- as.array(out)
 
   # ── Pre-compute per-group, per-region historical carrier shares ─────────────
   # Shares are frozen from the last nHistYears valid years to avoid
@@ -143,32 +147,35 @@ toolIPFDownscale <- function(prior, remind, groups, mapping,
         if (is.null(rs)) next
 
         ctrs <- rs$ctrs
-        reg_denom <- as.numeric(remind[r, t, denomVar])
+        tName <- paste0("y", t)
+        reg_denom <- as.numeric(remArr[r, tName, denomVar])
         if (reg_denom <= 0) next
 
         # Distribute each carrier by its pre-computed country shares
         named_alloc <- matrix(0, nrow = length(ctrs), ncol = length(namedVars),
                               dimnames = list(ctrs, namedVars))
         for (v in namedVars) {
-          reg_v <- as.numeric(remind[r, t, v])
+          reg_v <- as.numeric(remArr[r, tName, v])
           named_alloc[, v] <- reg_v * rs$carrier_shares[, v]
         }
 
         # Distribute remainder by remainder shares
-        reg_named_sum <- sum(sapply(namedVars, function(v) as.numeric(remind[r, t, v])))
+        reg_named_sum <- sum(as.numeric(remArr[r, tName, namedVars]))
         reg_remainder <- max(0, reg_denom - reg_named_sum)
         remainder_alloc <- reg_remainder * rs$remainder_shares
 
         denom_alloc <- rowSums(named_alloc) + remainder_alloc
 
-        for (v in namedVars) out[ctrs, t, v] <- named_alloc[, v]
-        out[ctrs, t, denomVar] <- denom_alloc
+        for (v in namedVars) oarr[ctrs, tName, v] <- named_alloc[, v]
+        oarr[ctrs, tName, denomVar] <- denom_alloc
       }
     }
   }
 
+  out[, , ] <- oarr
+
   # ── Verify reaggregation (should be exact by construction) ──────────────────
-  outArr    <- as.array(out)
+  outArr    <- oarr
   maxRelErr <- 0
   for (t in remindYears) {
     tName <- paste0("y", t)
@@ -176,7 +183,7 @@ toolIPFDownscale <- function(prior, remind, groups, mapping,
       for (r in regionCodes) {
         ctrsR  <- mapping$CountryCode[mapping$RegionCode == r]
         regSum <- sum(outArr[ctrsR, tName, v], na.rm = TRUE)
-        regRef <- as.numeric(remind[r, t, v])
+        regRef <- as.numeric(remArr[r, tName, v])
         if (abs(regRef) > 1e-12) {
           maxRelErr <- max(maxRelErr, abs(regSum - regRef) / abs(regRef))
         }

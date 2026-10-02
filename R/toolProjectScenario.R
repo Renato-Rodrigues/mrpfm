@@ -50,6 +50,10 @@ toolProjectScenario <- function(x,
   vars   <- getItems(x, dim = 3)
   y      <- sort(as.integer(y))
   out    <- new.magpie(regs, y, vars, fill = NA) # nolint: undesirable_function_linter.
+  # Filled as a plain array and written into the magpie object once at the end: element-wise
+  # magpie assignment cost ~38 s of every ~99 s coupling call (profile of 2026-10-02).
+  oarr   <- array(NA_real_, dim = c(length(regs), length(y), length(vars)),
+                  dimnames = list(regs, as.character(y), vars))
   arr    <- as.array(x)
   yrsAll <- getYears(x, as.integer = TRUE)
 
@@ -57,92 +61,100 @@ toolProjectScenario <- function(x,
     vArr    <- arr[, , v, drop = FALSE]
     hasData <- apply(!is.na(vArr), 2, any)
     if (!any(hasData)) next
-    anchorYear <- max(yrsAll[hasData])
-
-    # Compute convergence target from cross-sectional distribution at anchorYear
-    crossSec <- as.numeric(vArr[, yrsAll == anchorYear, ])
-    target <- switch(mode,
-      constant          = NA_real_,
-      global_max        = max(crossSec, na.rm = TRUE),
-      global_percentile = as.numeric(quantile(crossSec, probs = percentile / 100, na.rm = TRUE)),
-      global_mean       = mean(crossSec, na.rm = TRUE),
-      fixed_value       = as.numeric(fixedValue)
-    )
-
-    # Precompute logistic parameters once per variable (avoids re-computing inside the inner loop)
-    k <- denom <- L_a <- mid <- NULL
-    if (shape == "logistic" && mode != "constant") {
-      mid <- if (!is.null(midpointYear)) {
-        as.integer(midpointYear)
-      } else {
-        as.integer(round((anchorYear + convergenceYear) / 2))
-      }
-      if (mid >= convergenceYear) {
-        stop("midpointYear (", mid, ") must be less than convergenceYear (", convergenceYear, ")")
-      }
-      if (mid <= anchorYear) {
-        stop("midpointYear (", mid, ") must be greater than the anchor year (", anchorYear, ")")
-      }
-      # k derived so the raw logistic reaches ~0.99 at convergenceYear relative to midpointYear
-      k     <- log(99) / (convergenceYear - mid)
-      L_a   <- 1 / (1 + exp(-k * (anchorYear      - mid)))
-      L_c   <- 1 / (1 + exp(-k * (convergenceYear - mid)))
-      denom <- L_c - L_a
-    }
-
+    path <- .projectionPath(vArr, yrsAll, hasData, mode, percentile, fixedValue, convergenceYear,
+                            shape, midpointYear)
     for (r in regs) {
-      rVals <- as.numeric(vArr[r, , ])
-      valid <- which(!is.na(rVals))
-      if (length(valid) == 0) next
-
-      validYears <- yrsAll[valid]
-      firstYear  <- min(validYears)
-      lastYear   <- max(validYears)
-
-      # ---- Historical / pre-anchor years: interpolate from x ----
-      histY <- y[y <= anchorYear]
-      backY <- histY[histY < firstYear]
-      midY  <- histY[histY >= firstYear & histY <= lastYear]
-      fwdY  <- histY[histY > lastYear]
-
-      if (length(backY) > 0) out[r, backY, v] <- rVals[valid[1]]
-      if (length(midY)  > 0) {
-        out[r, midY, v] <- approx(validYears, rVals[valid], xout = midY,
-                                  method = "linear", rule = 1)$y
-      }
-      if (length(fwdY)  > 0) out[r, fwdY, v] <- rVals[valid[length(valid)]]
-
-      # ---- Projection years (after anchorYear) ----
-      projY <- y[y > anchorYear]
-      if (length(projY) == 0) next
-
-      # startVal: value at anchorYear for this region (computed directly from x data)
-      startVal <- if (anchorYear >= firstYear && anchorYear <= lastYear) {
-        approx(validYears, rVals[valid], xout = anchorYear, method = "linear", rule = 1)$y
-      } else if (anchorYear > lastYear) {
-        rVals[valid[length(valid)]]
-      } else {
-        rVals[valid[1]]
-      }
-      if (is.na(startVal)) next
-
-      if (mode == "constant" || (keepIfAboveTarget && startVal > target)) {
-        out[r, projY, v] <- startVal
-        next
-      }
-
-      for (yr in projY) {
-        if (yr >= convergenceYear) {
-          w <- 1.0
-        } else if (shape == "linear") {
-          w <- (yr - anchorYear) / (convergenceYear - anchorYear)
-        } else {
-          L_t <- 1 / (1 + exp(-k * (yr - mid)))
-          w   <- max(0, min(1, (L_t - L_a) / denom))
-        }
-        out[r, yr, v] <- startVal + w * (target - startVal)
-      }
+      oarr[r, , v] <- .projectRegion(as.numeric(vArr[r, , ]), yrsAll, y, path, mode, shape,
+                                     convergenceYear, keepIfAboveTarget)
     }
   }
+  out[, , ] <- oarr
   return(out)
+}
+
+# One variable's anchor year, cross-sectional target and logistic parameters.
+.projectionPath <- function(vArr, yrsAll, hasData, mode, percentile, fixedValue, convergenceYear,
+                            shape, midpointYear) {
+  anchorYear <- max(yrsAll[hasData])
+  # Compute convergence target from cross-sectional distribution at anchorYear
+  crossSec <- as.numeric(vArr[, yrsAll == anchorYear, ])
+  target <- switch(mode,
+    constant          = NA_real_,
+    global_max        = max(crossSec, na.rm = TRUE),
+    global_percentile = as.numeric(quantile(crossSec, probs = percentile / 100, na.rm = TRUE)),
+    global_mean       = mean(crossSec, na.rm = TRUE),
+    fixed_value       = as.numeric(fixedValue)
+  )
+  path <- list(anchorYear = anchorYear, target = target)
+  if (shape == "logistic" && mode != "constant") {
+    mid <- if (!is.null(midpointYear)) {
+      as.integer(midpointYear)
+    } else {
+      as.integer(round((anchorYear + convergenceYear) / 2))
+    }
+    if (mid >= convergenceYear) {
+      stop("midpointYear (", mid, ") must be less than convergenceYear (", convergenceYear, ")")
+    }
+    if (mid <= anchorYear) {
+      stop("midpointYear (", mid, ") must be greater than the anchor year (", anchorYear, ")")
+    }
+    # k derived so the raw logistic reaches ~0.99 at convergenceYear relative to midpointYear
+    k <- log(99) / (convergenceYear - mid)
+    logisticAnchor <- 1 / (1 + exp(-k * (anchorYear      - mid)))
+    logisticConv   <- 1 / (1 + exp(-k * (convergenceYear - mid)))
+    path <- c(path, list(k = k, mid = mid, logisticAnchor = logisticAnchor,
+                         denom = logisticConv - logisticAnchor))
+  }
+  path
+}
+
+# One region's series over y: history interpolated (held flat outside the observed years) up to
+# the anchor year, then the projection. NA where there is nothing to project from.
+.projectRegion <- function(rVals, yrsAll, y, path, mode, shape, convergenceYear, keepIfAboveTarget) {
+  res   <- rep(NA_real_, length(y))
+  valid <- which(!is.na(rVals))
+  if (length(valid) == 0) return(res)
+  validYears <- yrsAll[valid]
+  firstYear  <- min(validYears)
+  lastYear   <- max(validYears)
+  anchorYear <- path$anchorYear
+  target     <- path$target
+
+  # ---- Historical / pre-anchor years: interpolate from x ----
+  histI <- y <= anchorYear
+  res[histI & y < firstYear] <- rVals[valid[1]]
+  midI <- histI & y >= firstYear & y <= lastYear
+  if (any(midI)) {
+    res[midI] <- approx(validYears, rVals[valid], xout = y[midI], method = "linear", rule = 1)$y
+  }
+  res[histI & y > lastYear] <- rVals[valid[length(valid)]]
+
+  # ---- Projection years (after anchorYear) ----
+  projI <- y > anchorYear
+  if (!any(projI)) return(res)
+  # startVal: value at anchorYear for this region (computed directly from x data)
+  startVal <- if (anchorYear >= firstYear && anchorYear <= lastYear) {
+    approx(validYears, rVals[valid], xout = anchorYear, method = "linear", rule = 1)$y
+  } else if (anchorYear > lastYear) {
+    rVals[valid[length(valid)]]
+  } else {
+    rVals[valid[1]]
+  }
+  if (is.na(startVal)) return(res)
+  if (mode == "constant" || (keepIfAboveTarget && startVal > target)) {
+    res[projI] <- startVal
+    return(res)
+  }
+  w <- vapply(y[projI], function(yr) {
+    if (yr >= convergenceYear) {
+      1.0
+    } else if (shape == "linear") {
+      (yr - anchorYear) / (convergenceYear - anchorYear)
+    } else {
+      logisticT <- 1 / (1 + exp(-path$k * (yr - path$mid)))
+      max(0, min(1, (logisticT - path$logisticAnchor) / path$denom))
+    }
+  }, numeric(1))
+  res[projI] <- startVal + w * (target - startVal)
+  res
 }
