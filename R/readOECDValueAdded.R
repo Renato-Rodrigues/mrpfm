@@ -23,7 +23,7 @@ readOECDValueAdded <- function() {
   files <- list.files(".", pattern = "oecd_value_added.*\\.csv$",
                       full.names = TRUE, ignore.case = TRUE)
   if (length(files) == 0) {
-    stop("readOECDValueAdded: no 'oecd_value_added*.csv' in the source folder — ",
+    stop("readOECDValueAdded: no 'oecd_value_added*.csv' in the source folder - ",
          "run downloadOECDValueAdded() (or place the OECD Table 6 CSV there).")
   }
   raw <- utils::read.csv(files[[1]], stringsAsFactors = FALSE, check.names = FALSE)
@@ -33,7 +33,7 @@ readOECDValueAdded <- function() {
   missing <- setdiff(need, colnames(raw))
   if (length(missing) > 0) {
     stop("readOECDValueAdded: CSV lacks column(s) ", paste(missing, collapse = ", "),
-         " — found: ", paste(colnames(raw), collapse = ", "))
+         " - found: ", paste(colnames(raw), collapse = ", "))
   }
   if ("transaction" %in% colnames(raw)) {
     raw <- raw[toupper(raw$transaction) == "B1G", , drop = FALSE]

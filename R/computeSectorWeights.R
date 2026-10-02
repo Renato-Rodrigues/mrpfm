@@ -104,7 +104,7 @@ computeSectorWeights <- function(kind = c("ghg", "gdp", "fe"), ref) {
     stop(
       "computeSectorWeights[", kind, "]: no source label mapped to sector(s) ",
       paste(empty, collapse = ", "), ". Available labels: ",
-      paste(getNames(src), collapse = ", "), " — complete map4."
+      paste(getNames(src), collapse = ", "), " - complete map4."
     )
   }
   act <- do.call(mbind, lapply(SEC, function(s) {
@@ -118,7 +118,7 @@ computeSectorWeights <- function(kind = c("ghg", "gdp", "fe"), ref) {
     stop(
       "computeSectorWeights[", kind, "]: the weight source shares no ",
       if (length(reg) == 0) "countries" else "years",
-      " with the sector index — cannot build weights (source: ",
+      " with the sector index - cannot build weights (source: ",
       paste(range(getYears(act, as.integer = TRUE)), collapse = "-"), ", ",
       length(getItems(act, dim = 1)), " countries)."
     )

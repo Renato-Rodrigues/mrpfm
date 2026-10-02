@@ -41,7 +41,7 @@ downloadOECDValueAdded <- function() {
       } else {
         stop("downloadOECDValueAdded: download failed and no local '", destfile,
              "' exists: ", e$message,
-             " — check/adjust the SDMX dataflow in downloadOECDValueAdded().")
+             " - check/adjust the SDMX dataflow in downloadOECDValueAdded().")
       }
     }
   )
