@@ -4,6 +4,20 @@ library(mrpfm)    # nolint: undesirable_function_linter.
 
 `%||%` <- function(a, b) if (!is.null(a)) a else b # nolint: object_name_linter.
 
+# Prime madrat's dependency graph once, quietly. The first readSource/calcOutput of a session scans
+# the code of every installed madrat package (getMadratGraph -> getCode) and, in the throwaway
+# mainfolder the tests use, warns "Mapping in <pkg>:::<fun> not found!" for hundreds of functions
+# of OTHER packages (mrremind, mrdrivers, ...). Those warnings say nothing about mrpfm, but
+# lucode2::buildLibrary fails on any test warning. The graph is cached for the session, so the
+# tests themselves still report every warning they produce.
+# Called again by mrLocalEnv() after each config change, which can invalidate the cached graph.
+primeMadratGraph <- function() {
+  pkgs <- madrat::getConfig("packages", verbose = FALSE)
+  suppressMessages(suppressWarnings(try(madrat::getMadratGraph(packages = pkgs), silent = TRUE)))
+  invisible(NULL)
+}
+primeMadratGraph()
+
 #' Path to the package test data directory
 testDataDir <- function() {
   testthat::test_path("testdata")
@@ -22,6 +36,7 @@ mrLocalEnv <- function(src = NULL, env = parent.frame()) {
   suppressMessages(suppressWarnings(
     madrat::setConfig(sourcefolder = sf, mainfolder = tmp, verbosity = 0)
   ))
+  primeMadratGraph()
   withr::defer(
     suppressMessages(suppressWarnings(
       madrat::setConfig(
