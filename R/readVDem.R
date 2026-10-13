@@ -63,9 +63,12 @@ readVDem <- function(subtype = "all") {
     "v2x_corr"    = "Political Corruption (VDem)",
     "v2x_neopat"  = "Neopatrimonialism (VDem)"
   )
+  # Electoral democracy (subtype = "democracy"): the weight of the democracy-weighted interactions
+  # (pfm interactionWeight; design note 0007, option O10). Kept out of "all" so that set is unchanged.
+  democracyMap <- c("v2x_polyarchy" = "Electoral Democracy (VDem)")
   defaultCodes      <- names(labelMap)
   stateCapCodes     <- names(stateCapacityMap)
-  fullLabelMap      <- c(labelMap, stateCapacityMap)
+  fullLabelMap      <- c(labelMap, stateCapacityMap, democracyMap)
 
   files <- list.files(path = ".", pattern = "\\.csv$", full.names = TRUE, ignore.case = TRUE)
   if (length(files) == 0) stop("No CSV file found in VDem source folder.")
@@ -73,6 +76,7 @@ readVDem <- function(subtype = "all") {
 
   codes <- if (subtype == "all")           defaultCodes
            else if (subtype == "stateCapacity") stateCapCodes
+           else if (subtype == "democracy")     names(democracyMap)
            else                            subtype
 
   # Use the combined map so any code from either group gets a proper label

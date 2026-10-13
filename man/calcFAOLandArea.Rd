@@ -20,7 +20,7 @@ Land area is constant in time. The function returns the most recent available
 year's data. Missing countries are set to \code{NA}.
 }
 \details{
-Wraps \code{\link[madrat:readSource]{madrat::readSource}} for FAO FAOSTAT land area data and returns it as a
+Wraps \code{\link{readSource}} for FAO FAOSTAT land area data and returns it as a
 \code{calcOutput} compatible magpie object.
 }
 \author{

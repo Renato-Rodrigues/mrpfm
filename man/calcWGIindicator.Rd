@@ -21,7 +21,7 @@ Voice and Accountability (WGI), Political Stability (WGI), Government Effectiven
 Regulatory Quality (WGI), Rule of Law (WGI), Control of Corruption (WGI).
 }
 \details{
-Wraps \code{\link[madrat:readSource]{madrat::readSource}} for WGI indicator data and returns all six governance
+Wraps \code{\link{readSource}} for WGI indicator data and returns all six governance
 indicators as a single magpie object suitable for use as a \code{calcOutput}.
 }
 \author{

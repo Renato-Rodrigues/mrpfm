@@ -16,11 +16,15 @@
 #' Note: three of these are "bad when high" — they are inverted in
 #' `panelDataHistorical()` before normalisation.
 #'
+#' `subtype = "democracy"` returns the electoral democracy index (v2x_polyarchy) as
+#' "Electoral Democracy (VDem)": the weight of the democracy-weighted interactions in pfm
+#' (`interactionWeight`; design note 0007).
+#'
 #' Pass any V-Dem column code as `subtype` to retrieve a single arbitrary
 #' indicator (e.g. `calcOutput("VDem", subtype = "v2x_corr")`).
 #' Use [`listVDemIndicators()`] to enumerate available codes.
 #'
-#' @param subtype character; `"all"` (default), `"stateCapacity"`, or a V-Dem column code.
+#' @param subtype character; `"all"` (default), `"stateCapacity"`, `"democracy"`, or a V-Dem column code.
 #'
 #' @return A list with:
 #'   \describe{

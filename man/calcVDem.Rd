@@ -7,7 +7,7 @@
 calcVDem(subtype = "all")
 }
 \arguments{
-\item{subtype}{character; \code{"all"} (default), \code{"stateCapacity"}, or a V-Dem column code.}
+\item{subtype}{character; \code{"all"} (default), \code{"stateCapacity"}, \code{"democracy"}, or a V-Dem column code.}
 }
 \value{
 A list with:
@@ -31,12 +31,16 @@ Political Corruption, Neopatrimonialism.
 Note: three of these are "bad when high" — they are inverted in
 \code{panelDataHistorical()} before normalisation.
 
+\code{subtype = "democracy"} returns the electoral democracy index (v2x_polyarchy) as
+"Electoral Democracy (VDem)": the weight of the democracy-weighted interactions in pfm
+(\code{interactionWeight}; design note 0007).
+
 Pass any V-Dem column code as \code{subtype} to retrieve a single arbitrary
 indicator (e.g. \code{calcOutput("VDem", subtype = "v2x_corr")}).
 Use \code{\link[=listVDemIndicators]{listVDemIndicators()}} to enumerate available codes.
 }
 \details{
-Wraps \code{\link[madrat:readSource]{madrat::readSource}} for V-Dem data and returns governance indicators as a
+Wraps \code{\link{readSource}} for V-Dem data and returns governance indicators as a
 single magpie object for use as a \code{calcOutput}.
 }
 \author{
