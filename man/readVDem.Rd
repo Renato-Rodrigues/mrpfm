@@ -9,7 +9,10 @@ readVDem(subtype = "all")
 \arguments{
 \item{subtype}{character; \code{"all"} (default) for the four accountability indicators,
 \code{"stateCapacity"} for five state-capacity indicators that replace WGI Government
-Effectiveness (see Details), or any V-Dem column code (e.g. \code{"v2x_corr"}).}
+Effectiveness (see Details), \code{"democracy"} for the three democracy indices (the candidate
+interaction weights), \code{"accountabilityOverall"} for V-Dem's overall accountability index on its
+0-1 scale (\code{v2x_accountability_osp}, the index the PoliClim projections use), or any V-Dem column
+code (e.g. \code{"v2x_corr"}).}
 }
 \value{
 A \code{\link[magclass:magclass-package]{magpie}} object with dimensions

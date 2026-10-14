@@ -78,6 +78,17 @@ test_that("calcOutput VDem subtype democracy returns the three candidate interac
   expect_true(all(result >= 0 & result <= 1, na.rm = TRUE))
 })
 
+test_that("calcOutput VDem subtype accountabilityOverall returns the overall accountability index", {
+  mrLocalEnv("VDem")
+  result <- suppressWarnings(calcOutput("VDem", subtype = "accountabilityOverall", aggregate = FALSE))
+  expect_equal(getNames(result), "Overall Accountability (VDem)")
+  expect_true(all(result >= 0 & result <= 1, na.rm = TRUE))
+  # the default set is unchanged
+  all4 <- suppressWarnings(calcOutput("VDem", aggregate = FALSE))
+  expect_false("Overall Accountability (VDem)" %in% getNames(all4))
+  expect_equal(ndata(all4), 4L)
+})
+
 test_that("listVDemIndicators returns v2x codes from CSV header", {
   mrLocalEnv("VDem")
   indicators <- listVDemIndicators()

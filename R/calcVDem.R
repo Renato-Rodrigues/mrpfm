@@ -22,11 +22,17 @@
 #' "Freedom of Expression (VDem)" (v2x_freexp_altinf, freedom of expression and alternative sources
 #' of information).
 #'
+#' `subtype = "accountabilityOverall"` returns "Overall Accountability (VDem)"
+#' (v2x_accountability_osp): vertical, horizontal and diagonal accountability in one index, on its 0-1
+#' scale, the accountability index of the PoliClim institution projections. A candidate for the
+#' accountability channel of the pfm search (v7).
+#'
 #' Pass any V-Dem column code as `subtype` to retrieve a single arbitrary
 #' indicator (e.g. `calcOutput("VDem", subtype = "v2x_corr")`).
 #' Use [`listVDemIndicators()`] to enumerate available codes.
 #'
-#' @param subtype character; `"all"` (default), `"stateCapacity"`, `"democracy"`, or a V-Dem column code.
+#' @param subtype character; `"all"` (default), `"stateCapacity"`, `"democracy"`, `"accountabilityOverall"`,
+#'   or a V-Dem column code.
 #'
 #' @return A list with:
 #'   \describe{

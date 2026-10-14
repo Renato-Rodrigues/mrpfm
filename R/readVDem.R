@@ -18,7 +18,10 @@
 #'
 #' @param subtype character; `"all"` (default) for the four accountability indicators,
 #'   `"stateCapacity"` for five state-capacity indicators that replace WGI Government
-#'   Effectiveness (see Details), or any V-Dem column code (e.g. `"v2x_corr"`).
+#'   Effectiveness (see Details), `"democracy"` for the three democracy indices (the candidate
+#'   interaction weights), `"accountabilityOverall"` for V-Dem's overall accountability index on its
+#'   0-1 scale (`v2x_accountability_osp`, the index the PoliClim projections use), or any V-Dem column
+#'   code (e.g. `"v2x_corr"`).
 #'
 #' @return A [`magpie`][magclass::magclass] object with dimensions
 #'   `[iso3c, year, indicator]`. Variable names follow the
@@ -71,9 +74,14 @@ readVDem <- function(subtype = "all") {
     "v2x_libdem"        = "Liberal Democracy (VDem)",
     "v2x_freexp_altinf" = "Freedom of Expression (VDem)"
   )
+  # Overall accountability (subtype = "accountabilityOverall"): vertical, horizontal and diagonal
+  # accountability in one index (Luehrmann et al. 2020), on its 0-1 scale (_osp). A candidate for the
+  # accountability channel of the v7 search, next to the three parts. Kept out of "all" so that set is
+  # unchanged.
+  accountabilityMap <- c("v2x_accountability_osp" = "Overall Accountability (VDem)")
   defaultCodes      <- names(labelMap)
   stateCapCodes     <- names(stateCapacityMap)
-  fullLabelMap      <- c(labelMap, stateCapacityMap, democracyMap)
+  fullLabelMap      <- c(labelMap, stateCapacityMap, democracyMap, accountabilityMap)
 
   files <- list.files(path = ".", pattern = "\\.csv$", full.names = TRUE, ignore.case = TRUE)
   if (length(files) == 0) stop("No CSV file found in VDem source folder.")
@@ -82,6 +90,7 @@ readVDem <- function(subtype = "all") {
   codes <- if (subtype == "all")           defaultCodes
            else if (subtype == "stateCapacity") stateCapCodes
            else if (subtype == "democracy")     names(democracyMap)
+           else if (subtype == "accountabilityOverall") names(accountabilityMap)
            else                            subtype
 
   # Use the combined map so any code from either group gets a proper label

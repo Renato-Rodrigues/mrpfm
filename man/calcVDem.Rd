@@ -7,7 +7,8 @@
 calcVDem(subtype = "all")
 }
 \arguments{
-\item{subtype}{character; \code{"all"} (default), \code{"stateCapacity"}, \code{"democracy"}, or a V-Dem column code.}
+\item{subtype}{character; \code{"all"} (default), \code{"stateCapacity"}, \code{"democracy"}, \code{"accountabilityOverall"},
+or a V-Dem column code.}
 }
 \value{
 A list with:
@@ -36,6 +37,11 @@ democracy-weighted interactions in pfm (\code{interactionWeight}; design note 00
 "Electoral Democracy (VDem)" (v2x_polyarchy), "Liberal Democracy (VDem)" (v2x_libdem) and
 "Freedom of Expression (VDem)" (v2x_freexp_altinf, freedom of expression and alternative sources
 of information).
+
+\code{subtype = "accountabilityOverall"} returns "Overall Accountability (VDem)"
+(v2x_accountability_osp): vertical, horizontal and diagonal accountability in one index, on its 0-1
+scale, the accountability index of the PoliClim institution projections. A candidate for the
+accountability channel of the pfm search (v7).
 
 Pass any V-Dem column code as \code{subtype} to retrieve a single arbitrary
 indicator (e.g. \code{calcOutput("VDem", subtype = "v2x_corr")}).
