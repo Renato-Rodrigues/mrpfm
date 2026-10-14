@@ -26,11 +26,11 @@ test_that("readVDem returns 1 predefined indicator with correct label", {
 test_that("readVDem returns arbitrary indicator with code-based label", {
   mrLocalEnv("VDem")
   withr::with_dir(sourceDir("VDem"), {
-    x <- suppressWarnings(readVDem("v2x_polyarchy"))
+    x <- suppressWarnings(readVDem("v2x_partipdem"))
   })
   expect_s4_class(x, "magpie")
   expect_equal(ndata(x), 1L)
-  expect_equal(getNames(x), "v2x_polyarchy (VDem)")
+  expect_equal(getNames(x), "v2x_partipdem (VDem)")
 })
 
 test_that("readVDem rejects unknown column with helpful error", {
@@ -64,10 +64,18 @@ test_that("calcOutput VDem returns 4 indicators with correct unit", {
 
 test_that("calcOutput VDem subtype returns single arbitrary indicator", {
   mrLocalEnv("VDem")
-  result <- suppressWarnings(calcOutput("VDem", subtype = "v2x_polyarchy", aggregate = FALSE))
+  result <- suppressWarnings(calcOutput("VDem", subtype = "v2x_partipdem", aggregate = FALSE))
   expect_s4_class(result, "magpie")
   expect_equal(ndata(result), 1L)
-  expect_equal(getNames(result), "v2x_polyarchy (VDem)")
+  expect_equal(getNames(result), "v2x_partipdem (VDem)")
+})
+
+test_that("calcOutput VDem subtype democracy returns the three candidate interaction weights", {
+  mrLocalEnv("VDem")
+  result <- suppressWarnings(calcOutput("VDem", subtype = "democracy", aggregate = FALSE))
+  expect_setequal(getNames(result), c("Electoral Democracy (VDem)", "Liberal Democracy (VDem)",
+                                      "Freedom of Expression (VDem)"))
+  expect_true(all(result >= 0 & result <= 1, na.rm = TRUE))
 })
 
 test_that("listVDemIndicators returns v2x codes from CSV header", {

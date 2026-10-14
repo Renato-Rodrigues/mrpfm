@@ -16,9 +16,11 @@
 #' Note: three of these are "bad when high" — they are inverted in
 #' `panelDataHistorical()` before normalisation.
 #'
-#' `subtype = "democracy"` returns the electoral democracy index (v2x_polyarchy) as
-#' "Electoral Democracy (VDem)": the weight of the democracy-weighted interactions in pfm
-#' (`interactionWeight`; design note 0007).
+#' `subtype = "democracy"` returns three democracy indices, the candidate weights of the
+#' democracy-weighted interactions in pfm (`interactionWeight`; design note 0007):
+#' "Electoral Democracy (VDem)" (v2x_polyarchy), "Liberal Democracy (VDem)" (v2x_libdem) and
+#' "Freedom of Expression (VDem)" (v2x_freexp_altinf, freedom of expression and alternative sources
+#' of information).
 #'
 #' Pass any V-Dem column code as `subtype` to retrieve a single arbitrary
 #' indicator (e.g. `calcOutput("VDem", subtype = "v2x_corr")`).
@@ -73,6 +75,7 @@ calcVDem <- function(subtype = "all") {
 
   nIndicators <- if (subtype == "all")            4L
                  else if (subtype == "stateCapacity") 5L
+                 else if (subtype == "democracy")     3L
                  else                                 1L
   stopifnot("Unexpected number of V-Dem indicators" = ndata(x) == nIndicators)
 

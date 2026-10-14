@@ -63,9 +63,14 @@ readVDem <- function(subtype = "all") {
     "v2x_corr"    = "Political Corruption (VDem)",
     "v2x_neopat"  = "Neopatrimonialism (VDem)"
   )
-  # Electoral democracy (subtype = "democracy"): the weight of the democracy-weighted interactions
-  # (pfm interactionWeight; design note 0007, option O10). Kept out of "all" so that set is unchanged.
-  democracyMap <- c("v2x_polyarchy" = "Electoral Democracy (VDem)")
+  # Democracy indices (subtype = "democracy"): the candidate weights of the democracy-weighted
+  # interactions (pfm interactionWeight; design note 0007, option O10 and section 10). Kept out of
+  # "all" so that set is unchanged.
+  democracyMap <- c(
+    "v2x_polyarchy"     = "Electoral Democracy (VDem)",
+    "v2x_libdem"        = "Liberal Democracy (VDem)",
+    "v2x_freexp_altinf" = "Freedom of Expression (VDem)"
+  )
   defaultCodes      <- names(labelMap)
   stateCapCodes     <- names(stateCapacityMap)
   fullLabelMap      <- c(labelMap, stateCapacityMap, democracyMap)
