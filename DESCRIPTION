@@ -30,6 +30,7 @@ Imports:
     utils
 Suggests:
     testthat,
+    WDI,
     withr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
